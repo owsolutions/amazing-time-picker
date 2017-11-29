@@ -33,14 +33,3 @@ script:
   - npm run lint
   - npm run build
 
-deploy:
-  provider: firebase
-  on:
-    branch: master
-  token:
-    secure: "$FIREBASE_TOKEN"
-
-notifications:
-  email:
-    on_failure: change
-    on_success: change
