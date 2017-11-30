@@ -1,9 +1,9 @@
 <div id="time-picker">
   <div class="time-picker-header">
     <div class="time-picker-selected-time">
-        <div class="time-picker-hour">10</div>
+        <div class="time-picker-hour" (click)="clockMaker('hour')">10</div>
         <span class="time-seprator">:</span>
-        <div class="time-picker-minute">53</div>
+        <div class="time-picker-minute" (click)="clockMaker('minute')">53</div>
     </div>
     <div class="time-picker-selected-ampm">
       <div class="time-picker-am selected">AM</div>
@@ -12,18 +12,11 @@
   </div>
   <div class="time-picker-contet">
       <div class="time-picker-clock">
-        <button class="hour-button hour-1">1</button>
-        <button class="hour-button hour-2">2</button>
-        <button class="hour-button hour-3">3</button>
-        <button class="hour-button hour-4">4</button>
-        <button class="hour-button hour-5">5</button>
-        <button class="hour-button hour-6">6</button>
-        <button class="hour-button hour-7">7</button>
-        <button class="hour-button hour-8">8</button>
-        <button class="hour-button hour-9">9</button>
-        <button class="hour-button hour-10">10</button>
-        <button class="hour-button hour-11">11</button>
-        <button class="hour-button hour-12">12</button>
+        <button *ngFor="let clock of clockObject" [ngStyle]="{top: clock.top,left: clock.left}">
+          {{clock.time}}
+        </button>
+        <div class="time-picker-clock-origin"></div>
+        <div class="time-picker-clock-arrow"></div>
       </div>
   </div>
   <div class="time-picker-footer">

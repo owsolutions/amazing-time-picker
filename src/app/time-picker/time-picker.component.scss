@@ -39,14 +39,44 @@
             cursor: pointer;
             margin: 25px auto;
             position: relative;
-            .hour-button{
+            button{
+                border: none;
+                background: transparent;
                 position: absolute;
-            }
-            @for $i from 1 to 12{
-                .hour-#{$i}{
-                  transform: rotate(#{30*$i}deg)
+                width: 35px;
+                border-radius: 50%;
+                cursor: pointer;
+                font-size: 17px;
+                text-align: center;
+                padding: 7px 0;
+                transition: all .5s;
+                &:hover{
+                    background: rgb(250,250,250);
                 }
-              }
+            }
+            .time-picker-clock-origin{
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: blue;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -3px;
+                margin-top: -3px;
+            }
+            .time-picker-clock-arrow{
+                width: 2px;
+                height: 80px;
+                background: blue;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-top: -1px;
+                margin-left: -1px;
+                transform: rotate(-90deg);
+                transform-origin: top left;
+            }
         }
     }
 
