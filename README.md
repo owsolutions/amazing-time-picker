@@ -1,5 +1,6 @@
 # Angular Material Time Picker (Clock)
-This is time picker for angular material projects, for angular 4, Angular 5.
+This is time picker for angular material projects, for Angular Material 5.
+
 
 Example usage:
 
