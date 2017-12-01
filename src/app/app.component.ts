@@ -16,12 +16,6 @@ export class AppComponent {
   }
 
   Open () {
-    let dialogRef = this.dialog.open(TimePickerComponent, {
-      panelClass: 'dialog-box'
-    });
-
-    dialogRef.afterClosed().subscribe(data => {
-      console.log('>>', data);
-    })
+   
   }
 }

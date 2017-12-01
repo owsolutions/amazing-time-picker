@@ -5,11 +5,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
+import { MatTimepickerDirective } from './mat-timepicker.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimePickerComponent
+    TimePickerComponent,
+    MatTimepickerDirective
   ],
   imports: [
     BrowserModule,
