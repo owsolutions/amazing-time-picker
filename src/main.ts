@@ -1,7 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { MatTimePicker } from './app/app.module';
+import { MatTimePickerModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 import { hmrBootstrap } from './hmr';
@@ -10,7 +10,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-const bootstrap = () => platformBrowserDynamic().bootstrapModule(MatTimePicker);
+const bootstrap = () => platformBrowserDynamic().bootstrapModule(MatTimePickerModule);
 
 if (environment.hmr) {
   if (module[ 'hot' ]) {
