@@ -1,9 +1,9 @@
 <div id="time-picker">
   <div class="time-picker-header">
     <div class="time-picker-selected-time">
-        <div class="time-picker-hour" (click)="clockMaker('hour')">10</div>
+        <div class="time-picker-hour" (click)="clockMaker('hour')">{{hour}}</div>
         <span class="time-seprator">:</span>
-        <div class="time-picker-minute" (click)="clockMaker('minute')">53</div>
+        <div class="time-picker-minute" (click)="clockMaker('minute')">{{minute}}</div>
     </div>
     <div class="time-picker-selected-ampm">
       <div class="time-picker-am selected">AM</div>
@@ -12,7 +12,7 @@
   </div>
   <div class="time-picker-contet">
       <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="setMove(true);getDegree($event);" (mouseup)="setMove(false)">
-        <button *ngFor="let clock of clockObject" [ngStyle]="{top: clock.top,left: clock.left}">
+        <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngStyle]="{top: clock.top,left: clock.left}">
           {{clock.time}}
         </button>
         <div class="time-picker-clock-origin"></div>

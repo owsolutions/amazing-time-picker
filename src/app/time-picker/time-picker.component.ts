@@ -9,6 +9,8 @@ export class TimePickerComponent implements OnInit {
   public clockObject: Array<any>;
   public isClicked: boolean;
   public clockType: String = 'hour';
+  public hour: any = 10;
+  public minute: any = 55;
 
   constructor(private element: ElementRef) { }
 
@@ -31,10 +33,33 @@ export class TimePickerComponent implements OnInit {
         this.clockObject.push({
           time: str,
           left: (x + r - 17) + 'px',
-          top: (-y + r - 17) + 'px'
+          top: (-y + r - 17) + 'px',
+          type
         });
       }
     }
+    this.setArrow(null);
+  }
+
+  setArrow = (obj) => {
+    if(obj != undefined || obj != null){
+      this.clockType = obj.type;
+      if(this.clockType == 'minute'){
+        this.minute = obj.time;
+      }else{
+        this.hour = obj.time;
+      }
+    }
+    var step = (this.clockType == 'minute') ? 6 : 30;
+    var time = (this.clockType == 'minute') ? this.minute : this.hour;
+    var degrees = time * step - 90;
+    this.rotationClass(degrees);
+  }
+
+  rotationClass = (degrees) => {
+    var arrowEl = this.element.nativeElement.querySelector('#tpc-arrow');
+    arrowEl.style.transform = "rotate(" + degrees + "deg)";
+    arrowEl.style.webkitTransform = "rotate(" + degrees + "deg)";
   }
 
   setMove = (status) => {
@@ -52,7 +77,7 @@ export class TimePickerComponent implements OnInit {
       var targetY = clock.height / 2;
       var Vx = Math.round(e.layerX - targetX);
       var Vy = Math.round(targetY - e.layerY);
-      var radians = Math.atan2(Vy, Vx);
+      var radians = -Math.atan2(Vy, Vx);
       if (radians < 0) radians += 2 * Math.PI;
 
       var degrees = Math.round(radians * 180 / Math.PI);
@@ -60,13 +85,20 @@ export class TimePickerComponent implements OnInit {
       if (degMod == 0) {
         return;
       } else if (degMod >= step / 2) {
-        degrees = -(degrees + (step - degMod));
+        degrees = degrees + (step - degMod);
       } else if (degMod < step / 2) {
-        degrees = -(degrees - degMod);
+        degrees = degrees - degMod;
       }
-      var arrowEl = this.element.nativeElement.querySelector('#tpc-arrow');
-      arrowEl.style.transform = "rotate(" + degrees + "deg)";
-      arrowEl.style.webkitTransform = "rotate(" + degrees + "deg)";
+      
+      this.rotationClass(degrees);
+
+      if(this.clockType == 'hour'){
+        this.hour = (degrees / step) + 3;
+        this.hour = (this.hour > 12) ? this.hour - 12 : this.hour;  
+      }else if(this.clockType == 'minute'){
+        this.minute = (degrees / step) + 15;
+        this.minute = (this.minute > 60) ? this.minute - 60 : this.minute;
+      }
     }
   }
 
