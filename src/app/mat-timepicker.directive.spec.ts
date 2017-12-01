@@ -1,8 +1,8 @@
-import { MatTimepickerDirective } from './mat-timepicker.directive';
+import { MatTimePickerDirective } from './mat-timepicker.directive';
 
-describe('MatTimepickerDirective', () => {
+describe('MatTimePickerDirective', () => {
   it('should create an instance', () => {
-    const directive = new MatTimepickerDirective();
+    const directive = new MatTimePickerDirective();
     expect(directive).toBeTruthy();
   });
 });

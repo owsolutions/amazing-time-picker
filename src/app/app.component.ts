@@ -12,10 +12,10 @@ export class AppComponent {
   constructor (
     private dialog: MatDialog
   ) {
-    
+
   }
 
   Open () {
-   
+
   }
 }
