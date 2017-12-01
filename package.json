@@ -16,7 +16,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -e=prod -prod --deploy-url angular-material-clock-time-picker",
+    "build": "ng build -e=prod -prod --deploy-url angular-material-clock-time-picker --progress false",
     "test": "ng test",
     "lint": "ng lint",
     "hmr": "ng serve --hmr -e=hmr",
