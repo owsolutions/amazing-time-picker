@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-time-picker',
@@ -7,24 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TimePickerComponent implements OnInit {
   public clockObject: Array<any>;
+  public isClicked: boolean;
+  public clockType: String = 'hour';
 
-  constructor() { }
+  constructor(private element: ElementRef) { }
 
-  clockMaker = (type: String) => {
+  clockMaker = (type) => {
+    this.clockType = type;
     this.clockObject = [];
-    var timeVal = (type == 'minute') ? 60 : 12;
-    var timeStep = (type == 'minute') ? 5 : 1;
-    var timeStart = (type == 'minute') ? 0 : 1;
+    var timeVal = (this.clockType == 'minute') ? 60 : 12;
+    var timeStep = (this.clockType == 'minute') ? 5 : 1;
+    var timeStart = (this.clockType == 'minute') ? 0 : 1;
 
     var r = 124;
-    var j = r-25;
+    var j = r - 25;
 
-    for(let min = timeStart; min <= timeVal; min+= timeStep){
-      if (min != 0){
+    for (let min = timeStart; min <= timeVal; min += timeStep) {
+      if (min != 0) {
         var str = String(min);
-        var x = j*Math.sin(Math.PI*2*(min/timeVal));
-        var y = j*Math.cos(Math.PI*2*(min/timeVal));
-        
+        var x = j * Math.sin(Math.PI * 2 * (min / timeVal));
+        var y = j * Math.cos(Math.PI * 2 * (min / timeVal));
+
         this.clockObject.push({
           time: str,
           left: (x + r - 17) + 'px',
@@ -32,12 +35,42 @@ export class TimePickerComponent implements OnInit {
         });
       }
     }
+  }
 
-    console.log(this.clockObject);
+  setMove = (status) => {
+    this.isClicked = status;
+  }
+
+  getDegree = (e) => {
+    var step = (this.clockType == 'minute') ? 6 : 30;
+    if (this.isClicked && e.currentTarget === e.target) {
+      let clock = {
+        width: e.target.offsetWidth,
+        height: e.target.offsetHeight
+      }
+      var targetX = clock.width / 2;
+      var targetY = clock.height / 2;
+      var Vx = Math.round(e.layerX - targetX);
+      var Vy = Math.round(targetY - e.layerY);
+      var radians = Math.atan2(Vy, Vx);
+      if (radians < 0) radians += 2 * Math.PI;
+
+      var degrees = Math.round(radians * 180 / Math.PI);
+      var degMod = degrees % step;
+      if (degMod == 0) {
+        return;
+      } else if (degMod >= step / 2) {
+        degrees = -(degrees + (step - degMod));
+      } else if (degMod < step / 2) {
+        degrees = -(degrees - degMod);
+      }
+      var arrowEl = this.element.nativeElement.querySelector('#tpc-arrow');
+      arrowEl.style.transform = "rotate(" + degrees + "deg)";
+      arrowEl.style.webkitTransform = "rotate(" + degrees + "deg)";
+    }
   }
 
   ngOnInit() {
-    this.clockMaker("hour");
+    this.clockMaker('hour');
   }
-
 }

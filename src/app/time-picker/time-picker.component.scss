@@ -39,6 +39,10 @@
             cursor: pointer;
             margin: 25px auto;
             position: relative;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;         
             button{
                 border: none;
                 background: transparent;
@@ -66,8 +70,8 @@
                 margin-top: -3px;
             }
             .time-picker-clock-arrow{
-                width: 2px;
-                height: 80px;
+                width: 80px;
+                height: 2px;
                 background: blue;
                 position: absolute;
                 left: 50%;

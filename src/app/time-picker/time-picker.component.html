@@ -11,12 +11,12 @@
     </div>
   </div>
   <div class="time-picker-contet">
-      <div class="time-picker-clock">
+      <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="setMove(true);getDegree($event);" (mouseup)="setMove(false)">
         <button *ngFor="let clock of clockObject" [ngStyle]="{top: clock.top,left: clock.left}">
           {{clock.time}}
         </button>
         <div class="time-picker-clock-origin"></div>
-        <div class="time-picker-clock-arrow"></div>
+        <div id="tpc-arrow" class="time-picker-clock-arrow"></div>
       </div>
   </div>
   <div class="time-picker-footer">
