@@ -27,4 +27,4 @@ import { MatTimepickerDirective } from './mat-timepicker.directive';
     TimePickerComponent
   ]
 })
-export class AppModule { }
+export class MatTimePicker { }
