@@ -14,6 +14,10 @@ export class TimePickerComponent implements OnInit {
 
   constructor(private element: ElementRef) { }
 
+
+  public get Time () {
+    return this.hour + ':' + this.minute;
+  }
   clockMaker = (type) => {
     this.clockType = type;
     this.clockObject = [];

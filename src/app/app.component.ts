@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { TimePickerComponent } from './time-picker/time-picker.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor (
+    private dialog: MatDialog
+  ) {
+    
+  }
+
+  Open () {
+    let dialogRef = this.dialog.open(TimePickerComponent, {
+      panelClass: 'dialog-box'
+    });
+
+    dialogRef.afterClosed().subscribe(data => {
+      console.log('>>', data);
+    })
+  }
 }

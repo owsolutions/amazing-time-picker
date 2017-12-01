@@ -10,17 +10,20 @@
       <div class="time-picker-pm">PM</div>
     </div>
   </div>
-  <div class="time-picker-contet">
-      <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="setMove(true);getDegree($event);" (mouseup)="setMove(false)">
-        <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngStyle]="{top: clock.top,left: clock.left}">
-          {{clock.time}}
-        </button>
-        <div class="time-picker-clock-origin"></div>
-        <div id="tpc-arrow" class="time-picker-clock-arrow"></div>
-      </div>
-  </div>
-  <div class="time-picker-footer">
-      <button>Cancel</button>
-      <button>OK</button>
-  </div>
+  <mat-dialog-content>
+    <div class="time-picker-contet">
+        <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="setMove(true);getDegree($event);" (mouseup)="setMove(false)">
+          <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngStyle]="{top: clock.top,left: clock.left}">
+            {{clock.time}}
+          </button>
+          <div class="time-picker-clock-origin"></div>
+          <div id="tpc-arrow" class="time-picker-clock-arrow"></div>
+        </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button mat-button [mat-dialog-close]="Time">OK</button>
+  </mat-dialog-actions>
 </div>
