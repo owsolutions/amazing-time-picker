@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --deploy-url angular-material-clock-time-picker",
+    "build": "ng build -e=prod -prod --deploy-url angular-material-clock-time-picker",
     "test": "ng test",
     "lint": "ng lint",
     "hmr": "ng serve --hmr -e=hmr",
@@ -28,7 +28,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.3.2",
+    "@angular/cli": "^1.5.5",
     "@angular/compiler-cli": "^5.0.4",
     "@angular/language-service": "^5.0.4",
     "@angularclass/hmr": "^2.1.3",
