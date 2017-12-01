@@ -9,3 +9,7 @@ Example usage:
     <input mat-timepicker matInput placeholder="Click to get the time" value="0:0">
 </mat-form-field>
 ``` 
+
+Online demo
+
+https://owsolutions.github.io/angular-material-clock-time-picker/
