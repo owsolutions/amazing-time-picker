@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "hmr": "ng serve --hmr -e=hmr",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "gh-pages": "git subtree push --prefix dist origin gh-pages"
   },
   "dependencies": {
     "@angular/animations": "^5.0.4",
