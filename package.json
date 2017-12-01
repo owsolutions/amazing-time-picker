@@ -1,6 +1,6 @@
 {
-  "name": "angular-material-time-picker",
-  "version": "0.0.1",
+  "name": "angular-material-clock-time-picker",
+  "version": "0.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -11,7 +11,6 @@
     "hmr": "ng serve --hmr -e=hmr",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^4.4.6",
     "@angular/cdk": "^5.0.0-rc.2",
