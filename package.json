@@ -1,6 +1,17 @@
 {
   "name": "angular-material-clock-time-picker",
-  "version": "0.0.4",
+  "version": "0.0.5",
+  "keywords": [
+    "Angular",
+    "Angular Material",
+    "Angular Material 5",
+    "Time",
+    "Timepicker",
+    "Datetime picker",
+    "Timer",
+    "Clock",
+    "Time selector"
+  ],
   "license": "MIT",
   "scripts": {
     "ng": "ng",
