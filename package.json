@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --deploy-url angular-material-clock-time-picker",
     "test": "ng test",
     "lint": "ng lint",
     "hmr": "ng serve --hmr -e=hmr",
