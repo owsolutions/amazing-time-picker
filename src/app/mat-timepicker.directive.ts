@@ -3,7 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 /* tslint:disable */
 @Directive({
-  selector: '[mat-timePicker]'
+  selector: '[mat-timepicker]'
 })
 /* tslint:enable */
 export class MatTimePickerDirective {

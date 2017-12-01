@@ -46,7 +46,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   setArrow = (obj) => {
-    if (obj !== undefined || obj !== null) {
+    if (obj) {
       this.clockType = obj.type;
       if (this.clockType === 'minute') {
         this.minute = obj.time;
