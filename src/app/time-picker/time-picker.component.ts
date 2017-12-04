@@ -26,19 +26,13 @@ export class TimePickerComponent implements OnInit {
   private ParseStringToTime (time: string): void {
     let forcedPm = false;
     const [h, m] = time.split(':');
-    if (+h === 24) {
-      forcedPm = true;
-    }
+    
     let hour = +h > 12 ? +h - 12 : +h;
     hour = hour === 0 ? 12 : hour;
     this.hour = hour;
     this.minute = +m;
-    this.ampm = +h > 12 ? 'PM' : 'AM';
-
-    if (forcedPm) {
-      this.ampm = 'PM';
-    }
-    console.log(this.hour, this.minute, this.ampm);
+    let ampm = +h >= 12 ? 'PM' : 'AM';
+    this.ampm = ampm;
   }
 
   public get Time () {
