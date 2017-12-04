@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-time-picker',
@@ -13,11 +14,28 @@ export class TimePickerComponent implements OnInit {
   public minute: any = 55;
   public ampm: String = "PM";
 
-  constructor(private element: ElementRef) { }
+  constructor(
+    private element: ElementRef,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    if (data && data.value) {
+      this.ParseStringToTime(data.value);
+    }
+  }
 
+  private ParseStringToTime (time: string): void {
+    const [h, m] = time.split(':');
+    this.hour = +h > 12 ? +h - 12: +h;
+    this.minute = +m;
+    this.ampm = +h > 12 ? 'PM' : 'AM';
+    console.log(this.hour, this.minute, this.ampm);
+  }
 
   public get Time () {
-    return this.hour + ':' + this.minute;
+    let hh = this.ampm === "PM" ? +this.hour + 12 : this.hour;
+    hh = hh < 10 ? '0' + hh : hh;
+    let mm = this.minute < 10 ? '0' + this.minute : this.minute;
+    return `${hh}:${mm}`;
   }
   clockMaker = () => {
     var type = this.clockType;
