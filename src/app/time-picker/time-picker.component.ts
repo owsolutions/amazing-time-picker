@@ -12,7 +12,7 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
-  public ampm: String = "PM";
+  public ampm: String = 'PM';
 
   constructor(
     private element: ElementRef,
@@ -25,20 +25,20 @@ export class TimePickerComponent implements OnInit {
 
   private ParseStringToTime (time: string): void {
     const [h, m] = time.split(':');
-    this.hour = +h > 12 ? +h - 12: +h;
+    this.hour = +h > 12 ? +h - 12 : +h;
     this.minute = +m;
     this.ampm = +h > 12 ? 'PM' : 'AM';
     console.log(this.hour, this.minute, this.ampm);
   }
 
   public get Time () {
-    let hh = this.ampm === "PM" ? +this.hour + 12 : this.hour;
+    let hh = this.ampm === 'PM' ? +this.hour + 12 : this.hour;
     hh = hh < 10 ? '0' + hh : hh;
-    let mm = this.minute < 10 ? '0' + this.minute : this.minute;
+    const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     return `${hh}:${mm}`;
   }
   clockMaker = () => {
-    var type = this.clockType;
+    const type = this.clockType;
     this.clockObject = [];
     const timeVal = (type === 'minute') ? 60 : 12;
     const timeStep = (type === 'minute') ? 5 : 1;
