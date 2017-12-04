@@ -24,14 +24,12 @@ export class TimePickerComponent implements OnInit {
   }
 
   private ParseStringToTime (time: string): void {
-    let forcedPm = false;
     const [h, m] = time.split(':');
-    
     let hour = +h > 12 ? +h - 12 : +h;
     hour = hour === 0 ? 12 : hour;
     this.hour = hour;
     this.minute = +m;
-    let ampm = +h >= 12 ? 'PM' : 'AM';
+    const ampm = +h >= 12 ? 'PM' : 'AM';
     this.ampm = ampm;
   }
 
@@ -43,7 +41,7 @@ export class TimePickerComponent implements OnInit {
     if ( hh === 24) {
       hh = 12;
     }
-    hh = hh < 10 ? '0' + hh : '' +hh as any;
+    hh = hh < 10 ? '0' + hh : '' + hh as any;
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     const time = `${hh}:${mm}`;
     return time;
