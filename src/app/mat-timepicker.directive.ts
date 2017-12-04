@@ -13,9 +13,13 @@ export class MatTimePickerDirective {
     private dialog: MatDialog
   ) {  }
 
-  @HostListener('click') OnClick () {
+  @HostListener('click') OnClick ($event) {
+
     const dialogRef = this.dialog.open(TimePickerComponent, {
-      panelClass: 'dialog-box'
+      panelClass: 'dialog-box',
+      data: {
+        value: this.el.nativeElement.value
+      }
     });
 
     dialogRef.afterClosed().subscribe(data => {

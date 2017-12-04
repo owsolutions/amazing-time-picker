@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Inject } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-time-picker',
@@ -11,16 +12,43 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
-  public ampm: String = "PM";
+  public ampm: String = 'PM';
+  public nowTime: any = this.hour;
 
-  constructor(private element: ElementRef) { }
+  constructor(
+    private element: ElementRef,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    if (data && data.value) {
+      this.ParseStringToTime(data.value);
+    }
+  }
 
+  private ParseStringToTime (time: string): void {
+    const [h, m] = time.split(':');
+    let hour = +h > 12 ? +h - 12 : +h;
+    hour = hour === 0 ? 12 : hour;
+    this.hour = hour;
+    this.minute = +m;
+    const ampm = +h >= 12 ? 'PM' : 'AM';
+    this.ampm = ampm;
+  }
 
   public get Time () {
-    return this.hour + ':' + this.minute;
+    let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
+    if (this.ampm === 'AM' && hh === 12) {
+      hh = 0;
+    }
+    if ( hh === 24) {
+      hh = 12;
+    }
+    hh = hh < 10 ? '0' + hh : '' + hh as any;
+    const mm = this.minute < 10 ? '0' + this.minute : this.minute;
+    const time = `${hh}:${mm}`;
+    return time;
   }
   clockMaker = () => {
-    var type = this.clockType;
+    const type = this.clockType;
     this.clockObject = [];
     const timeVal = (type === 'minute') ? 60 : 12;
     const timeStep = (type === 'minute') ? 5 : 1;
@@ -44,6 +72,11 @@ export class TimePickerComponent implements OnInit {
       }
     }
     this.setArrow(null);
+    this.setActiveTime();
+  }
+
+  setActiveTime = () => {
+    this.nowTime = (this.clockType === 'minute' ? this.minute : this.hour);
   }
 
   setArrow = (obj) => {
@@ -102,6 +135,7 @@ export class TimePickerComponent implements OnInit {
         this.minute = (degrees / step) + 15;
         this.minute = (this.minute > 60) ? this.minute - 60 : this.minute;
       }
+      this.setActiveTime();
     }
   }
 
