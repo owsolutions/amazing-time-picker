@@ -24,18 +24,35 @@ export class TimePickerComponent implements OnInit {
   }
 
   private ParseStringToTime (time: string): void {
+    let forcedPm = false;
     const [h, m] = time.split(':');
-    this.hour = +h > 12 ? +h - 12 : +h;
+    if (+h === 24) {
+      forcedPm = true;
+    }
+    let hour = +h > 12 ? +h - 12 : +h;
+    hour = hour === 0 ? 12 : hour;
+    this.hour = hour;
     this.minute = +m;
     this.ampm = +h > 12 ? 'PM' : 'AM';
+
+    if (forcedPm) {
+      this.ampm = 'PM';
+    }
     console.log(this.hour, this.minute, this.ampm);
   }
 
   public get Time () {
-    let hh = this.ampm === 'PM' ? +this.hour + 12 : this.hour;
-    hh = hh < 10 ? '0' + hh : hh;
+    let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
+    if (this.ampm === 'AM' && hh === 12) {
+      hh = 0;
+    }
+    if ( hh === 24) {
+      hh = 12;
+    }
+    hh = hh < 10 ? '0' + hh : '' +hh as any;
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
-    return `${hh}:${mm}`;
+    const time = `${hh}:${mm}`;
+    return time;
   }
   clockMaker = () => {
     const type = this.clockType;
