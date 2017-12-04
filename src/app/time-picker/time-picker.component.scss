@@ -59,9 +59,14 @@
                 font-size: 17px;
                 text-align: center;
                 padding: 7px 0;
-                transition: all .5s;
+                transition: all .2s;
+                z-index: 3;
                 &:hover{
                     background: rgb(250,250,250);
+                }
+                &.active{
+                    background: blue;
+                    color: #fff;
                 }
             }
             .time-picker-clock-origin{

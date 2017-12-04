@@ -13,7 +13,7 @@
   <mat-dialog-content>
     <div class="time-picker-contet">
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
-          <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngStyle]="{top: clock.top,left: clock.left}">
+          <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left}">
             {{clock.time}}
           </button>
           <div class="time-picker-clock-origin"></div>
