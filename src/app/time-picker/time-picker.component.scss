@@ -13,8 +13,13 @@
         .time-picker-selected-time{
             font-size: 35px;
             padding: 5px 0px;
+            color: #aaa;
             div{
                 display: inline-block;
+                cursor: pointer;
+                &.selected{
+                    color: #000;
+                }
             }
         }
         .time-picker-selected-ampm{
@@ -23,6 +28,7 @@
             div{
                 display: inline-block;
                 padding: 0 5px;
+                cursor: pointer;
                 &.selected{
                     color: #000;
                 }
@@ -70,7 +76,7 @@
                 margin-top: -3px;
             }
             .time-picker-clock-arrow{
-                width: 80px;
+                width: 95px;
                 height: 2px;
                 background: blue;
                 position: absolute;
@@ -79,23 +85,27 @@
                 margin-top: -1px;
                 margin-left: -1px;
                 transform-origin: top left;
+                &:before{
+                    content: " ";
+                    width: 8px;
+                    height: 8px;
+                    background: blue;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: -3px;
+                    right: -6px;
+                }
             }
         }
     }
 
     .time-picker-footer{
         border-top: 1px solid #e1e1e1;
-        padding: 15px;
+        padding: 0px 15px;
         text-align: right;
         button{
-            border: none;
-            border-radius: 2px;
-            line-height: 36px;
             background: #f1f1f1;
-            margin: 0 1px;
-            padding: 0px 10px;
-            font-size: 15px;
-            cursor: pointer;
+            margin-left: 10px;
         }
     }
 }

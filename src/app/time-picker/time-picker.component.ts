@@ -11,6 +11,7 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
+  public ampm: String = "PM";
 
   constructor(private element: ElementRef) { }
 
@@ -18,12 +19,12 @@ export class TimePickerComponent implements OnInit {
   public get Time () {
     return this.hour + ':' + this.minute;
   }
-  clockMaker = (type) => {
-    this.clockType = type;
+  clockMaker = () => {
+    var type = this.clockType;
     this.clockObject = [];
-    const timeVal = (this.clockType === 'minute') ? 60 : 12;
-    const timeStep = (this.clockType === 'minute') ? 5 : 1;
-    const timeStart = (this.clockType === 'minute') ? 0 : 1;
+    const timeVal = (type === 'minute') ? 60 : 12;
+    const timeStep = (type === 'minute') ? 5 : 1;
+    const timeStart = (type === 'minute') ? 0 : 1;
 
     const r = 124;
     const j = r - 25;
@@ -66,10 +67,6 @@ export class TimePickerComponent implements OnInit {
     arrowEl.style.webkitTransform = 'rotate(' + degrees + 'deg)';
   }
 
-  setMove = (status) => {
-    this.isClicked = status;
-  }
-
   getDegree = (e) => {
     const step = this.clockType === 'minute' ? 6 : 30;
     if (this.isClicked && e.currentTarget === e.target) {
@@ -109,6 +106,6 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.clockMaker('hour');
+    this.clockMaker();
   }
 }
