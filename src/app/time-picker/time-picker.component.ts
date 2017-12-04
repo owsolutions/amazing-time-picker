@@ -12,7 +12,7 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
-  public ampm: String = "PM";
+  public ampm: String = 'PM';
   public nowTime: any = this.hour;
 
   constructor(
@@ -76,7 +76,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   setActiveTime = () => {
-    this.nowTime = (this.clockType == 'minute' ? this.minute : this.hour);
+    this.nowTime = (this.clockType === 'minute' ? this.minute : this.hour);
   }
 
   setArrow = (obj) => {
