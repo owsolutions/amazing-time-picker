@@ -11,7 +11,7 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
-  public ampm: String = "PM";
+  public ampm: String = 'PM';
   public nowTime: any = this.hour;
 
   constructor(private element: ElementRef) { }
@@ -21,7 +21,7 @@ export class TimePickerComponent implements OnInit {
     return this.hour + ':' + this.minute;
   }
   clockMaker = () => {
-    var type = this.clockType;
+    const type = this.clockType;
     this.clockObject = [];
     const timeVal = (type === 'minute') ? 60 : 12;
     const timeStep = (type === 'minute') ? 5 : 1;
@@ -49,7 +49,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   setActiveTime = () => {
-    this.nowTime = (this.clockType == 'minute' ? this.minute : this.hour);
+    this.nowTime = (this.clockType === 'minute' ? this.minute : this.hour);
   }
 
   setArrow = (obj) => {
