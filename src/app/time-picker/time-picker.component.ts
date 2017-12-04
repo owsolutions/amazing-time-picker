@@ -58,7 +58,7 @@ export class TimePickerComponent implements OnInit {
     const j = r - 25;
 
     for (let min = timeStart; min <= timeVal; min += timeStep) {
-      if (min !== 0) {
+      if (min !== 60) {
         const str = String(min);
         const x = j * Math.sin(Math.PI * 2 * (min / timeVal));
         const y = j * Math.cos(Math.PI * 2 * (min / timeVal));
@@ -133,8 +133,9 @@ export class TimePickerComponent implements OnInit {
         this.hour = (this.hour > 12) ? this.hour - 12 : this.hour;
       } else if (this.clockType === 'minute') {
         this.minute = (degrees / step) + 15;
-        this.minute = (this.minute > 60) ? this.minute - 60 : this.minute;
+        this.minute = (this.minute > 59) ? this.minute - 60 : this.minute;
       }
+      console.log(this.minute);
       this.setActiveTime();
     }
   }
