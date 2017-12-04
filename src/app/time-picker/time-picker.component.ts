@@ -72,7 +72,6 @@ export class TimePickerComponent implements OnInit {
       }
     }
     this.setArrow(null);
-    this.setActiveTime();
   }
 
   setActiveTime = () => {
@@ -92,6 +91,7 @@ export class TimePickerComponent implements OnInit {
     const time = (this.clockType === 'minute') ? this.minute : this.hour;
     const degrees = time * step - 90;
     this.rotationClass(degrees);
+    this.setActiveTime();
   }
 
   rotationClass = (degrees) => {
