@@ -7,3 +7,13 @@ body{
     outline: none;
 }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.dialog-box{
+    .mat-dialog-container{
+        padding: 5px 0px 25px;
+        overflow: hidden;
+    }
+    .mat-dialog-actions{
+        flex-direction: row-reverse;
+    }
+}
