@@ -12,4 +12,6 @@ Example usage:
 
 Online demo
 
+![Angular Material Time Picker | TimePicker | Materialize time picker | Angular 5 Material Timepicker | ClockPicker](time-picker.jpg)
+
 https://owsolutions.github.io/angular-material-clock-time-picker/
