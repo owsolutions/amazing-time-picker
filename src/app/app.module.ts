@@ -1,11 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import { MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { TimePickerComponent } from './time-picker/time-picker.component';
-import { MatTimePickerDirective } from './mat-timepicker.directive';
+import { MatTimePickerDirective } from './time-picker/mat-timepicker.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,9 @@ import { MatTimePickerDirective } from './mat-timepicker.directive';
     MatInputModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [
+    AppComponent
+  ],
   entryComponents: [
     TimePickerComponent
   ]

@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, Inject } from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-time-picker',
@@ -34,7 +34,7 @@ export class TimePickerComponent implements OnInit {
     this.ampm = ampm;
   }
 
-  public get Time () {
+  public GetTime () {
     let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
     if (this.ampm === 'AM' && hh === 12) {
       hh = 0;
