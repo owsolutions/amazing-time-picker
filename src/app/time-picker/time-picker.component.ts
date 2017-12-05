@@ -12,8 +12,12 @@ export class TimePickerComponent implements OnInit {
   public clockType: String = 'hour';
   public hour: any = 10;
   public minute: any = 55;
-  public ampm: String = 'PM';
+  public ampm: String = 'AM';
   public nowTime: any = this.hour;
+  public limited: any = {
+    min: '10:54 AM',
+    max: '3:10 PM'
+  };
 
   constructor(
     private element: ElementRef,
@@ -117,7 +121,8 @@ export class TimePickerComponent implements OnInit {
         radians += 2 * Math.PI;
       }
 
-      let degrees = Math.round(radians * 180 / Math.PI);
+      let pureDeg = Math.round(radians * 180 / Math.PI);
+      let degrees = pureDeg;
       const degMod = degrees % step;
       if (degMod === 0) {
         return;
@@ -127,8 +132,6 @@ export class TimePickerComponent implements OnInit {
         degrees = degrees - degMod;
       }
 
-      this.rotationClass(degrees);
-
       if (this.clockType === 'hour') {
         this.hour = (degrees / step) + 3;
         this.hour = (this.hour > 12) ? this.hour - 12 : this.hour;
@@ -136,9 +139,49 @@ export class TimePickerComponent implements OnInit {
         this.minute = (degrees / step) + 15;
         this.minute = (this.minute > 59) ? this.minute - 60 : this.minute;
       }
-      console.log(this.minute);
-      this.setActiveTime();
+
+      this.ampm = (this.hour === 12 && pureDeg === 271) ? this.ampm === 'AM' ? 'PM' : "AM" : this.ampm;
+
+      var currentTime = this.hour + ":" + this.minute + " " + this.ampm;
+      
+      // let lMax = this.limited.max.split(/[\s:]+/);
+      // let lMaxHour = lMax[0];
+      // let lMaxMinute = lMax[1];
+      // let lMaxAMPM = lMax[2];
+      //console.log("hour",this.hour,"minHour",lMinHour,"maxHour",lMaxHour);
+
+      // if((this.hour >= lMinHour && this.ampm == lMinAMPM) || ( this.hour <= lMaxHour && this.ampm == lMaxAMPM)){
+      //   if(this.minute >= lMinMinute && this.minute <= lMaxMinute){
+      //     console.log("HELLO");
+      //   }
+        
+      // }
+      currentTime = this.timeToMinute(currentTime);
+      if(currentTime >= this.timeToMinute(this.limited.min) &&  )
+
+      console.log(this.timeToMinute(currentTime));
+
+      // if( this.hour >= lMinHour && this.hour <= lMaxHour){
+      //   if( this.minute >= lMinMinute && this.minute <= lMaxMinute){
+      //     if(this.ampm === lMinAMPM || this.ampm === lMaxAMPM){
+            this.rotationClass(degrees);
+            this.setActiveTime();
+      //     }
+      //   }
+      // }
+      
+      //console.log(this.hour + " : " + this.minute);
+      
     }
+  }
+
+  private timeToMinute (time: string): number{
+    let fullTime = time.split(/[\s:]+/);
+    let lHour:any = fullTime[0];
+    let lMinute:any = fullTime[1];
+    let lampm = fullTime[2];
+    lHour = lampm === 'PM' ? +lHour+ 12 : lHour;
+    return +lMinute + (+lHour * 60);
   }
 
   ngOnInit() {
