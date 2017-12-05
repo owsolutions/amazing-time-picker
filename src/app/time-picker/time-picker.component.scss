@@ -81,15 +81,16 @@
                 margin-top: -3px;
             }
             .time-picker-clock-arrow{
-                width: 95px;
-                height: 2px;
+                width: 2px;
+                height: 41%;
                 background: blue;
                 position: absolute;
-                left: 50%;
-                top: 50%;
-                margin-top: -1px;
-                margin-left: -1px;
-                transform-origin: top left;
+                left: 0;
+                top: 22px;
+                right: 0;
+                margin: auto;
+                -webkit-transform-origin: top left;
+                transform-origin: bottom;
                 &:before{
                     content: " ";
                     width: 8px;
@@ -97,8 +98,8 @@
                     background: blue;
                     border-radius: 50%;
                     position: absolute;
-                    top: -3px;
-                    right: -6px;
+                    top: 0;
+                    right: -3px;
                 }
             }
         }

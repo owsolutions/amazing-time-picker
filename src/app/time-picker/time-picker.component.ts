@@ -95,6 +95,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   rotationClass = (degrees) => {
+    degrees += 90;
     const arrowEl = this.element.nativeElement.querySelector('#tpc-arrow');
     arrowEl.style.transform = 'rotate(' + degrees + 'deg)';
     arrowEl.style.webkitTransform = 'rotate(' + degrees + 'deg)';
