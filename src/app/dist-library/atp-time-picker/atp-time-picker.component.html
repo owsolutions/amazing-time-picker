@@ -5,5 +5,8 @@
     </svg>
     <ng-content select="i"></ng-content>
   </div>
-  <input type="time" data-target="container-input" value="{{value}}" [disabled]="_disabled"  #container>
+  <div data-target="container-input" #container>
+    <input type="time" value="{{value}}" [disabled]="_disabled"  >
+    <ng-content select="input[type=time],input[type=text]"></ng-content>
+  </div>
 </div>
