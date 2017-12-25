@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { AtpTimePickerComponent } from './atp-time-picker/atp-time-picker.component';
 import { AtpTimePickerService } from './atp-time-picker.service';
+import { AtpDirective } from './atp.directive';
 
 @NgModule({
   imports: [
@@ -11,13 +12,15 @@ import { AtpTimePickerService } from './atp-time-picker.service';
   ],
   declarations: [
     TimePickerComponent,
-    AtpTimePickerComponent
+    AtpTimePickerComponent,
+    AtpDirective
   ],
   providers: [AtpTimePickerService],
   entryComponents: [TimePickerComponent],
   exports: [
     TimePickerComponent,
-    AtpTimePickerComponent
+    AtpTimePickerComponent,
+    AtpDirective
   ]
 })
 export class AmazingTimePickerModule { }
