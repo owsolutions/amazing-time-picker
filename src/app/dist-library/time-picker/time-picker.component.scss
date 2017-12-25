@@ -1,0 +1,149 @@
+#time-picker-wrapper{
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: transparent;
+  transition: background 0.4s;
+  font-family: 'Roboto', sans-serif;
+  &.active{
+      background: rgba(0,0,0,0.3);
+  }
+  #time-picker{
+      width: 325px;
+      height: auto;
+      background: #fff;
+      box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+      border-radius: 2px;
+      margin:15vh auto !important;
+      transform: scale(0.5) !important;
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0;
+      &.active{
+          transform: scale(1) !important;
+          opacity: 1;
+      }
+      .time-picker-header{
+          text-align: center;
+          border-bottom: 1px solid #e1e1e1;
+          padding: 15px 0px;
+          .time-picker-selected-time{
+              font-size: 35px;
+              padding: 5px 0px;
+              color: #aaa;
+              div{
+                  display: inline-block;
+                  cursor: pointer;
+                  &.selected{
+                      color: #000;
+                  }
+              }
+          }
+          .time-picker-selected-ampm{
+              font-size: 18px;
+              color: #aaa;
+              div{
+                  display: inline-block;
+                  padding: 0 5px;
+                  cursor: pointer;
+                  &.selected{
+                      color: #000;
+                  }
+              }
+          }
+      }
+      .time-picker-contet{
+          .time-picker-clock{
+              width: 200px;
+              height: 200px;
+              background: #ededed;
+              padding: 24px;
+              border-radius: 50%;
+              cursor: pointer;
+              margin: 25px auto;
+              position: relative;
+              user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              -webkit-user-select: none;         
+              button{
+                  border: none;
+                  background: transparent;
+                  position: absolute;
+                  width: 35px;
+                  height: 35px;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  font-size: 17px;
+                  text-align: center;
+                  padding: 0;
+                  transition: all .2s;
+                  z-index: 3;
+                  &:hover{
+                      background: rgb(250,250,250);
+                  }
+                  &.active{
+                      background: blue;
+                      color: #fff;
+                  }
+              }
+              .time-picker-clock-origin{
+                  width: 6px;
+                  height: 6px;
+                  border-radius: 50%;
+                  background: blue;
+                  position: absolute;
+                  left: 50%;
+                  top: 50%;
+                  margin-left: -3px;
+                  margin-top: -3px;
+              }
+              .time-picker-clock-arrow{
+                  width: 2px;
+                  height: 41%;
+                  background: blue;
+                  position: absolute;
+                  left: 0;
+                  top: 22px;
+                  right: 0;
+                  margin: auto;
+                  -webkit-transform-origin: top left;
+                  transform-origin: bottom;
+                  &:before{
+                      content: " ";
+                      width: 8px;
+                      height: 8px;
+                      background: blue;
+                      border-radius: 50%;
+                      position: absolute;
+                      top: 0;
+                      right: -3px;
+                  }
+              }
+          }
+      }
+
+      .time-picker-footer{
+          border-top: 1px solid #e1e1e1;
+          padding: 15px;
+          text-align: right;
+          button{
+              border: transparent;
+              background: #f1f1f1;
+              margin-left: 10px;
+              padding: 10px;
+              font-size: 14px;
+              border-radius: 2px;
+              cursor: pointer;
+              &:hover{
+                  background: #ddd;
+              }
+          }
+      }
+  }
+}
+*{
+  outline: none;
+  box-sizing: content-box;
+}

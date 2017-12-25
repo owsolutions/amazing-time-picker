@@ -1,0 +1,28 @@
+<div id="time-picker-wrapper" [ngClass]="{'active': activeModal == true}" (click)="Close($event);">
+  <div id="time-picker" [ngClass]="{'active': activeModal == true}">
+    <div class="time-picker-header">
+      <div class="time-picker-selected-time">
+          <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" [ngClass]="{'selected' : clockType == 'hour'}">{{hour}}</div>
+          <span class="time-seprator">:</span>
+          <div class="time-picker-minute" (click)="clockType='minute';clockMaker()" [ngClass]="{'selected' : clockType == 'minute'}">{{minute}}</div>
+      </div>
+      <div class="time-picker-selected-ampm">
+        <div class="time-picker-am" (click)="ampm = 'AM';" [ngClass]="{'selected' : ampm == 'AM'}">AM</div>
+        <div class="time-picker-pm" (click)="ampm = 'PM';" [ngClass]="{'selected' : ampm == 'PM'}">PM</div>
+      </div>
+    </div>
+    <div class="time-picker-contet">
+        <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
+          <button *ngFor="let clock of clockObject" (click)="setArrow(clock);" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left}">
+            {{clock.time}}
+          </button>
+          <div class="time-picker-clock-origin"></div>
+          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)'}"></div>
+        </div>
+    </div>
+    <div class="time-picker-footer">
+        <button (click)="Close($event);">Cancel</button>
+        <button (click)="GetTime();Close($event);">OK</button>
+    </div>
+  </div>
+</div>
