@@ -4,11 +4,11 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
 export class AtpTimePickerService {
   constructor( private resolver: ComponentFactoryResolver) {}
 
-  open(container: ViewContainerRef){
+  open(container: ViewContainerRef) {
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = container.createComponent(testComponent);
     tsc.instance._ref = tsc;
-    tsc.instance.timerElement = "";
+    tsc.instance.timerElement = '';
     tsc.instance.selectedTime.subscribe(function (time: any) {
       //ele.value = time;
     });
