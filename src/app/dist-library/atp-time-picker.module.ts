@@ -17,4 +17,4 @@ import { AtpTimePickerComponent } from './atp-time-picker/atp-time-picker.compon
     AtpTimePickerComponent
   ]
 })
-export class AmazingTimePicker { }
+export class AmazingTimePickerModule { }
