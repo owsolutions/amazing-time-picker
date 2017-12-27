@@ -34,7 +34,7 @@ export class AtpTimePickerComponent implements AfterViewInit {
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = this.container.createComponent(testComponent);
     tsc.instance._ref = tsc;
-    tsc.instance.timerElement = '';
+    tsc.instance.timerElement = ele;
     tsc.instance.selectedTime.subscribe(function (time: any) {
       ele.value = time;
     });

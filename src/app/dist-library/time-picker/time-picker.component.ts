@@ -25,14 +25,14 @@ export class TimePickerComponent implements OnInit {
   }
 
   private ParseStringToTime (time: string): void {
-    /*time = (time === '') ? this.hour + ':' + this.minute : time;
+    time = (time === '' || time === undefined) ? this.hour + ':' + this.minute : time;
     const [h, m] = time.split(':');
     let hour = +h > 12 ? +h - 12 : +h;
     hour = hour === 0 ? 12 : hour;
     this.hour = hour;
     this.minute = +m;
     const ampm = +h >= 12 ? 'PM' : 'AM';
-    this.ampm = ampm;*/
+    this.ampm = ampm;
   }
 
   public GetTime () {
@@ -101,15 +101,16 @@ export class TimePickerComponent implements OnInit {
 
   getDegree = (ele: any) => {
     const step = this.clockType === 'minute' ? 6 : 30;
-    if (this.isClicked && ele.currentTarget === ele.target) {
+    const parrentPos = ele.currentTarget.getBoundingClientRect();
+    if (this.isClicked && (ele.currentTarget === ele.target || ele.target.nodeName === 'BUTTON')) {
       const clock = {
-        width: ele.target.offsetWidth,
-        height: ele.target.offsetHeight
+        width: ele.currentTarget.offsetWidth,
+        height: ele.currentTarget.offsetHeight
       };
       const targetX = clock.width / 2;
       const targetY = clock.height / 2;
-      const Vx = Math.round(ele.offsetX - targetX);
-      const Vy = Math.round(targetY - ele.offsetY);
+      const Vx = Math.round((ele.clientX - parrentPos.x) - targetX);
+      const Vy = Math.round(targetY - (ele.clientY - parrentPos.y));
       let radians = -Math.atan2(Vy, Vx);
       if (radians < 0) {
         radians += 2 * Math.PI;
