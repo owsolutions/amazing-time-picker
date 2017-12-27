@@ -10,7 +10,7 @@ export class AtpTimePickerService {
     tsc.instance._ref = tsc;
     tsc.instance.timerElement = '';
     tsc.instance.selectedTime.subscribe(function (time: any) {
-      //ele.value = time;
+      // ele.value = time;
     });
   }
 }

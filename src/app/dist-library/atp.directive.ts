@@ -1,4 +1,4 @@
-import { Directive,ViewContainerRef, Output, EventEmitter, HostListener, ElementRef,Renderer } from '@angular/core';
+import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef, Renderer } from '@angular/core';
 import { AtpTimePickerService } from './atp-time-picker.service';
 
 @Directive({
@@ -7,15 +7,14 @@ import { AtpTimePickerService } from './atp-time-picker.service';
 export class AtpDirective {
 
   constructor(public viewContainerRef: ViewContainerRef,
-              private atp: AtpTimePickerService,
-              public el: ElementRef, 
-              public renderer: Renderer) {
-   }
+    private atp: AtpTimePickerService,
+    public el: ElementRef,
+    public renderer: Renderer) {
+  }
 
-   @Output() myClick = new EventEmitter();
-    @HostListener('click', ['$event']) 
-    onClick(e) {
-      this.atp.open(this.viewContainerRef)
-    }
-
+  @Output() myClick = new EventEmitter();
+  @HostListener('click', ['$event'])
+  onClick(e) {
+    this.atp.open(this.viewContainerRef);
+  }
 }

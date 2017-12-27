@@ -10,13 +10,9 @@ export class AppComponent {
   @ViewChild('myModal', { read: ViewContainerRef }) ref: ViewContainerRef;
   title = 'app';
 
-  constructor(
-    private atp: AtpTimePickerService,
-  ) {
-  }
+  constructor(private atp: AtpTimePickerService) { }
 
   openModal() {
-    console.log(this.ref);
     this.atp.open(this.ref);
   }
 }

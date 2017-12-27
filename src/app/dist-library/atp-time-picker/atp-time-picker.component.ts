@@ -12,8 +12,8 @@ export class AtpTimePickerComponent implements AfterViewInit {
 
   private _state = 'container';
   private _validStates: Array<string> = ['container', 'icon', 'input'];
-  public _icon: boolean = true;
-  public _disabled: boolean = false;
+  public _icon = true;
+  public _disabled = false;
 
   @Input() set icon(value: string){
     this._icon = value === 'true' ? true : false;
@@ -30,7 +30,6 @@ export class AtpTimePickerComponent implements AfterViewInit {
   constructor( private resolver: ComponentFactoryResolver, private _ref: ElementRef) {}
 
   set() {
-    
     const ele = this.container.element.nativeElement;
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = this.container.createComponent(testComponent);

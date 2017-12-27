@@ -8,7 +8,6 @@ import { AtpDirective } from './atp.directive';
 @NgModule({
   imports: [
     CommonModule,
-    
   ],
   declarations: [
     TimePickerComponent,
