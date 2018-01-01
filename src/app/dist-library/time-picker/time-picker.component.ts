@@ -24,8 +24,8 @@ export class TimePickerComponent implements OnInit {
 
   }
 
-  private ParseStringToTime (time: string): void {
-    time = (time === '' || time === undefined) ? this.hour + ':' + this.minute : time;
+  public ParseStringToTime (time: string): void {
+    time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
     const [h, m] = time.split(':');
     let hour = +h > 12 ? +h - 12 : +h;
     hour = hour === 0 ? 12 : hour;
@@ -48,6 +48,7 @@ export class TimePickerComponent implements OnInit {
     const time = `${hh}:${mm}`;
     this.selectedTime.emit(time);
   }
+
   clockMaker = () => {
     const type = this.clockType;
     this.clockObject = [];
@@ -146,7 +147,6 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ParseStringToTime(this.timerElement.value);
     this.clockMaker();
     this.modalAnimation();
   }

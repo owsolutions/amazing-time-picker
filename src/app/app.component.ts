@@ -8,11 +8,15 @@ import { AtpTimePickerService } from './dist-library/atp-time-picker.service';
 })
 export class AppComponent {
   @ViewChild('myModal', { read: ViewContainerRef }) ref: ViewContainerRef;
-  title = 'app';
+  @ViewChild('salam', { read: ViewContainerRef }) salam: ViewContainerRef;
 
   constructor(private atp: AtpTimePickerService) { }
 
-  openModal() {
-    this.atp.open(this.ref);
+  openModal(): void {
+    const timeElement = this.salam.element.nativeElement;
+    const timePickerRef = this.atp.open(this.ref, timeElement.value);
+    this.atp.time.subscribe(time => {
+      timeElement.value = time;
+    });
   }
 }

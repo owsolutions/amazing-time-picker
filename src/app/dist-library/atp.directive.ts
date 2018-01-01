@@ -15,6 +15,11 @@ export class AtpDirective {
   @Output() myClick = new EventEmitter();
   @HostListener('click', ['$event'])
   onClick(e) {
-    this.atp.open(this.viewContainerRef);
+    const ele = this.viewContainerRef.element.nativeElement;
+    const time = ele.getAttribute('value');
+    this.atp.open(this.viewContainerRef, time);
+    this.atp.time.subscribe(retTime => {
+      ele.setAttribute('value', retTime);
+    });
   }
 }
