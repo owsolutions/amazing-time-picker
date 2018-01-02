@@ -35,8 +35,8 @@ export class AtpTimePickerComponent implements AfterViewInit {
 
   set() {
     const ele = this.container.element.nativeElement;
-    this.atp.open(this.container, ele.value);
-    this.atp.time.subscribe(retTime => {
+    const timePickerFunction = this.atp.open(this.container, ele.value);
+    timePickerFunction.onClose().subscribe(retTime => {
       ele.value = retTime;
     });
   }
@@ -55,5 +55,4 @@ export class AtpTimePickerComponent implements AfterViewInit {
       }
     }
   }
-
 }

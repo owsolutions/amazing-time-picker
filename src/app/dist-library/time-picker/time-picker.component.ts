@@ -10,6 +10,7 @@ export class TimePickerComponent implements OnInit {
   @Output() selectedTime = new EventEmitter();
 
   _ref: any;
+  public subject: any = null;
   public activeModal = false;
   public timerElement: any;
   public clockObject: Array<any>;
@@ -48,7 +49,7 @@ export class TimePickerComponent implements OnInit {
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     const time = `${hh}:${mm}`;
     this.selectedTime.emit(time);
-    this.atp.selectedTime.next(time);
+    this.subject.next(time);
   }
 
   clockMaker = () => {
