@@ -8,8 +8,6 @@ import { Subject } from 'rxjs/Subject';
 @Injectable()
 export class AmazingTimePickerService {
 
-  selectedTime = new Subject<any>();
-
   constructor(private resolver: ComponentFactoryResolver) {
   }
 
@@ -17,12 +15,13 @@ export class AmazingTimePickerService {
     const _self = this;
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = container.createComponent(testComponent);
+    tsc.instance.subject = new Subject<any>();
     tsc.instance._ref = tsc;
     tsc.instance.timerElement = '';
     tsc.instance.ParseStringToTime(time);
     return {
       onClose: function(){
-        return _self.selectedTime.asObservable();
+        return tsc.instance.subject.asObservable();
       }
     };
   }
