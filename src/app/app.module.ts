@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AmazingTimePickerModule } from './dist-library/atp-time-picker.module';
+import { AmazingTimePickerModule } from './atp-library/atp-time-picker.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
