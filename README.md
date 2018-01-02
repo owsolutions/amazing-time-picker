@@ -76,4 +76,4 @@ Online demo
 
 ![Amazing Time Picker | TimePicker | Materialize time picker | AmazingTimepicker | ClockPicker](time-picker.jpg)
 
-https://owsolutions.github.io/angular-material-clock-time-picker/
+https://owsolutions.github.io/amazing-time-picker/
