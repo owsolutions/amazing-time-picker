@@ -2,19 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { AtpTimePickerComponent } from './atp-time-picker/atp-time-picker.component';
+import { AmazingTimePickerService } from './atp-time-picker.service';
+import { AtpDirective } from './atp.directive';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     TimePickerComponent,
-    AtpTimePickerComponent
+    AtpTimePickerComponent,
+    AtpDirective
   ],
+  providers: [AmazingTimePickerService],
   entryComponents: [TimePickerComponent],
   exports: [
     TimePickerComponent,
-    AtpTimePickerComponent
+    AtpTimePickerComponent,
+    AtpDirective
   ]
 })
 export class AmazingTimePickerModule { }

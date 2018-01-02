@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AmazingTimePickerService } from '../atp-time-picker.service';
 
 @Component({
   selector: 'time-picker',
@@ -20,12 +21,12 @@ export class TimePickerComponent implements OnInit {
   public nowTime: any = this.hour;
   public degree: any;
 
-  constructor() {
+  constructor( private atp: AmazingTimePickerService) {
 
   }
 
-  private ParseStringToTime (time: string): void {
-    time = (time === '') ? this.hour + ':' + this.minute : time;
+  public ParseStringToTime (time: string): void {
+    time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
     const [h, m] = time.split(':');
     let hour = +h > 12 ? +h - 12 : +h;
     hour = hour === 0 ? 12 : hour;
@@ -47,7 +48,9 @@ export class TimePickerComponent implements OnInit {
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     const time = `${hh}:${mm}`;
     this.selectedTime.emit(time);
+    this.atp.selectedTime.next(time);
   }
+
   clockMaker = () => {
     const type = this.clockType;
     this.clockObject = [];
@@ -101,15 +104,16 @@ export class TimePickerComponent implements OnInit {
 
   getDegree = (ele: any) => {
     const step = this.clockType === 'minute' ? 6 : 30;
-    if (this.isClicked && ele.currentTarget === ele.target) {
+    const parrentPos = ele.currentTarget.getBoundingClientRect();
+    if (this.isClicked && (ele.currentTarget === ele.target || ele.target.nodeName === 'BUTTON')) {
       const clock = {
-        width: ele.target.offsetWidth,
-        height: ele.target.offsetHeight
+        width: ele.currentTarget.offsetWidth,
+        height: ele.currentTarget.offsetHeight
       };
       const targetX = clock.width / 2;
       const targetY = clock.height / 2;
-      const Vx = Math.round(ele.offsetX - targetX);
-      const Vy = Math.round(targetY - ele.offsetY);
+      const Vx = Math.round((ele.clientX - parrentPos.x) - targetX);
+      const Vy = Math.round(targetY - (ele.clientY - parrentPos.y));
       let radians = -Math.atan2(Vy, Vx);
       if (radians < 0) {
         radians += 2 * Math.PI;
@@ -145,7 +149,6 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ParseStringToTime(this.timerElement.value);
     this.clockMaker();
     this.modalAnimation();
   }

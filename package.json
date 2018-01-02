@@ -1,16 +1,17 @@
 {
   "name": "amazing-time-picker",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build -e=prod -prod --deploy-url amazing-time-picker --progress false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "hmr": "ng serve --hmr -e=hmr",
-    "packagr": "ng-packagr -p ng-package.json"
+    "packagr": "ng-packagr -p ng-package.json",
+    "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
   },
   "private": false,
   "dependencies": {

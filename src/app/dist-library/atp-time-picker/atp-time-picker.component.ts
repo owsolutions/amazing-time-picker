@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, Input, ElementRef, ComponentFactoryResolver, AfterViewInit } from '@angular/core';
 import { TimePickerComponent } from '../time-picker/time-picker.component';
+import { AmazingTimePickerService } from '../atp-time-picker.service';
 
 @Component({
   selector: 'atp-time-picker',
@@ -12,8 +13,8 @@ export class AtpTimePickerComponent implements AfterViewInit {
 
   private _state = 'container';
   private _validStates: Array<string> = ['container', 'icon', 'input'];
-  public _icon: boolean = true;
-  public _disabled: boolean = false;
+  public _icon = true;
+  public _disabled = false;
 
   @Input() set icon(value: string){
     this._icon = value === 'true' ? true : false;
@@ -27,16 +28,16 @@ export class AtpTimePickerComponent implements AfterViewInit {
   @Input() value: string;
   @Input() class: string;
 
-  constructor( private resolver: ComponentFactoryResolver, private _ref: ElementRef) {}
+  constructor( private resolver: ComponentFactoryResolver,
+               private _ref: ElementRef,
+               private atp: AmazingTimePickerService
+  ) {}
 
   set() {
     const ele = this.container.element.nativeElement;
-    const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
-    const tsc = this.container.createComponent(testComponent);
-    tsc.instance._ref = tsc;
-    tsc.instance.timerElement = ele;
-    tsc.instance.selectedTime.subscribe(function (time: any) {
-      ele.value = time;
+    this.atp.open(this.container, ele.value);
+    this.atp.time.subscribe(retTime => {
+      ele.value = retTime;
     });
   }
 
