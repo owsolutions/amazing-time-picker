@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AmazingTimePickerService } from '../atp-time-picker.service';
 
 @Component({
   selector: 'time-picker',
@@ -20,7 +21,7 @@ export class TimePickerComponent implements OnInit {
   public nowTime: any = this.hour;
   public degree: any;
 
-  constructor() {
+  constructor( private atp: AmazingTimePickerService) {
 
   }
 
@@ -47,6 +48,7 @@ export class TimePickerComponent implements OnInit {
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     const time = `${hh}:${mm}`;
     this.selectedTime.emit(time);
+    this.atp.selectedTime.next(time);
   }
 
   clockMaker = () => {

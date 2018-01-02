@@ -1,13 +1,14 @@
 import { Injectable, ViewContainerRef, Input, ElementRef, ComponentFactoryResolver, EventEmitter } from '@angular/core';
 import { TimePickerComponent } from './time-picker/time-picker.component';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
+import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
+
+
 
 @Injectable()
-export class AtpTimePickerService {
+export class AmazingTimePickerService {
 
-  public time = new EventEmitter();
+  selectedTime = new Subject<any>();
 
   constructor(private resolver: ComponentFactoryResolver) {
   }
@@ -19,14 +20,11 @@ export class AtpTimePickerService {
     tsc.instance._ref = tsc;
     tsc.instance.timerElement = '';
     tsc.instance.ParseStringToTime(time);
-    tsc.instance.selectedTime.subscribe(retTime => {
-      _self.time.emit(retTime);
-    });
-
     return {
-      onClose: function salam(): Observable<string> {
-        return Observable.of('salam').delay(5000);
+      onClose: function(){
+        return _self.selectedTime.asObservable();
       }
     };
   }
+
 }

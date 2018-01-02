@@ -1,6 +1,6 @@
 import { Component, ViewChild, ViewContainerRef, Input, ElementRef, ComponentFactoryResolver, AfterViewInit } from '@angular/core';
 import { TimePickerComponent } from '../time-picker/time-picker.component';
-import { AtpTimePickerService } from '../atp-time-picker.service';
+import { AmazingTimePickerService } from '../atp-time-picker.service';
 
 @Component({
   selector: 'atp-time-picker',
@@ -30,7 +30,7 @@ export class AtpTimePickerComponent implements AfterViewInit {
 
   constructor( private resolver: ComponentFactoryResolver,
                private _ref: ElementRef,
-               private atp: AtpTimePickerService
+               private atp: AmazingTimePickerService
   ) {}
 
   set() {

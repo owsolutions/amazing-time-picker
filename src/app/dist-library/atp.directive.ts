@@ -1,5 +1,5 @@
 import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef, Renderer } from '@angular/core';
-import { AtpTimePickerService } from './atp-time-picker.service';
+import { AmazingTimePickerService } from './atp-time-picker.service';
 
 @Directive({
   selector: '[atp-time-picker]'
@@ -7,7 +7,7 @@ import { AtpTimePickerService } from './atp-time-picker.service';
 export class AtpDirective {
 
   constructor(public viewContainerRef: ViewContainerRef,
-    private atp: AtpTimePickerService,
+    private atp: AmazingTimePickerService,
     public el: ElementRef,
     public renderer: Renderer) {
   }
@@ -17,8 +17,8 @@ export class AtpDirective {
   onClick(e) {
     const ele = this.viewContainerRef.element.nativeElement;
     const time = ele.getAttribute('value');
-    this.atp.open(this.viewContainerRef, time);
-    this.atp.time.subscribe(retTime => {
+    const timePickerFunction = this.atp.open(this.viewContainerRef, time);
+    timePickerFunction.onClose().subscribe(retTime => {
       ele.setAttribute('value', retTime);
     });
   }
