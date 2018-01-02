@@ -1,5 +1,5 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { AmazingTimePickerService } from './dist-library/atp-time-picker.service';
+import { AmazingTimePickerService } from './atp-library/atp-time-picker.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,6 @@ export class AppComponent {
     const timeElement = this.salam.element.nativeElement;
     const amazingTimePicker = this.atp.open(this.ref, timeElement.value);
     amazingTimePicker.onClose().subscribe(time => {
-      console.log(time);
       timeElement.value = time;
     });
   }
