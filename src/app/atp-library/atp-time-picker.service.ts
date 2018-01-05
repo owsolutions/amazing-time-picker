@@ -13,6 +13,7 @@ export class AmazingTimePickerService {
   }
 
   open(container: ViewContainerRef, config?: TimePickerConfig): any {
+    const _self = this;
     config = config || {};
     config = {
       time: config.time || '00:00',
@@ -23,8 +24,6 @@ export class AmazingTimePickerService {
       background: config.style.background || 'blue',
       color: config.style.color || '#fff'
     };
-    console.log(config);
-    const _self = this;
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = container.createComponent(testComponent);
     tsc.instance.subject = new Subject<any>();
