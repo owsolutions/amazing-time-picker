@@ -18,7 +18,7 @@ export class AtpDirective {
     const ele = this.viewContainerRef.element.nativeElement;
     const time = ele.getAttribute('value');
     const timePickerFunction = this.atp.open(this.viewContainerRef, time);
-    timePickerFunction.onClose().subscribe(retTime => {
+    timePickerFunction.afterClose().subscribe(retTime => {
       ele.setAttribute('value', retTime);
     });
   }
