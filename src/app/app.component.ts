@@ -11,10 +11,14 @@ export class AppComponent {
   public selectedTime: string;
   constructor( private atp: AmazingTimePickerService, // this line you need
                public _ref: ViewContainerRef, // this line you need
-             ) { }
+  ) { }
 
   open() {
-    const amazingTimePicker = this.atp.open(this._ref, {arrowColor: 'red', theme: 'red', time: this.selectedTime});
+    const amazingTimePicker = this.atp.open(this._ref, {
+      time: '18:20',
+      style: {background: '#80cbc4', color: '#000'},
+      theme: 'dark'
+    });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
     });

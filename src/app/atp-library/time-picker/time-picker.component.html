@@ -1,5 +1,5 @@
-<div id="time-picker-wrapper" [ngClass]="{'active': activeModal == true}" (click)="Close($event);">
-  <div id="time-picker" [ngClass]="{'active': activeModal == true}">
+<div id="time-picker-wrapper" class="{{config.theme}}" [ngClass]="{'active': activeModal}" (click)="Close($event);">
+  <div id="time-picker" [ngClass]="{'active': activeModal}">
     <div class="time-picker-header">
       <div class="time-picker-selected-time">
           <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" [ngClass]="{'selected' : clockType == 'hour'}">{{hour}}</div>
@@ -13,11 +13,13 @@
     </div>
     <div class="time-picker-contet">
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
-          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left}">
+          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.style.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.style.background : 'transparent'}">
             {{clock.time}}
           </button>
-          <div class="time-picker-clock-origin"></div>
-          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)'}"></div>
+          <div class="time-picker-clock-origin" [ngStyle]="{ background: config.style.background}"></div>
+          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.style.background}">
+            <span [ngStyle]="{ background: config.style.background }"></span>
+          </div>
         </div>
     </div>
     <div class="time-picker-footer">

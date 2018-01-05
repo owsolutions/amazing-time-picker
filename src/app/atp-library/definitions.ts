@@ -5,5 +5,10 @@
 export interface TimePickerConfig {
     time?: string;
     theme?: string;
-    arrowColor?: string;
+    style?: Pallete;
+}
+
+export interface Pallete {
+    background?: string;
+    color?: string;
 }

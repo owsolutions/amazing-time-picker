@@ -12,17 +12,28 @@ export class AmazingTimePickerService {
   constructor(private resolver: ComponentFactoryResolver) {
   }
 
-  open(container: ViewContainerRef, config?: TimePickerConfig ): any {
-    config = config || {time: '00:00', theme: '', arrowColor: 'red'};
+  open(container: ViewContainerRef, config?: TimePickerConfig): any {
+    config = config || {};
+    config = {
+      time: config.time || '00:00',
+      theme: config.theme || 'light',
+      style: config.style || {}
+    };
+    config.style = {
+      background: config.style.background || 'blue',
+      color: config.style.color || '#fff'
+    };
+    console.log(config);
     const _self = this;
     const testComponent = this.resolver.resolveComponentFactory(TimePickerComponent);
     const tsc = container.createComponent(testComponent);
     tsc.instance.subject = new Subject<any>();
     tsc.instance._ref = tsc;
     tsc.instance.timerElement = '';
-    tsc.instance.ParseStringToTime(config.time || '00:00');
+    tsc.instance.config = config;
+    tsc.instance.ParseStringToTime(config.time);
     return {
-      afterClose: function(){
+      afterClose: function () {
         return tsc.instance.subject.asObservable();
       }
     };
