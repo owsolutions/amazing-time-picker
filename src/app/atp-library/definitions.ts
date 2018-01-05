@@ -4,7 +4,7 @@
  */
 export interface TimePickerConfig {
     time?: string;
-    theme?: string;
+    theme?: 'dark' | 'light';
     style?: Pallete;
 }
 
