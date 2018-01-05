@@ -51,8 +51,8 @@ import { AtpTimePicker } from 'amazing-time-picker';
 Then add it inside your `app.component.ts` or any other component that you want to use timepicker inside of that.
 
 ```
-import { Component } from '@angular/core';
-import { AtpTimePicker } from 'amazing-time-picker'; // this line you need
+import { Component, ViewContainerRef } from '@angular/core';
+import { AmazingTimePickerService } from 'amazing-time-picker'; // this line you need
 
 @Component({
   selector: 'app-root',
@@ -60,13 +60,16 @@ import { AtpTimePicker } from 'amazing-time-picker'; // this line you need
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
-  constructor (
-    private atp: AtpTimePicker
-  )
+  
+  constructor( private atp: AmazingTimePickerService, // this line you need
+               public _ref: ViewContainerRef, // this line you need
+             ) { }
 
-  open () {
-    this.atp.open();
+  open() {
+    const amazingTimePicker = this.atp.open(this._ref, {time: '21:30'});
+    amazingTimePicker.afterClose().subscribe(time => {
+      console.log(time);
+    });
   }
 }
 ```

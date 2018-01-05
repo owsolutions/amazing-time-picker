@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { AmazingTimePickerService } from './atp-library/atp-time-picker.service';
 
 @Component({
@@ -7,16 +7,16 @@ import { AmazingTimePickerService } from './atp-library/atp-time-picker.service'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild('myModal', { read: ViewContainerRef }) ref: ViewContainerRef;
-  @ViewChild('salam', { read: ViewContainerRef }) salam: ViewContainerRef;
 
-  constructor(private atp: AmazingTimePickerService) { }
+  public selectedTime: string;
+  constructor( private atp: AmazingTimePickerService, // this line you need
+               public _ref: ViewContainerRef, // this line you need
+             ) { }
 
-  openModal(): void {
-    const timeElement = this.salam.element.nativeElement;
-    const amazingTimePicker = this.atp.open(this.ref, timeElement.value);
-    amazingTimePicker.onClose().subscribe(time => {
-      timeElement.value = time;
+  open() {
+    const amazingTimePicker = this.atp.open(this._ref, {arrowColor: 'red', theme: 'red', time: this.selectedTime});
+    amazingTimePicker.afterClose().subscribe(time => {
+      this.selectedTime = time;
     });
   }
 }
