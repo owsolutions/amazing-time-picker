@@ -21,7 +21,7 @@ export class TimePickerComponent implements OnInit {
   public ampm: String = 'AM';
   public nowTime: any = this.hour;
   public degree: any;
-  public config: object;
+  public config: any;
 
   constructor( private atp: AmazingTimePickerService) {
 
