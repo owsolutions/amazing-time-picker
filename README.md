@@ -1,4 +1,4 @@
-# Amazing Time Picker (Clock) ![Build Status](https://travis-ci.org/owsolutions/amazing-time-picker.svg?branch=master)
+# Amazing Time Picker (Clock) ![Build Status](https://travis-ci.org/owsolutions/amazing-time-picker.svg?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 This is time picker for angular projects, for Angular Material 4.
 
 A visual time picker for angular 2+ projects. You can use this timepicker with Angular 2, 4 and Angular Material.
