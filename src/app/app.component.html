@@ -1,15 +1,12 @@
-<atp-time-picker icon="true" state="icon" value="19:24"></atp-time-picker>
 
-<atp-time-picker icon="false" state="input" class="my-time-picker" value="23:00"></atp-time-picker>
+<header>
+    <h1>AMAZING TIME PICKER</h1>
+</header>
 
-<atp-time-picker icon="false" state="container" value="11:59" disabled='true'>
-    <i>salam</i>
-    <input type="text">
-</atp-time-picker>
+<button atp-time-picker value="9:32" theme="red" arrowStyle="{'background': '#80cbc4', 'color': 'red'}">salam</button>
 
-<button atp-time-picker>salam</button>
-
-<input type="text" atp-time-picker value="20:55"/>dasdasd
+<input type="text" atp-time-picker value="20:55" arrowStyle="{'background': 'green', 'color': 'red'}"/>dasdasd
 
 <button (click)="open()" >khodafez</button>
 <input type="time" value="{{selectedTime}}">
+
