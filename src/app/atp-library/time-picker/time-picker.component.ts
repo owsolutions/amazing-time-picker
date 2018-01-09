@@ -22,6 +22,7 @@ export class TimePickerComponent implements OnInit {
   public nowTime: any = this.hour;
   public degree: any;
   public config: any;
+  public appRef: any;
 
   constructor( private atp: AmazingTimePickerService) {
 
@@ -159,6 +160,7 @@ export class TimePickerComponent implements OnInit {
       if (e.target === e.currentTarget) {
         this.activeModal = false;
         setTimeout(() => {
+          this.appRef.detachView(this._ref.hostView);
           this._ref.destroy();
         }, 400);
       }

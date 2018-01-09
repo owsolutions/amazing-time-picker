@@ -13,12 +13,12 @@
     </div>
     <div class="time-picker-contet">
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
-          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.style.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.style.background : 'transparent'}">
+          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
             {{clock.time}}
           </button>
-          <div class="time-picker-clock-origin" [ngStyle]="{ background: config.style.background}"></div>
-          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.style.background}">
-            <span [ngStyle]="{ background: config.style.background }"></span>
+          <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
+          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.arrowStyle.background}">
+            <span [ngStyle]="{ background: config.arrowStyle.background }"></span>
           </div>
         </div>
     </div>

@@ -14,9 +14,9 @@ export class AppComponent {
   ) { }
 
   open() {
-    const amazingTimePicker = this.atp.open(this._ref, {
+    const amazingTimePicker = this.atp.open({
       time: '18:20',
-      style: {background: '#80cbc4', color: '#000'},
+      arrowStyle: {background: '#80cbc4', color: '#000'},
       theme: 'light'
     });
     amazingTimePicker.afterClose().subscribe(time => {
