@@ -41,8 +41,8 @@ After you have installed this module, you can use it within your html templates 
 <input atp-time-picker value="19:00"></input>
 ```
 
-## Opening component programmicaly
-You can also open a timepicker dialog programmically. In order to open that, you need to import the service in your component:
+## Opening component programmatically
+You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component:
 
 ```
 import { AmazingTimePickerService } from 'amazing-time-picker';
@@ -51,7 +51,7 @@ import { AmazingTimePickerService } from 'amazing-time-picker';
 Then add it inside your `app.component.ts` or any other component that you want to use timepicker inside of that.
 
 ```
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { AmazingTimePickerService } from 'amazing-time-picker'; // this line you need
 
 @Component({
@@ -62,11 +62,10 @@ import { AmazingTimePickerService } from 'amazing-time-picker'; // this line you
 export class AppComponent {
   
   constructor( private atp: AmazingTimePickerService, // this line you need
-               public _ref: ViewContainerRef, // this line you need
              ) { }
 
   open() {
-    const amazingTimePicker = this.atp.open(this._ref, {time: '14:55'});
+    const amazingTimePicker = this.atp.open({time: '14:55'});
     amazingTimePicker.afterClose().subscribe(time => {
       console.log(time);
     });
