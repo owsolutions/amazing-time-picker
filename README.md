@@ -65,7 +65,7 @@ export class AppComponent {
              ) { }
 
   open() {
-    const amazingTimePicker = this.atp.open({time: '14:55'});
+    const amazingTimePicker = this.atp.open();
     amazingTimePicker.afterClose().subscribe(time => {
       console.log(time);
     });
