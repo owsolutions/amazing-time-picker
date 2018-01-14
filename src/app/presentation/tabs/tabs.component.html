@@ -1,6 +1,6 @@
 <ul class="tabs">
   <li *ngFor="let tab of tabs" (click)="selectTab(tab)" class="tab col s3" [class.active]="tab.active">
-    <a>{{tab.title}}</a>
+    <a>{{tab.tabTitle}}</a>
   </li>
 </ul>
 <ng-content></ng-content>
