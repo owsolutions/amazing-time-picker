@@ -1,16 +1,66 @@
 header{
-    width: 75%;
-    margin: 15px auto;
-    border-radius: 10px;
+    width: 100%;
     overflow: hidden;
-    height: 250px;
-    color: #ffffff;
-    background: rgba(162,31,176,1);
-    background: -moz-linear-gradient(45deg, rgba(162,31,176,1) 0%, rgba(114,29,169,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(162,31,176,1)), color-stop(100%, rgba(114,29,169,1)));
-    background: -webkit-linear-gradient(45deg, rgba(162,31,176,1) 0%, rgba(114,29,169,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(162,31,176,1) 0%, rgba(114,29,169,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(162,31,176,1) 0%, rgba(114,29,169,1) 100%);
-    background: linear-gradient(45deg, rgba(162,31,176,1) 0%, rgba(114,29,169,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a21fb0', endColorstr='#721da9', GradientType=1 );
+    height: 275px;
+    text-align: center;
+    color: #555;
+    font-family: 'Dancing Script', cursive;
+    background: #00c6ff;
+    background: -webkit-linear-gradient(to bottom, #becfe4, #fafafa) url();
+    background: linear-gradient(to bottom, #becfe4, #fafafa);
+    
+}
+.nav-wrapper{
+    .container{
+        text-align: center;
+        height: 150px;
+        .brand-logo{
+            p{
+                font-size: 20px;
+                margin: 0px;
+            }
+            img{
+                margin-top: 30px;
+                width: 100px;
+            }
+        }
+    }   
+}
+.nav-content{
+    .tab{
+        
+        a{
+            &.active{
+                border-bottom: 3px solid #fff;
+            }
+            font-size: 16px !important;
+        }
+    }
+}
+#main-container{
+    font-size: 17px;
+    line-height: 30px;
+    pre{
+        line-height: 20px;
+        font-size: 13px;
+    }
+}
+.tab-wrapper{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+    .row{
+        margin: 0;
+    }
+    .tab-header{
+        padding: 15px;
+        background: #EFEFEF;
+    }
+    pre{
+        background: transparent;
+        border: 0;
+        margin: 0;
+    }
+    .tab-content{
+        padding: 15px;
+    }
 }
