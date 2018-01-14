@@ -31,4 +31,4 @@ before_install:
 script:
   - npm run lint
   - npm run build
-
+  - npm run publish

@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "hmr": "ng serve --hmr -e=hmr",
     "packagr": "ng-packagr -p ng-package.json",
-    "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages"
+    "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
+    "publish": "npm run packagr && cd dist && npm pack && cd ../"
   },
   "private": false,
   "dependencies": {

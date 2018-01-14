@@ -1,0 +1,25 @@
+// .nav-tabs{
+//     li{
+//         padding: 10px;
+//         font-size: 13px;
+//         cursor: pointer;
+//         &.active{
+//             background: #f5f2f0;
+//             border-top-left-radius: 5px;
+//             border-top-right-radius: 5px;
+//             border: 1px solid #ddd;
+//             border-bottom: 0px;
+//         } 
+//     }
+// }
+
+.tab.col.s3 {
+    &.active{
+        a{
+            border-bottom: 3px solid #f6b2b5;
+        }
+    }
+    a{
+        cursor: pointer;
+    }
+}
