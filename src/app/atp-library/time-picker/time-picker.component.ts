@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AmazingTimePickerService } from '../atp-time-picker.service';
 
 @Component({
   selector: 'time-picker',
@@ -23,10 +22,6 @@ export class TimePickerComponent implements OnInit {
   public degree: any;
   public config: any;
   public appRef: any;
-
-  constructor( private atp: AmazingTimePickerService) {
-
-  }
 
   public ParseStringToTime (time: string): void {
     time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;

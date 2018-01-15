@@ -1,0 +1,27 @@
+#main-container{
+    font-size: 17px;
+    line-height: 30px;
+    pre{
+        line-height: 20px;
+        font-size: 13px;
+    }
+}
+.tab-wrapper{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+    .row{
+        margin: 0;
+    }
+    .tab-header{
+        padding: 15px;
+        background: #EFEFEF;
+    }
+    pre{
+        background: transparent;
+        border: 0;
+        margin: 0;
+    }
+    .tab-content{
+        padding: 15px;
+    }
+}
