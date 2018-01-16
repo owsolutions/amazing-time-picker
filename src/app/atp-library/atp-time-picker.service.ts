@@ -21,7 +21,9 @@ export class AmazingTimePickerService {
       arrowStyle: config.arrowStyle || {}
     };
     config.arrowStyle = {
-      background: config.arrowStyle.background || 'blue',
+      background: (config.arrowStyle.background) ?
+                  config.arrowStyle.background : config.theme !== undefined ?
+                  config.theme === 'dark' ? 'rgb(128, 203, 196)' : 'blue' : 'blue',
       color: config.arrowStyle.color || '#fff'
     };
     const componentRef = this.resolver.resolveComponentFactory(TimePickerComponent);

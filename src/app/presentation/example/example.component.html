@@ -15,10 +15,12 @@
   <div class="tab-header">
       <div class="row">
           <div class="col s6">Directive</div>
-          <div class="col s6 text-right">1</div>
+          <div class="col s6">
+            <a class="btn-floating waves-effect waves-light right" (click)="tabs = tab1;toggleTab();"><i class="material-icons">code</i></a>
+          </div>
       </div>
   </div>
-  <app-tabs>
+  <app-tabs #tab1>
       <app-tab tabTitle="app.component.html">Tab 1 Content</app-tab>
       <app-tab tabTitle="app.component.ts">
           <div>
