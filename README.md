@@ -38,7 +38,7 @@ This helps your angular project to build and compile it and let you use it.
 After you have installed this module, you can use it within your html templates and give the directive to the any <input> tag. When user closes the dialog, it's gonna update the input value and will listen to input click event to open the dialog.
 
 ```html
-<input atp-time-picker value="19:00"></input>
+<input atp-time-picker value="19:00"/>
 ```
 
 ## Opening component programmatically
