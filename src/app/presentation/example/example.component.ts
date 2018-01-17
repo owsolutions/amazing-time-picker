@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AmazingTimePickerService } from '../../atp-library/atp-time-picker.service';
 
 @Component({
@@ -10,10 +10,14 @@ export class ExampleComponent {
   public selectedTime: string;
   public sintax = '{{selectedTime}}';
 
-  constructor( private atp: AmazingTimePickerService ) { }
+  constructor(private atp: AmazingTimePickerService) { }
 
   open() {
-    const amazingTimePicker = this.atp.open();
+    const amazingTimePicker = this.atp.open({
+      time: '18:20',
+      theme: 'dark',
+      arrowStyle: { background: 'red', color: 'white'}
+    });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
     });

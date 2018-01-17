@@ -27,6 +27,11 @@ header{
     }   
 }
 .nav-content{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #ee6e72;
+    box-shadow: 0px 6px 8px 0px #ddd;
     .tab{
         text-transform: none;
         a{
@@ -35,5 +40,25 @@ header{
             }
             font-size: 16px !important;
         }
+    }
+}
+.npm{
+    background: #717171;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffcc;
+}
+.right-acc{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
+    text-align: center;
+    h1{
+        text-align: center;
+        font-size: 1.4em;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+        margin-top: 43px;
     }
 }
