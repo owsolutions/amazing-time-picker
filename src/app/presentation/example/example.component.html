@@ -1,4 +1,6 @@
-<p>
+
+    
+<!-- <p>
   This is time picker for angular projects, for Angular Material 4. A visual time picker for angular 2+ projects. You can use
   this timepicker with Angular 2, 4 and Angular Material. ## Install You need to install this repository as dependency
   and import it to your `app.module.ts` in `imports` section.
@@ -8,16 +10,15 @@
 
 <input type="text" atp-time-picker value="20:55" arrowStyle="{'background': 'green', 'color': 'red'}" />
 
+<br> -->
 
-
-
-<div class="tab-wrapper">
+<h2 class="pre-title">Using in component markup</h2>
+<p>After you have installed this module, you can use it within your html templates and give the directive to the any tag. When user closes the dialog, it's gonna update the input value and will listen to input click event to open the dialog.</p>
+<br>
+<div class="tab-wrapper" id="sec1">
   <div class="tab-header">
       <div class="row">
           <div class="col s6 title">Directive</div>
-          <div class="col s6">
-            <a class="btn-floating waves-effect waves-light right" (click)="toggleTab();"><i class="material-icons">code</i></a>
-          </div>
       </div>
   </div>
   <app-tabs #tab1>
@@ -58,26 +59,23 @@
   </div>
 </div>
 <br>
-<p>
-        You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component <br>
-        Then add it inside your test.component.ts or any other component that you want to use timepicker inside of that.
-</p>
+    <h2 class="pre-title">Opening component programmatically</h2>
+    <p>You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component </p>
+    <pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
+    <p>Then add it inside your <code  class="pre-code S">test.component.ts</code> or any other component that you want to use timepicker inside of that.</p>
 <br>
-<div class="tab-wrapper">
+<div class="tab-wrapper" id="sec2">
         <div class="tab-header">
             <div class="row">
                 <div class="col s6 title">Programmatically</div>
-                <div class="col s6">
-                  <a class="btn-floating waves-effect waves-light right" (click)="toggleTab();"><i class="material-icons">code</i></a>
-                </div>
             </div>
         </div>
         <app-tabs #tab1>
             <app-tab tabTitle="test.component.html">
     <pre style='color:#000000;'>
 
-        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#274796; '> (click)</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"open()"</span><span style='color:#a65700; '>></span>Time<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#a65700; '>></span>
-        <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{sintax}}"</span><span style='color:#a65700; '>></span>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#274796; '> (click)</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"open()"</span><span style='color:#a65700; '>></span>Time<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#a65700; '>></span>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{sintax}}"</span><span style='color:#a65700; '>></span>
    </pre>
             </app-tab>
             <app-tab tabTitle="test.component.ts">
@@ -119,4 +117,4 @@
         </div>
       </div>
       <br>
-      
+    
