@@ -3,7 +3,7 @@
     line-height: 30px;
     pre{
         line-height: 20px;
-        font-size: 13px;
+        font-size: 12px !important;
     }
 }
 .tab-wrapper{
@@ -15,6 +15,10 @@
     .tab-header{
         padding: 15px;
         background: #EFEFEF;
+        .title{
+            font-size: 17px;
+            padding-top: 7px;
+        }
     }
     pre{
         background: transparent;
