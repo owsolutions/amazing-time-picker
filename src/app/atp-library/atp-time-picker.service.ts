@@ -3,16 +3,19 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
 import { TimePickerConfig } from './definitions';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
-
+interface IDialogResult {
+  afterClose(): Observable<string>;
+}
 @Injectable()
 export class AmazingTimePickerService {
 
-  constructor( private resolver: ComponentFactoryResolver,
-               private appRef: ApplicationRef,
-               private injector: Injector) {
-  }
+  constructor (
+    private resolver: ComponentFactoryResolver,
+    private appRef: ApplicationRef,
+    private injector: Injector
+  ) {}
 
-  open(config?: TimePickerConfig): any {
+  open (config?: TimePickerConfig): IDialogResult {
     const _self = this;
     config = config || {};
     config = {
@@ -22,8 +25,8 @@ export class AmazingTimePickerService {
     };
     config.arrowStyle = {
       background: (config.arrowStyle.background) ?
-                  config.arrowStyle.background : config.theme !== undefined ?
-                  config.theme === 'dark' ? 'rgb(128, 203, 196)' : 'blue' : 'blue',
+      config.arrowStyle.background : config.theme !== undefined ?
+      config.theme === 'dark' ? 'rgb(128, 203, 196)' : 'blue' : 'blue',
       color: config.arrowStyle.color || '#fff'
     };
     const componentRef = this.resolver.resolveComponentFactory(TimePickerComponent);

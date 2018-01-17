@@ -2,12 +2,14 @@ import { Directive, ViewContainerRef, Output, EventEmitter, HostListener } from 
 import { AmazingTimePickerService } from './atp-time-picker.service';
 
 @Directive({
-  selector: '[atp-time-picker]'
+  selector: 'input[atp-time-picker]'
 })
 export class AtpDirective {
 
-  constructor( public viewContainerRef: ViewContainerRef,
-               private atp: AmazingTimePickerService) {}
+  constructor(
+    public viewContainerRef: ViewContainerRef,
+    private atp: AmazingTimePickerService
+  ) {}
 
   @Output() myClick = new EventEmitter();
   @HostListener('click', ['$event'])
@@ -19,7 +21,7 @@ export class AtpDirective {
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
     const timePickerFunction = this.atp.open({time, theme, 'arrowStyle': arrowStyle});
     timePickerFunction.afterClose().subscribe(retTime => {
-      ele.setAttribute('value', retTime);
+      ele.value = retTime;
     });
   }
 }
