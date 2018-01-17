@@ -18,4 +18,8 @@ export class ExampleComponent {
       this.selectedTime = time;
     });
   }
+
+  toggleTab() {
+
+  }
 }
