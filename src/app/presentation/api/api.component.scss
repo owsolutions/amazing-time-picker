@@ -34,6 +34,7 @@
     border-bottom: 1px solid #ddd;
     padding: 15px 0;
 }
+
 .pre-code{
     &.L{
         background: #eee;
@@ -46,5 +47,36 @@
         padding: 3px 5px;
         display: inline-block;
         margin: 0 5px;
+    }
+}
+.box-title{
+    font-size: 1.1em;
+    color:#555;
+    margin: 25px 0;
+}
+.box{
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+    .box-header{
+        padding: 15px;
+        background: #eee;
+    }
+    .box-content{
+        p{
+            padding: 15px;
+        }
+        table{
+            .header{
+                background: #eee;
+            }
+            tr{
+                td, th{
+                    padding: 15px;
+                }
+            }
+        }
+        .box-header{
+            color: #8f95c3;
+        }
     }
 }

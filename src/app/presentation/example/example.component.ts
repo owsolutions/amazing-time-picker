@@ -8,18 +8,29 @@ import { AmazingTimePickerService } from '../../atp-library/atp-time-picker.serv
 })
 export class ExampleComponent {
   public selectedTime: string;
+  public selectedTimeDark = '18:33';
   public sintax = '{{selectedTime}}';
 
   constructor(private atp: AmazingTimePickerService) { }
 
   open() {
-    const amazingTimePicker = this.atp.open({
-      time: '18:20',
-      theme: 'dark',
-      arrowStyle: { background: 'red', color: 'white'}
-    });
+    const amazingTimePicker = this.atp.open();
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
+    });
+  }
+
+  openDark() {
+    const amazingTimePicker = this.atp.open({
+      time: this.selectedTimeDark,
+      theme: 'dark',
+      arrowStyle: {
+        background: 'red',
+        color: 'white'
+      }
+    });
+    amazingTimePicker.afterClose().subscribe(time => {
+      this.selectedTimeDark = time;
     });
   }
 

@@ -110,8 +110,8 @@ export class TimePickerComponent implements OnInit {
       };
       const targetX = clock.width / 2;
       const targetY = clock.height / 2;
-      const Vx = Math.round((ele.clientX - parrentPos.x) - targetX);
-      const Vy = Math.round(targetY - (ele.clientY - parrentPos.y));
+      const Vx = Math.round((ele.clientX - parrentPos.left) - targetX);
+      const Vy = Math.round(targetY - (ele.clientY - parrentPos.top));
       let radians = -Math.atan2(Vy, Vx);
       if (radians < 0) {
         radians += 2 * Math.PI;
