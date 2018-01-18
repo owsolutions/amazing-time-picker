@@ -13,7 +13,9 @@
     </div>
     <div class="time-picker-contet">
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
-          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
+          <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
+            [id]="'timepicker-item-id-' + clock.time" 
+            [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
             {{clock.time}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
@@ -24,7 +26,7 @@
     </div>
     <div class="time-picker-footer">
         <button (click)="Close($event);">Cancel</button>
-        <button (click)="GetTime();Close($event);">OK</button>
+        <button (click)="GetTime();Close($event);" class="atp-ref-dialog-close">OK</button>
     </div>
   </div>
 </div>
