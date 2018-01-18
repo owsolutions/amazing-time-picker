@@ -38,14 +38,12 @@ describe('Kitchen Sink', function () {
     cy.get('#time-picker-wrapper').should('have.class', 'dark');
 
     for (const number of clockMaker('hour')) {
-      cy.get('.time-picker-clock').click(number.top, number.left, {force:true});
-      
+      cy.get('.time-picker-clock').click(number.top, number.left);
       cy.wait(50);
     }
-    cy.wait(1000000);
     cy.get('.atp-ref-dialog-close').click();
     cy.wait(100);
-    cy.get('#atp-ref-dialog-result').should('have.value', '20:20');
+    cy.get('#atp-ref-dialog-result').should('have.value', '21:20');
     
   })
 });

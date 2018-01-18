@@ -35,19 +35,16 @@ export class TimePickerComponent implements OnInit {
   }
 
   public GetTime () {
-    console.error('time >>>>>>');
-    console.log('TIME');
-    // let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
-    let hh = this.hour;
-    // if (this.ampm === 'AM' && hh === 12) {
-    //   hh = 0;
-    // }
-    // if ( hh === 24) {
-    //   hh = 12;
-    // }
-    // hh = hh < 10 ? '0' + hh : '' + hh as any;
+    let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
+    if (this.ampm === 'AM' && hh === 12) {
+      hh = 0;
+    }
+    if ( hh === 24) {
+      hh = 12;
+    }
+    hh = hh < 10 ? '0' + hh : '' + hh as any;
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
-    const time = `xxx${hh}:${mm}`;
+    const time = `${hh}:${mm}`;
     this.selectedTime.emit(time);
     this.subject.next(time);
   }
@@ -84,7 +81,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   setArrow = (obj: any) => {
-    if (obj && obj.time) {
+    if (obj) {
       this.clockType = obj.type;
       if (this.clockType === 'minute') {
         this.minute = obj.time;
