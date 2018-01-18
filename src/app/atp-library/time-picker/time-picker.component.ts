@@ -91,13 +91,13 @@ export class TimePickerComponent implements OnInit {
     }
     const step = (this.clockType === 'minute') ? 6 : 30;
     const time = (this.clockType === 'minute') ? this.minute : this.hour;
-    const degrees = time * step - 90;
+    const degrees = time * step;
     this.rotationClass(degrees);
     this.setActiveTime();
   }
 
   rotationClass = (degrees: any) => {
-    this.degree = degrees += 90;
+    this.degree = degrees;
   }
 
   getDegree = (ele: any) => {
@@ -113,11 +113,13 @@ export class TimePickerComponent implements OnInit {
       const Vx = Math.round((ele.clientX - parrentPos.left) - targetX);
       const Vy = Math.round(targetY - (ele.clientY - parrentPos.top));
       let radians = -Math.atan2(Vy, Vx);
-      if (radians < 0) {
-        radians += 2 * Math.PI;
-      }
+      console.log(radians);
+      // if (radians < 0) {
+        radians += 2.5 * Math.PI;
+     // }
 
       let degrees = Math.round(radians * 180 / Math.PI);
+      console.log(degrees);
       const degMod = degrees % step;
       if (degMod === 0) {
         return;
@@ -130,10 +132,10 @@ export class TimePickerComponent implements OnInit {
       this.rotationClass(degrees);
 
       if (this.clockType === 'hour') {
-        this.hour = (degrees / step) + 3;
+        this.hour = (degrees / step);
         this.hour = (this.hour > 12) ? this.hour - 12 : this.hour;
       } else if (this.clockType === 'minute') {
-        this.minute = (degrees / step) + 15;
+        this.minute = (degrees / step);
         this.minute = (this.minute > 59) ? this.minute - 60 : this.minute;
       }
       this.setActiveTime();
