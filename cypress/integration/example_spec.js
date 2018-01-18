@@ -28,7 +28,10 @@ const clockMaker = (type = 'minute') => {
 describe('Kitchen Sink', function () {
   it('Open dialog and selecting a time must update input via directive', function () {
 
-    cy.visit('http://localhost:8080')
+    cy.visit('http://localhost:8080');
+
+    cy.title().should('include', 'Amazing TimePicker')
+    
     cy.get('button.test-open-dialog').click();
 
     for (const number of clockMaker('hour')) {
