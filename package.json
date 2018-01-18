@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "cypress:ci": "./node_modules/.bin/cypress run",
     "ci": "npm run serve & npm run cypress:ci",
-    "serve": "PORT=4200 ./node_modules/.bin/serve dist",
+    "serve": "PORT=4201 ./node_modules/.bin/serve dist",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",
     "hmr": "ng serve --hmr -e=hmr --port=4201",
