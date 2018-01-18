@@ -11,7 +11,7 @@
         <div class="time-picker-pm" (click)="ampm = 'PM';" [ngClass]="{'selected' : ampm == 'PM'}">PM</div>
       </div>
     </div>
-    <div class="time-picker-contet">
+    <div class="time-picker-content">
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked = true;getDegree($event);" (mouseup)="isClicked = false;">
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
