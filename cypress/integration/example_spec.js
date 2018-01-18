@@ -32,14 +32,10 @@ describe('Kitchen Sink', function () {
     cy.get('button.test-open-dialog').click();
     cy.get('#time-picker-wrapper').should('have.class', 'dark');
 
-    for (let number of clockMaker('hour')) {
-      cy.get('.time-picker-clock').click(number.top, number.left, {force:true});
-      cy.wait(50);
-    }
 
     cy.get('.atp-ref-dialog-close').click();
-    cy.wait(1500);
-    //cy.get('.atp-ref-dialog-result').should('have.value', '21:20');
+    cy.wait(100);
+    cy.get('#atp-ref-dialog-result').should('have.value', '18:20');
     
   })
 });
