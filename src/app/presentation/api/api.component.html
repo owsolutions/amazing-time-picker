@@ -2,48 +2,90 @@
 <pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
 <br>
 
-<h3>Directives</h3>
+<h3 class="pre-title">Directives</h3>
+<div class="box">
+    <div class="box-content">
+        <table class="mat-table">
 
-<table class="mat-table">
+            <thead class="header">
+              <tr>
+                <th width="30%">Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>atp-time-picker</td>
+                <td>You can add this directive to any <strong>input</strong> element. It will read the value of element, if its there with
+                  <i>00:00</i> format, and it is compatible with HTML 5 input time.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
 
-  <thead>
-    <tr>
-      <th width="30%">Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>atp-time-picker</td>
-      <td>You can add this directive to any <strong>input</strong> element. It will read the value of element, if its there with
-        <i>00:00</i> format, and it is compatible with HTML 5 input time.
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h3>Services</h3>
+<h3 class="pre-title">Services</h3>
 You can use amazing time picker service in order to open dialog programmatically.
-<br>
-
-<h4>AmazingTimePickerService</h4>
 You can simply import this service to any component that might need to display a dialog.
 
-<table class="mat-table">
-
-  <thead>
-    <tr>
-      <th width="30%">Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>AmazingTimePickerService.open()</td>
-      <td>
+<h4 class="box-title">Methods</h4>
+<div class="box">
+  <div class="box-header">
+    open
+  </div>
+  <div class="box-content">
+    <p>
         Opens the dialog, and returns a function that you can subscribe to, so when dialog is
-        closed, it's gonna give you the result as a <strong>Observable {{'<'}}string{{'>'}}</strong>
-      </td>
-    </tr>
-  </tbody>
-</table>
+            closed, it's gonna give you the result as a <strong>Observable {{'<'}}string{{'>'}}</strong>
+    </p>
+    <div class="box-header">
+      Parameters
+    </div>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <th width="30%">Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>time: string</td>
+          <td>
+            Default time when Timepicker dialog appears
+          </td>
+        </tr>
+        <tr>
+          <td>theme: string</td>
+          <td>
+            Select theme to change dialog style
+          </td>
+        </tr>
+        <tr>
+          <td>arrowStyle: Pallete</td>
+          <td>
+            Change arrow color of Timepicker
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<div class="box">
+    <div class="box-header">
+      afterClose
+    </div>
+    <div class="box-content">
+      <p>
+          Gets an observable that is notified when the dialog is selected.
+      </p>
+      <div class="box-header">
+        return
+      </div>
+      <p>
+        Observabel{{'<'}}string{{'>'}}
+      </p>
+    </div>
+  </div>
