@@ -12,10 +12,10 @@
     "lint": "ng lint",
     "cypress:ci": "./node_modules/.bin/cypress run",
     "ci": "npm run serve & npm run cypress:ci",
-    "serve": "PORT=4201 ./node_modules/.bin/serve dist",
+    "serve": "PORT=8080 ./node_modules/.bin/serve dist",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",
-    "hmr": "ng serve --hmr -e=hmr --port=4201",
+    "hmr": "ng serve --hmr -e=hmr --port=8080",
     "packagr": "ng-packagr -p ng-package.json",
     "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
     "publisher": "npm run packagr && cd dist && npm pack && cd ../"
