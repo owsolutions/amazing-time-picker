@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Starting deploy...";
+
 set -e # exit with nonzero exit code if anything fails
 
 if [[ $TRAVIS_BRANCH == "master" && $TRAVIS_PULL_REQUEST == "false" ]]; then
