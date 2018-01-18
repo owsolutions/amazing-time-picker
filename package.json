@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build -e=prod -prod --base-href=/amazing-time-picker --progress false",
+    "build": "ng build -e=prod -prod --base-href=/amazing-time-picker --deploy-url=/amazing-time-picker/ --progress false",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
