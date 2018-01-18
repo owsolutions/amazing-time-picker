@@ -27,6 +27,11 @@ const clockMaker = (type = 'minute') => {
 
 describe('Kitchen Sink', function () {
   it('Open dialog and selecting a time must update input via directive', function () {
+
+    cy.window().then((win) => {
+      cy.spy(win.console, "log")
+    })
+
     cy.visit('http://localhost:4200')
 
     cy.get('button.test-open-dialog').click();
