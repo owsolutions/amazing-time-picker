@@ -1,11 +1,9 @@
 import { Injectable, ViewContainerRef, Injector, ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef } from '@angular/core';
 import { TimePickerComponent } from './time-picker/time-picker.component';
-import { TimePickerConfig } from './definitions';
+import { TimePickerConfig, IDialogResult } from './definitions';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
-interface IDialogResult {
-  afterClose(): Observable<string>;
-}
+
 @Injectable()
 export class AmazingTimePickerService {
 
@@ -46,5 +44,4 @@ export class AmazingTimePickerService {
       }
     };
   }
-
 }
