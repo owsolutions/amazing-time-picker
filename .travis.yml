@@ -32,3 +32,6 @@ script:
   - npm run lint
   - npm run build
   - npm run publisher
+
+after_success:
+  - bash ./deploy.sh
