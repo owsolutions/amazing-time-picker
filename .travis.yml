@@ -32,3 +32,12 @@ script:
   - npm run lint
   - npm run build
   - npm run publisher
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local-dir: dist
+  github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
+  keep-history: true
+  on:
+    branch: master
