@@ -19,7 +19,6 @@ export class ExampleComponent {
       arrowStyle: { background: 'red', color: 'white'}
     });
     amazingTimePicker.afterClose().subscribe(time => {
-      console.log('time >>>>>>>>>>>>>>', time);
       this.selectedTime = time;
     });
   }

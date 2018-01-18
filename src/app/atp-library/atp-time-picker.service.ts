@@ -40,6 +40,11 @@ export class AmazingTimePickerService {
     tsc.instance.ParseStringToTime(config.time);
     return {
       afterClose: function () {
+        const s = new Subject<string>();
+        // setTimeout(() => {
+        //   s.next('20:20');
+        // }, 500);
+        // return s.asObservable();
         return tsc.instance.subject.asObservable();
       }
     };
