@@ -38,6 +38,7 @@ script:
   - npm run build
   - npm run ci
   - npm run publisher
+  - NPM_TOKEN=$NPM_TOKEN npm publish dist 
 
 after_success:
   - bash ./deploy.sh
