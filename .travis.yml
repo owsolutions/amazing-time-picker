@@ -14,7 +14,6 @@ cache:
   directories:
     - $HOME/.yarn-cache
     - node_modules
-    - /tmp/amazing-time-picker-test-beds
 
 dist: trusty
 addons:
