@@ -29,16 +29,15 @@ before_install:
  - sudo dpkg -i google-chrome*.deb
 
 script:
+  # First build them to make sure everything is fine
   - npm run lint
   - npm run build
   - npm run publisher
+
+  # Now really build them
   - npm run build
   - npm run ci
-
-deploy:
-  provider: npm
-  email: "connexion.founder@outlook.com"
-  api_key: $NPM_TOKEN
+  - npm run publisher
 
 after_success:
   - bash ./deploy.sh
