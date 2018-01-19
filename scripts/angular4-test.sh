@@ -5,7 +5,8 @@
 # We are not cloning existing projects, we build with latest version of angular-cli
 # and install this dependency
 set -e;
-
+cd ${TRAVIS_BUILD_DIR};
+npm run build;
 npm run packagr;
 cd /tmp/;
 git clone https://github.com/owsolutions/amazing-time-picker-test-beds --depth=1
@@ -13,6 +14,7 @@ cd amazing-time-picker-test-beds;
 
 cd ng4-test-bed;
 npm install;
+ls -la ${TRAVIS_BUILD_DIR}/dist;
 npm install ${TRAVIS_BUILD_DIR}/dist;
 echo ${TRAVIS_BUILD_DIR}/dist;
 ls -la ${TRAVIS_BUILD_DIR}/dist;
