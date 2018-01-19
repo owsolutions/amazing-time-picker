@@ -22,6 +22,7 @@
 # Now you have the package ready at:
 # /tmp/amazing-time-picker/dist
 # Prepare the test beds;
+XSINIT=$PWD;
 npm run packagr;
 cd /tmp/;
 git clone https://github.com/owsolutions/amazing-time-picker-test-beds --depth=1
@@ -38,3 +39,4 @@ npm install /tmp/amazing-time-picker/dist;
 npm run build;
 
 echo "Now we have lifted all test beds!";
+cd $XSINIT;
