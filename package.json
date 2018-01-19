@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "cypress:ci": "./node_modules/.bin/cypress run",
-    "ci": "npm run serve & npm run serve:beds:4 & npm run serve:beds:5 & npm run cypress:ci",
+    "ci": "npm run serve:beds:4 & npm run serve:beds:5 & npm run cypress:ci",
     "serve": "PORT=8080 ./node_modules/.bin/serve dist",
     "serve:beds:4": "PORT=12001  ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng4-test-bed/dist",
     "serve:beds:5": "PORT=12002 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng5-test-bed/dist",
