@@ -35,6 +35,10 @@ script:
   - npm run build
   - npm run ci
 
+deploy:
+  provider: npm
+  email: "connexion.founder@outlook.com"
+  api_key: $NPM_TOKEN
 
 after_success:
   - bash ./deploy.sh
