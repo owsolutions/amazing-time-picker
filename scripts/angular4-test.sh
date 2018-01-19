@@ -6,8 +6,7 @@
 # and install this dependency
 set -e;
 cd ${TRAVIS_BUILD_DIR};
-npm run build;
-npm run packagr;
+npm run publisher;
 cd /tmp/;
 git clone https://github.com/owsolutions/amazing-time-picker-test-beds --depth=1
 cd amazing-time-picker-test-beds;
