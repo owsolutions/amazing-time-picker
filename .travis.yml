@@ -30,23 +30,29 @@ before_install:
 
 script:
   # First build them to make sure everything is fine
-  - npm run lint
-  - npm run build
-  - npm run publisher
+  #- npm run lint
+  #- npm run build
+  #- npm run publisher
+
+  # Now start testing on testbeds
+  # Testbeds are angular2,4,5 projects that we install on in order to make sure it
+  # works totally fine as a dependency.
+  - sh ./scripts/angular4-test.sh
+
 
   # Now really build them
-  - npm run build
-  - npm run ci
-  - npm run publisher
+  #- npm run build
+  #- npm run ci
+  #- npm run publisher
 
-before_deploy:
-  cd dist;
+#before_deploy:
+#  cd dist;
   
-deploy:
-  provider: npm
-  email: "connexion.founder@outlook.com"
-  api_key: $NPM_TOKEN
-  skip_cleanup: true
+#deploy:
+#  provider: npm
+#  email: "connexion.founder@outlook.com"
+#  api_key: $NPM_TOKEN
+#  skip_cleanup: true
 
-after_success:
-  - bash ./deploy.sh
+#after_success:
+#  - bash ./deploy.sh
