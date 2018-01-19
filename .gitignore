@@ -6,6 +6,7 @@
 
 # dependencies
 /node_modules
+/npm_dist
 
 # IDEs and editors
 /.idea
