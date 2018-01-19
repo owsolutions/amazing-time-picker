@@ -40,7 +40,7 @@ script:
   # works totally fine as a dependency.
   - npm run build
   - sh ./scripts/angular4-test.sh;
-  - cd project;
+  - cd $TRAVIS_BUILD_DIR;
   - npm run ci;
 
   # Now really build them
