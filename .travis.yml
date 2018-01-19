@@ -21,9 +21,9 @@ addons:
 
 script:
   # First build them to make sure everything is fine
-  #- npm run lint
-  #- npm run build
-  #- npm run publisher
+  - npm run lint
+  - npm run build
+  - npm run publisher
 
   # Now start testing on testbeds
   # Testbeds are angular2,4,5 projects that we install on in order to make sure it
@@ -35,9 +35,5 @@ script:
   - npm run ci;
 
   # Now really build them
-  #- npm run build
-  #- npm run ci
-  #- npm run publisher
-
-after_success:
- - bash ./deploy.sh
+  - npm run build:github
+  - bash ./deploy.sh
