@@ -30,11 +30,11 @@ cd amazing-time-picker-test-beds;
 cd ng4-test-bed;
 npm install;
 npm install /tmp/amazing-time-picker/dist;
-npm start &;
+npm run build;
 
 cd ../ng5-test-bed;
 npm install;
 npm install /tmp/amazing-time-picker/dist;
-npm start &;
+npm run build;
 
 echo "Now we have lifted all test beds!";
