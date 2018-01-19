@@ -37,8 +37,10 @@ script:
   # Now start testing on testbeds
   # Testbeds are angular2,4,5 projects that we install on in order to make sure it
   # works totally fine as a dependency.
-  - sh ./scripts/angular4-test.sh
-  - npm run ci
+  - npm run build
+  - sh ./scripts/angular4-test.sh;
+  - npm run ci;
+  - cd project;
 
   # Now really build them
   #- npm run build
