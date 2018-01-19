@@ -14,6 +14,8 @@ cd amazing-time-picker-test-beds;
 cd ng4-test-bed;
 npm install;
 npm install ${TRAVIS_BUILD_DIR}/dist;
+echo ${TRAVIS_BUILD_DIR}/dist;
+ls -la ${TRAVIS_BUILD_DIR}/dist;
 npm run build;
 
 cd ../ng5-test-bed;
