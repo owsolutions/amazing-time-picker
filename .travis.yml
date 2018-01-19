@@ -38,7 +38,14 @@ script:
   - npm run build
   - npm run ci
   - npm run publisher
-  - NPM_TOKEN=$NPM_TOKEN npm publish dist 
+
+before_deploy:
+  cd dist;
+  
+deploy:
+  provider: npm
+  email: "connexion.founder@outlook.com"
+  api_key: $NPM_TOKEN
 
 after_success:
   - bash ./deploy.sh
