@@ -4,6 +4,7 @@
 # We assume that angular-cli is globally installed.
 # We are not cloning existing projects, we build with latest version of angular-cli
 # and install this dependency
+set -e;
 
 npm run packagr;
 cd /tmp/;
