@@ -46,6 +46,7 @@ deploy:
   provider: npm
   email: "connexion.founder@outlook.com"
   api_key: $NPM_TOKEN
+  skip_cleanup: true
 
 after_success:
   - bash ./deploy.sh
