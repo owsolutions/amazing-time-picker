@@ -28,10 +28,9 @@ script:
   # Now start testing on testbeds
   # Testbeds are angular2,4,5 projects that we install on in order to make sure it
   # works totally fine as a dependency.
-  - npm run build
-  - ls -la /home/travis/build/${GH_USER}/${GH_REPO}/dist
-  - ls -la /home/travis/build/${GH_USER}/${GH_REPO}/
   - sh ./scripts/angular4-test.sh;
+  - cd $TRAVIS_BUILD_DIR;
+  - npm run build
   - cd $TRAVIS_BUILD_DIR;
   - npm run ci;
 
