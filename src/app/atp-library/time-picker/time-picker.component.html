@@ -1,5 +1,5 @@
-<div id="time-picker-wrapper" class="{{config.theme}}" [ngClass]="{'active': activeModal}" (click)="Close($event);">
-  <div id="time-picker" [ngClass]="{'active': activeModal}">
+<div id="time-picker-wrapper" class="{{config.theme}}" [ngClass]="{'active': activeModal, 'static': !isPopup}" (click)="Close($event);">
+  <div id="time-picker" [ngClass]="{'active': activeModal, 'static': !isPopup}">
     <div class="time-picker-header">
       <div class="time-picker-selected-time">
           <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" [ngClass]="{'selected' : clockType == 'hour'}">{{hour}}</div>
@@ -7,8 +7,8 @@
           <div class="time-picker-minute" (click)="clockType='minute';clockMaker()" [ngClass]="{'selected' : clockType == 'minute'}">{{minute}}</div>
       </div>
       <div class="time-picker-selected-ampm">
-        <div class="time-picker-am" (click)="ampm = 'AM';" [ngClass]="{'selected' : ampm == 'AM'}">AM</div>
-        <div class="time-picker-pm" (click)="ampm = 'PM';" [ngClass]="{'selected' : ampm == 'PM'}">PM</div>
+        <div class="time-picker-am" (click)="ampm = 'AM'; checkBet();" [ngClass]="{'selected' : ampm == 'AM'}">AM</div>
+        <div class="time-picker-pm" (click)="ampm = 'PM'; checkBet();" [ngClass]="{'selected' : ampm == 'PM'}">PM</div>
       </div>
     </div>
     <div class="time-picker-content">

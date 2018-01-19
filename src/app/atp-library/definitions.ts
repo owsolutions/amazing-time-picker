@@ -7,7 +7,13 @@ import { Observable } from 'rxjs/Rx';
 export interface TimePickerConfig {
   time?: string;
   theme?: 'dark' | 'light';
+  rangeTime?: RangeTime;
   arrowStyle?: Pallete;
+}
+
+export interface RangeTime {
+  start: string;
+  end: string;
 }
 
 export interface Pallete {
