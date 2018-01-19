@@ -40,20 +40,10 @@ script:
   - sh ./scripts/angular4-test.sh
   - npm run ci
 
-
   # Now really build them
   #- npm run build
   #- npm run ci
   #- npm run publisher
 
-#before_deploy:
-#  cd dist;
-  
-#deploy:
-#  provider: npm
-#  email: "connexion.founder@outlook.com"
-#  api_key: $NPM_TOKEN
-#  skip_cleanup: true
-
-#after_success:
-#  - bash ./deploy.sh
+after_success:
+ - bash ./deploy.sh
