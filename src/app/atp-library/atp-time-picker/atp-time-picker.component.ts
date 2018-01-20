@@ -1,6 +1,8 @@
-import { Component, ViewChild, ViewContainerRef, Input, ElementRef, ComponentFactoryResolver, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, Output, ComponentFactoryResolver, OnInit, ApplicationRef, EventEmitter
+} from '@angular/core';
 import { TimePickerComponent } from '../time-picker/time-picker.component';
-import { AmazingTimePickerService } from '../atp-time-picker.service';
+import { TimePickerConfig } from '../definitions';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'atp-time-picker',
@@ -8,51 +10,42 @@ import { AmazingTimePickerService } from '../atp-time-picker.service';
   styleUrls: ['./atp-time-picker.component.scss']
 })
 
-export class AtpTimePickerComponent implements AfterViewInit {
+export class AtpTimePickerComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
+  @Output()
+  timeSelected: EventEmitter<string> = new EventEmitter<string>();
+  public config: TimePickerConfig = {};
 
-  private _state = 'container';
-  private _validStates: Array<string> = ['container', 'icon', 'input'];
-  public _icon = true;
-  public _disabled = false;
-
-  @Input() set icon(value: string){
-    this._icon = value === 'true' ? true : false;
-  }
-  @Input() set disabled(value: string){
-    this._disabled = value === 'true' ? true : false;
-  }
-  @Input() set state(value: string) {
-    this._state = value;
-  }
-  @Input() value: string;
-  @Input() class: string;
 
   constructor( private resolver: ComponentFactoryResolver,
-               private _ref: ElementRef,
-               private atp: AmazingTimePickerService
-  ) {}
+               private appRef: ApplicationRef) {}
 
-  set() {
-    const ele = this.container.element.nativeElement;
-    const timePickerFunction = this.atp.open(ele.value);
-    timePickerFunction.afterClose().subscribe(retTime => {
-      ele.value = retTime;
+  ngOnInit() {
+    let config = this.config;
+    config = {
+      time: config.time || '00:00',
+      theme: ['light', 'dark'].indexOf(config.theme) > 0 ? config.theme : 'light' || config.theme || 'light',
+      rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
+      arrowStyle: config.arrowStyle || {}
+    };
+    config.arrowStyle = {
+      background: (config.arrowStyle.background) ?
+      config.arrowStyle.background : config.theme !== undefined ?
+      config.theme === 'dark' ? 'rgb(128, 203, 196)' : 'blue' : 'blue',
+      color: config.arrowStyle.color || '#fff'
+    };
+    const cfr = this.resolver.resolveComponentFactory(TimePickerComponent);
+    const tsc = this.container.createComponent(cfr);
+    tsc.instance.subject = new Subject<any>();
+    tsc.instance._ref = tsc;
+    tsc.instance.appRef = this.appRef;
+    tsc.instance.timerElement = '';
+    tsc.instance.config = config;
+    tsc.instance.activeModal = true;
+    tsc.instance.isPopup = false;
+    tsc.instance.ParseStringToTime(config.time);
+    tsc.instance.subject.asObservable().subscribe(time => {
+      this.timeSelected.emit(time);
     });
-  }
-
-  ngAfterViewInit() {
-    const targetAttr = this._state.toLowerCase();
-    if (this._validStates.indexOf(targetAttr) > -1) {
-      const targets = this._ref.nativeElement.querySelectorAll('[data-target*=' + targetAttr + ']');
-      if (targets) {
-        let target: any;
-        for (target of targets) {
-          target.addEventListener('click', e => {
-           this.set();
-          });
-        }
-      }
-    }
   }
 }

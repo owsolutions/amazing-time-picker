@@ -6,7 +6,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./time-picker.component.scss']
 })
 export class TimePickerComponent implements OnInit {
-  @Output() selectedTime = new EventEmitter();
 
   _ref: any;
   public subject: any = null;
@@ -22,6 +21,8 @@ export class TimePickerComponent implements OnInit {
   public degree: any;
   public config: any;
   public appRef: any;
+  public isPopup = true;
+  public allowed: any;
 
   public ParseStringToTime (time: string): void {
     time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
@@ -45,7 +46,6 @@ export class TimePickerComponent implements OnInit {
     hh = hh < 10 ? '0' + hh : '' + hh as any;
     const mm = this.minute < 10 ? '0' + this.minute : this.minute;
     const time = `${hh}:${mm}`;
-    this.selectedTime.emit(time);
     this.subject.next(time);
   }
 
@@ -113,13 +113,9 @@ export class TimePickerComponent implements OnInit {
       const Vx = Math.round((ele.clientX - parrentPos.left) - targetX);
       const Vy = Math.round(targetY - (ele.clientY - parrentPos.top));
       let radians = -Math.atan2(Vy, Vx);
-      console.log(radians);
-      // if (radians < 0) {
-        radians += 2.5 * Math.PI;
-     // }
+      radians += 2.5 * Math.PI;
 
       let degrees = Math.round(radians * 180 / Math.PI);
-      console.log(degrees);
       const degMod = degrees % step;
       if (degMod === 0) {
         return;
@@ -128,18 +124,74 @@ export class TimePickerComponent implements OnInit {
       } else if (degMod < step / 2) {
         degrees = degrees - degMod;
       }
-
-      this.rotationClass(degrees);
+      let hour = this.hour,
+          minute = this.minute;
 
       if (this.clockType === 'hour') {
-        this.hour = (degrees / step);
-        this.hour = (this.hour > 12) ? this.hour - 12 : this.hour;
+        hour = (degrees / step);
+        hour = (hour > 12) ? hour - 12 : hour;
       } else if (this.clockType === 'minute') {
-        this.minute = (degrees / step);
-        this.minute = (this.minute > 59) ? this.minute - 60 : this.minute;
+        minute = (degrees / step);
+        minute = (minute > 59) ? minute - 60 : minute;
       }
-      this.setActiveTime();
+
+      const min = this.config.rangeTime.start,
+            max = this.config.rangeTime.end;
+
+      const nowMinHour = +min.split(':')[0] < 12 ? +min.split(':')[0] : +min.split(':')[0] - 12;
+      const nowMaxHour = +max.split(':')[0] < 12 ? +max.split(':')[0] : +max.split(':')[0] - 12;
+      const nowMinMin = +min.split(':')[1];
+      const nowMaxMin = +max.split(':')[1];
+
+      const Hour = (hour === 12 && this.ampm === 'AM') ? '0' : hour;
+      const nowTime = Hour + ':' + minute + ' ' + this.ampm;
+      if (this.allowed.indexOf(nowTime) > -1) {
+        this.hour = hour;
+        this.minute = minute;
+        this.rotationClass(degrees);
+        this.setActiveTime();
+      }else if (this.clockType === 'hour' && (hour === nowMinHour && minute <= nowMinMin)) {
+        this.hour = nowMinHour;
+        this.minute = nowMinMin;
+      }else if (this.clockType === 'hour' && (hour === nowMaxHour && minute >= nowMaxMin)) {
+        this.hour = nowMaxHour;
+        this.minute = nowMaxMin;
+      }
     }
+  }
+
+  checkBet() {
+    const Hour = (this.hour === 12 && this.ampm === 'AM') ? '0' : this.hour;
+      const nowTime = Hour + ':' + this.minute + ' ' + this.ampm;
+      if (this.allowed.indexOf(nowTime) === -1) {
+        this.ParseStringToTime(this.config.rangeTime.start);
+        this.setArrow(null);
+        this.setActiveTime();
+      }
+  }
+
+  allowedTimes(min, max) {
+    const allTimes = [];
+    const nowMinHour = +min.split(':')[0];
+    const nowMaxHour = +max.split(':')[0];
+    const nowMinMin = +min.split(':')[1];
+    const nowMaxMin = +max.split(':')[1];
+    for (let i = nowMinHour; i <= nowMaxHour; i++) {
+      let j = 0,
+          jDest = 59;
+      if (i === nowMinHour) {
+        j = nowMinMin;
+      }else if (i === nowMaxHour) {
+        jDest = nowMaxMin;
+      }
+      for (j; j <= jDest; j++) {
+        const hour = i <= 12 ? i : i - 12;
+        const minute = j;
+        const ampm = i < 12 ? 'AM' : 'PM';
+        allTimes.push(hour + ':' + minute + ' ' + ampm);
+      }
+    }
+    return allTimes;
   }
 
   modalAnimation() {
@@ -149,17 +201,20 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.allowed = this.allowedTimes(this.config.rangeTime.start, this.config.rangeTime.end);
     this.clockMaker();
     this.modalAnimation();
   }
 
   Close(e: any) {
       if (e.target === e.currentTarget) {
-        this.activeModal = false;
-        setTimeout(() => {
-          this.appRef.detachView(this._ref.hostView);
-          this._ref.destroy();
-        }, 400);
+        if (this.isPopup === true) {
+          this.activeModal = false;
+          setTimeout(() => {
+            this.appRef.detachView(this._ref.hostView);
+            this._ref.destroy();
+          }, 400);
+        }
       }
   }
 }

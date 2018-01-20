@@ -8,6 +8,12 @@
   transition: background 0.4s;
   font-family: 'Roboto', sans-serif;
   z-index: 1000;
+  &.static{
+      position: relative !important;
+      background: transparent !important;
+      display: inline-block;
+      z-index: 0;
+  }
   &.active{
       background: rgba(0,0,0,0.3);
   }
@@ -87,6 +93,10 @@
       transform: scale(0.5) !important;
       transition: transform 0.3s, opacity 0.3s;
       opacity: 0;
+      &.static{
+          margin: 0px !important;
+          box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2), 0 0 7px 3px rgba(0, 0, 0, 0.14), 0 9px 46px 8px rgba(0, 0, 0, 0.12);
+      }
       &.active{
           transform: scale(1) !important;
           opacity: 1;

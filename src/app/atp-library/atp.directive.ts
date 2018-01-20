@@ -15,11 +15,18 @@ export class AtpDirective {
   @HostListener('click', ['$event'])
   onClick(e) {
     const ele = this.viewContainerRef.element.nativeElement;
-    const time = ele.getAttribute('value');
+    const time = ele.value;
     const theme = ele.getAttribute('theme');
+    const start = ele.getAttribute('start');
+    const end = ele.getAttribute('end');
     let arrowStyle = ele.getAttribute('arrowStyle');
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
-    const timePickerFunction = this.atp.open({time, theme, 'arrowStyle': arrowStyle});
+    const timePickerFunction = this.atp.open({
+      time,
+      theme,
+      rangeTime: { start, end},
+      'arrowStyle': arrowStyle
+    });
     timePickerFunction.afterClose().subscribe(retTime => {
       ele.value = retTime;
     });

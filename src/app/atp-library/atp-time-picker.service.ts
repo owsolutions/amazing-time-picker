@@ -19,7 +19,12 @@ export class AmazingTimePickerService {
     config = {
       time: config.time || '00:00',
       theme: ['light', 'dark'].indexOf(config.theme) > 0 ? config.theme : 'light' || config.theme || 'light',
+      rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {}
+    };
+    config.rangeTime = {
+      start: config.rangeTime.start || '0:0',
+      end: config.rangeTime.end || '24:0',
     };
     config.arrowStyle = {
       background: (config.arrowStyle.background) ?
