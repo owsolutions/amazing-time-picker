@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AtpCoreService } from '../atp-core.service';
+import { ITime } from '../definitions';
 
 @Component({
   selector: 'time-picker',
@@ -15,10 +16,12 @@ export class TimePickerComponent implements OnInit {
   public clockObject: Array<any>;
   public isClicked: boolean;
   public clockType: 'minute' | 'hour' = 'hour';
-  public hour: any = 12;
-  public minute: any = 0;
-  public ampm: 'AM' | 'PM' = 'AM';
-  public nowTime: any = this.hour;
+  public time: ITime = {
+    ampm: 'AM',
+    minute: 0,
+    hour: 12
+  };
+  public nowTime: any = this.time.hour;
   public degree: any;
   public config: any;
   public appRef: any;
@@ -30,19 +33,12 @@ export class TimePickerComponent implements OnInit {
   ) { }
 
   public ParseStringToTime (time: string): void {
-    time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
-    const itime = this.core.StringToTime(time);
-    this.hour = itime.hour;
-    this.minute = itime.minute;
-    this.ampm = itime.ampm;
+    time = (time === '' || time === undefined || time === null) ? this.time.hour + ':' + this.time.minute : time;
+    this.time = this.core.StringToTime(time);
   }
 
   public GetTime () {
-    const time = this.core.TimeToString({
-      ampm: this.ampm,
-      hour: this.hour,
-      minute: this.minute
-    });
+    const time = this.core.TimeToString(this.time);
     this.subject.next(time);
   }
 
@@ -53,20 +49,20 @@ export class TimePickerComponent implements OnInit {
   }
 
   setActiveTime = () => {
-    this.nowTime = (this.clockType === 'minute' ? this.minute : this.hour);
+    this.nowTime = (this.clockType === 'minute' ? this.time.minute : this.time.hour);
   }
 
   setArrow = (obj: any) => {
     if (obj) {
       this.clockType = obj.type;
       if (this.clockType === 'minute') {
-        this.minute = obj.time;
+        this.time.minute = obj.time;
       } else {
-        this.hour = obj.time;
+        this.time.hour = obj.time;
       }
     }
     const step = (this.clockType === 'minute') ? 6 : 30;
-    const time = (this.clockType === 'minute') ? this.minute : this.hour;
+    const time = (this.clockType === 'minute') ? this.time.minute : this.time.hour;
     const degrees = time * step;
     this.rotationClass(degrees);
     this.setActiveTime();
@@ -85,8 +81,8 @@ export class TimePickerComponent implements OnInit {
         height: ele.currentTarget.offsetHeight
       };
       const degrees = this.core.CalcDegrees(ele, parrentPos, step);
-      let hour = this.hour,
-          minute = this.minute;
+      let hour = this.time.hour,
+          minute = this.time.minute;
 
       if (this.clockType === 'hour') {
         hour = (degrees / step);
@@ -104,18 +100,18 @@ export class TimePickerComponent implements OnInit {
       const nowMinMin = +min.split(':')[1];
       const nowMaxMin = +max.split(':')[1];
 
-      const nowTime = this.GetNowTime(hour, this.ampm, minute);
+      const nowTime = this.GetNowTime(hour, this.time.ampm, minute);
       if (this.allowed.indexOf(nowTime) > -1) {
-        this.hour = hour;
-        this.minute = minute;
+        this.time.hour = hour;
+        this.time.minute = minute;
         this.rotationClass(degrees);
         this.setActiveTime();
       }else if (this.clockType === 'hour' && (hour === nowMinHour && minute <= nowMinMin)) {
-        this.hour = nowMinHour;
-        this.minute = nowMinMin;
+        this.time.hour = nowMinHour;
+        this.time.minute = nowMinMin;
       }else if (this.clockType === 'hour' && (hour === nowMaxHour && minute >= nowMaxMin)) {
-        this.hour = nowMaxHour;
-        this.minute = nowMaxMin;
+        this.time.hour = nowMaxHour;
+        this.time.minute = nowMaxMin;
       }
     }
   }
@@ -127,7 +123,7 @@ export class TimePickerComponent implements OnInit {
   }
 
   checkBet() {
-    const nowTime = this.GetNowTime(this.hour, this.ampm, this.minute);
+    const nowTime = this.GetNowTime(this.time.hour, this.time.ampm, this.time.minute);
     if (this.allowed.indexOf(nowTime) === -1) {
       this.ParseStringToTime(this.config.rangeTime.start);
       this.setArrow(null);
