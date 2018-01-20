@@ -84,22 +84,7 @@ export class TimePickerComponent implements OnInit {
         width: ele.currentTarget.offsetWidth,
         height: ele.currentTarget.offsetHeight
       };
-      const targetX = clock.width / 2;
-      const targetY = clock.height / 2;
-      const Vx = Math.round((ele.clientX - parrentPos.left) - targetX);
-      const Vy = Math.round(targetY - (ele.clientY - parrentPos.top));
-      let radians = -Math.atan2(Vy, Vx);
-      radians += 2.5 * Math.PI;
-
-      let degrees = Math.round(radians * 180 / Math.PI);
-      const degMod = degrees % step;
-      if (degMod === 0) {
-        return;
-      } else if (degMod >= step / 2) {
-        degrees = degrees + (step - degMod);
-      } else if (degMod < step / 2) {
-        degrees = degrees - degMod;
-      }
+      const degrees = this.core.CalcDegrees(ele, parrentPos, step);
       let hour = this.hour,
           minute = this.minute;
 
