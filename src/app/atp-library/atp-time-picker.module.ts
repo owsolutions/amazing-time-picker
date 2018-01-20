@@ -4,6 +4,7 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
 import { AtpTimePickerComponent } from './atp-time-picker/atp-time-picker.component';
 import { AmazingTimePickerService } from './atp-time-picker.service';
 import { AtpDirective } from './atp.directive';
+import { AtpCoreService } from './atp-core.service';
 
 @NgModule({
   imports: [
@@ -14,7 +15,10 @@ import { AtpDirective } from './atp.directive';
     AtpTimePickerComponent,
     AtpDirective
   ],
-  providers: [AmazingTimePickerService],
+  providers: [
+    AmazingTimePickerService,
+    AtpCoreService
+  ],
   entryComponents: [TimePickerComponent],
   exports: [
     TimePickerComponent,

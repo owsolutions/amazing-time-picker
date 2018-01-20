@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AtpCoreService } from '../atp-core.service';
 
 @Component({
   selector: 'time-picker',
@@ -13,10 +14,10 @@ export class TimePickerComponent implements OnInit {
   public timerElement: any;
   public clockObject: Array<any>;
   public isClicked: boolean;
-  public clockType: String = 'hour';
+  public clockType: 'minute' | 'hour' = 'hour';
   public hour: any = 12;
   public minute: any = 0;
-  public ampm: String = 'AM';
+  public ampm: 'AM' | 'PM' = 'AM';
   public nowTime: any = this.hour;
   public degree: any;
   public config: any;
@@ -24,55 +25,30 @@ export class TimePickerComponent implements OnInit {
   public isPopup = true;
   public allowed: any;
 
+  constructor(
+    private core: AtpCoreService
+  ) { }
+
   public ParseStringToTime (time: string): void {
     time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
-    const [h, m] = time.split(':');
-    let hour = +h > 12 ? +h - 12 : +h;
-    hour = hour === 0 ? 12 : hour;
-    this.hour = hour;
-    this.minute = +m;
-    const ampm = +h >= 12 ? 'PM' : 'AM';
-    this.ampm = ampm;
+    const itime = this.core.StringToTime(time);
+    this.hour = itime.hour;
+    this.minute = itime.minute;
+    this.ampm = itime.ampm;
   }
 
   public GetTime () {
-    let hh = this.ampm === 'PM' ? +this.hour + 12 : +this.hour;
-    if (this.ampm === 'AM' && hh === 12) {
-      hh = 0;
-    }
-    if ( hh === 24) {
-      hh = 12;
-    }
-    hh = hh < 10 ? '0' + hh : '' + hh as any;
-    const mm = this.minute < 10 ? '0' + this.minute : this.minute;
-    const time = `${hh}:${mm}`;
+    const time = this.core.TimeToString({
+      ampm: this.ampm,
+      hour: this.hour,
+      minute: this.minute
+    });
     this.subject.next(time);
   }
 
   clockMaker = () => {
     const type = this.clockType;
-    this.clockObject = [];
-    const timeVal = (type === 'minute') ? 60 : 12;
-    const timeStep = (type === 'minute') ? 5 : 1;
-    const timeStart = (type === 'minute') ? 0 : 1;
-
-    const r = 124;
-    const j = r - 25;
-
-    for (let min = timeStart; min <= timeVal; min += timeStep) {
-      if (min !== 60) {
-        const str = String(min);
-        const x = j * Math.sin(Math.PI * 2 * (min / timeVal));
-        const y = j * Math.cos(Math.PI * 2 * (min / timeVal));
-
-        this.clockObject.push({
-          time: str,
-          left: (x + r - 17) + 'px',
-          top: (-y + r - 17) + 'px',
-          type
-        });
-      }
-    }
+    this.clockObject = this.core.ClockMaker(type);
     this.setArrow(null);
   }
 
@@ -170,30 +146,6 @@ export class TimePickerComponent implements OnInit {
       }
   }
 
-  allowedTimes(min, max) {
-    const allTimes = [];
-    const nowMinHour = +min.split(':')[0];
-    const nowMaxHour = +max.split(':')[0];
-    const nowMinMin = +min.split(':')[1];
-    const nowMaxMin = +max.split(':')[1];
-    for (let i = nowMinHour; i <= nowMaxHour; i++) {
-      let j = 0,
-          jDest = 59;
-      if (i === nowMinHour) {
-        j = nowMinMin;
-      }else if (i === nowMaxHour) {
-        jDest = nowMaxMin;
-      }
-      for (j; j <= jDest; j++) {
-        const hour = i <= 12 ? i : i - 12;
-        const minute = j;
-        const ampm = i < 12 ? 'AM' : 'PM';
-        allTimes.push(hour + ':' + minute + ' ' + ampm);
-      }
-    }
-    return allTimes;
-  }
-
   modalAnimation() {
     setTimeout(() => {
       this.activeModal = true;
@@ -201,20 +153,20 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allowed = this.allowedTimes(this.config.rangeTime.start, this.config.rangeTime.end);
+    this.allowed = this.core.allowedTimes (this.config.rangeTime.start, this.config.rangeTime.end);
     this.clockMaker();
     this.modalAnimation();
   }
 
   Close(e: any) {
-      if (e.target === e.currentTarget) {
-        if (this.isPopup === true) {
-          this.activeModal = false;
-          setTimeout(() => {
-            this.appRef.detachView(this._ref.hostView);
-            this._ref.destroy();
-          }, 400);
-        }
+    if (e.target === e.currentTarget) {
+      if (this.isPopup === true) {
+        this.activeModal = false;
+        setTimeout(() => {
+          this.appRef.detachView(this._ref.hostView);
+          this._ref.destroy();
+        }, 400);
       }
+    }
   }
 }
