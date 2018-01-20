@@ -31,3 +31,10 @@ export interface IClockNumber {
   top: string;
   type: String;
 }
+
+export interface IDisplayPreference {
+  minute?: Function;
+  hour?: Function;
+  separator?: string;
+  period?(period: 'AM' | 'PM');
+}
