@@ -18,7 +18,7 @@
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
             [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
-            {{clock.time}}
+            {{GetClockTime(clock)}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
           <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.arrowStyle.background}">

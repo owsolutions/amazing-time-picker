@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IClockNumber, IDisplayPreference } from '../definitions';
-import { PersianDigitPreference } from '../preferences';
+import { IClockNumber, IDisplayPreference, IClockPreference } from '../definitions';
+import { PersianDigitPreference, PersianClockPreference } from '../preferences';
 
 @Component({
   selector: 'time-picker',
@@ -26,6 +26,7 @@ export class TimePickerComponent implements OnInit {
   public isPopup = true;
   public allowed: any;
   private displayPreference: IDisplayPreference;
+  private clockPreference: IClockPreference;
 
   public ParseStringToTime (time: string): void {
     time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
@@ -212,6 +213,7 @@ export class TimePickerComponent implements OnInit {
     this.clockMaker();
     this.modalAnimation();
     this.displayPreference = PersianDigitPreference;
+    this.clockPreference = PersianClockPreference;
   }
 
   Close(e: any) {
@@ -249,6 +251,18 @@ export class TimePickerComponent implements OnInit {
       return this.displayPreference.hour(this.hour);
     }
     return this.hour;
+  }
+  public GetClockTime(clock: IClockNumber) {
+    if ( ! this.clockPreference) {
+      return clock.time;
+    }
+    if ( this.clockType === 'hour' && this.clockPreference.hour) {
+      return this.clockPreference.hour(clock.time);
+    }
+    if ( this.clockType === 'minute' && this.clockPreference.minute) {
+      return this.clockPreference.minute(clock.time);
+    }
+    return clock.time;
   }
 
 }
