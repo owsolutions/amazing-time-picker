@@ -1,6 +1,6 @@
 {
   "name": "amazing-time-picker",
-  "version": "1.3.13",
+  "version": "1.4.0",
   "license": "MIT",
   "repository": "https://github.com/owsolutions/amazing-time-picker.git",
   "scripts": {
@@ -10,15 +10,17 @@
     "build": "ng build -e=prod -prod  --progress false",
     "test": "ng test",
     "lint": "ng lint",
+    "ci": "npm run serve & npm run serve:beds:5 & npm run cypress:ci",
+    "serve:beds:5": "PORT=12002 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng5-test-bed/dist",
     "cypress:ci": "./node_modules/.bin/cypress run",
-    "ci": "npm run serve & npm run cypress:ci",
     "serve": "PORT=8080 ./node_modules/.bin/serve dist",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",
     "hmr": "ng serve --hmr -e=hmr --port=8080",
     "packagr": "ng-packagr -p ng-package.json",
     "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
-    "publisher": "rm npm_dist -Rf && npm run packagr"
+    "build:npm": "npm run publisher",
+    "publisher": "rm npm_dist -Rf && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz"
   },
   "private": false,
   "dependencies": {
