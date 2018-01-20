@@ -26,6 +26,9 @@ script:
   - npm run build
   # Bundle for npm package
   - npm run build:npm
+  
+  # Test within testbeds
+  - sh scripts/angular4-test.sh
 
 after_success:
   - bash ./deploy.sh
