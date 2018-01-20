@@ -19,6 +19,7 @@ export class ExamplePersianComponent implements OnInit {
   ts = encode(`
   import { Component } from '@angular/core';
   import { AmazingTimePickerService } from 'amazing-time-picker';
+  import { PersianDigitPreference } from 'amazing-time-picker/preferences';
 
   @Component({
       selector: 'app-test',
