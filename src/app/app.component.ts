@@ -8,5 +8,3 @@ declare var require: any;
 export class AppComponent {
   logo = require('./atp.png');
 }
-
-console.log('This is a real build!');
