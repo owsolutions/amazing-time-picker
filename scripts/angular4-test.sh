@@ -17,7 +17,7 @@ cd amazing-time-picker-test-beds;
 
 cd /tmp/amazing-time-picker-test-beds/ng5-test-bed;
 npm install;
-npm install ${TRAVIS_BUILD_DIR}/npm_dist;
+npm install ${TRAVIS_BUILD_DIR}/npm_dist/dist.tgz;
 npm run build;
 
 echo "Now we have lifted all test beds!";

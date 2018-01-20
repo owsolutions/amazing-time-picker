@@ -19,8 +19,8 @@
     "hmr": "ng serve --hmr -e=hmr --port=8080",
     "packagr": "ng-packagr -p ng-package.json",
     "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
-    "publisher": "rm npm_dist -Rf && npm run packagr",
-    "build:npm": "rm npm_dist -Rf && npm run packagr"
+    "build:npm": "npm run publisher",
+    "publisher": "rm npm_dist -Rf && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz"
   },
   "private": false,
   "dependencies": {
