@@ -30,6 +30,7 @@ script:
   # Test within testbeds
   - sh scripts/angular4-test.sh
   - npm run ci
+  - npm run build:github
 
 after_success:
   - bash ./deploy.sh
