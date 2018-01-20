@@ -104,8 +104,7 @@ export class TimePickerComponent implements OnInit {
       const nowMinMin = +min.split(':')[1];
       const nowMaxMin = +max.split(':')[1];
 
-      const Hour = (hour === 12 && this.ampm === 'AM') ? '0' : hour;
-      const nowTime = Hour + ':' + minute + ' ' + this.ampm;
+      const nowTime = this.GetNowTime(hour, this.ampm, minute);
       if (this.allowed.indexOf(nowTime) > -1) {
         this.hour = hour;
         this.minute = minute;
@@ -121,14 +120,19 @@ export class TimePickerComponent implements OnInit {
     }
   }
 
+  private GetNowTime (hour: number, ampm: 'AM' | 'PM', minute: number): string {
+    const Hour = (hour === 12 && ampm === 'AM') ? '0' : hour;
+    const nowTime = Hour + ':' + minute + ' ' + ampm;
+    return nowTime;
+  }
+
   checkBet() {
-    const Hour = (this.hour === 12 && this.ampm === 'AM') ? '0' : this.hour;
-      const nowTime = Hour + ':' + this.minute + ' ' + this.ampm;
-      if (this.allowed.indexOf(nowTime) === -1) {
-        this.ParseStringToTime(this.config.rangeTime.start);
-        this.setArrow(null);
-        this.setActiveTime();
-      }
+    const nowTime = this.GetNowTime(this.hour, this.ampm, this.minute);
+    if (this.allowed.indexOf(nowTime) === -1) {
+      this.ParseStringToTime(this.config.rangeTime.start);
+      this.setArrow(null);
+      this.setActiveTime();
+    }
   }
 
   modalAnimation() {
