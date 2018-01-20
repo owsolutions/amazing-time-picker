@@ -37,7 +37,6 @@ export class ExampleComponent {
       this.selectedTimeDark = time;
     });
   }
-
   toggleTab() {
 
   }

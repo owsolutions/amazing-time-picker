@@ -211,6 +211,10 @@ export class TimePickerComponent implements OnInit {
     this.allowed = this.allowedTimes(this.config.rangeTime.start, this.config.rangeTime.end);
     this.clockMaker();
     this.modalAnimation();
+    console.log(this.config);
+    if (this.config.preference) {
+      this.preference = this.config.preference;
+    }
   }
 
   Close(e: any) {

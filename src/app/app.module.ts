@@ -8,6 +8,7 @@ import { TabsComponent } from './presentation/tabs/tabs.component';
 import { TabComponent } from './presentation/tab/tab.component';
 import { ExampleComponent } from './presentation/example/example.component';
 import { ApiComponent } from './presentation/api/api.component';
+import { ExamplePersianComponent } from './presentation/examples/example-persian/example-persian.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ApiComponent } from './presentation/api/api.component';
     TabComponent,
     ExampleComponent,
     ApiComponent,
+    ExamplePersianComponent,
   ],
   imports: [
     BrowserModule,
