@@ -19,34 +19,13 @@ dist: trusty
 addons:
   chrome: stable
 
-before_install:  
- - export CHROME_BIN=/usr/bin/google-chrome
- - export DISPLAY=:99.0
- - sh -e /etc/init.d/xvfb start
- - sudo apt-get update
- - sudo apt-get install -y libappindicator1 fonts-liberation
- - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
- - sudo dpkg -i google-chrome*.deb
-
 script:
-  # First build them to make sure everything is fine
+
   - npm run lint
+  # Build the project itself
   - npm run build
-  - npm run publisher
-
-  # Now really build them
-  - npm run build
-  - npm run ci
-  - npm run publisher
-
-before_deploy:
-  cd dist;
-  
-deploy:
-  provider: npm
-  email: "connexion.founder@outlook.com"
-  api_key: $NPM_TOKEN
-  skip_cleanup: true
+  # Bundle for npm package
+  - npm run build:npm
 
 after_success:
   - bash ./deploy.sh
