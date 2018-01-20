@@ -28,7 +28,7 @@ script:
   - npm run build:npm
   
   # Test within testbeds
-  - sh scripts/angular4-test.sh
+  - sh scripts/init-test-beds.sh
   - npm run ci
   - npm run build:github
 
