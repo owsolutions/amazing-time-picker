@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { IClockNumber } from '../definitions';
 @Component({
   selector: 'time-picker',
   templateUrl: './time-picker.component.html',
@@ -49,9 +49,8 @@ export class TimePickerComponent implements OnInit {
     this.subject.next(time);
   }
 
-  clockMaker = () => {
-    const type = this.clockType;
-    this.clockObject = [];
+  private GenerateClockNumbers (type: String): Array<IClockNumber> {
+    const items = [];
     const timeVal = (type === 'minute') ? 60 : 12;
     const timeStep = (type === 'minute') ? 5 : 1;
     const timeStart = (type === 'minute') ? 0 : 1;
@@ -65,7 +64,7 @@ export class TimePickerComponent implements OnInit {
         const x = j * Math.sin(Math.PI * 2 * (min / timeVal));
         const y = j * Math.cos(Math.PI * 2 * (min / timeVal));
 
-        this.clockObject.push({
+        items.push({
           time: str,
           left: (x + r - 17) + 'px',
           top: (-y + r - 17) + 'px',
@@ -73,6 +72,11 @@ export class TimePickerComponent implements OnInit {
         });
       }
     }
+    return items;
+  }
+  clockMaker = () => {
+    const type = this.clockType;
+    this.clockObject = this.GenerateClockNumbers(type);
     this.setArrow(null);
   }
 

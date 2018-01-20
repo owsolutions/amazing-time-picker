@@ -24,3 +24,10 @@ export interface Pallete {
 export interface IDialogResult {
   afterClose(): Observable<string>;
 }
+
+export interface IClockNumber {
+  time: String;
+  left: string;
+  top: string;
+  type: String;
+}
