@@ -1,4 +1,4 @@
-import { IDisplayPreference, IClockPreference } from './definitions';
+import { IDisplayPreference } from './definitions';
 
 
 /**
@@ -22,10 +22,7 @@ export const PersianDigitPreference: IDisplayPreference = {
   hour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
   minute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
   separator: ':',
-  period: (x) => x === 'AM' ? 'صبح' : 'عصر'
-};
-
-export const PersianClockPreference: IClockPreference = {
-  hour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
-  minute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join('')
+  period: (x) => x === 'AM' ? 'صبح' : 'عصر',
+  clockHour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
+  clockMinute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join('')
 };

@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IClockNumber, IDisplayPreference, IClockPreference } from '../definitions';
-import { PersianDigitPreference, PersianClockPreference } from '../preferences';
+import { IClockNumber, IDisplayPreference } from '../definitions';
 
 @Component({
   selector: 'time-picker',
@@ -25,8 +24,8 @@ export class TimePickerComponent implements OnInit {
   public appRef: any;
   public isPopup = true;
   public allowed: any;
-  private displayPreference: IDisplayPreference;
-  private clockPreference: IClockPreference;
+  private preference: IDisplayPreference;
+
 
   public ParseStringToTime (time: string): void {
     time = (time === '' || time === undefined || time === null) ? this.hour + ':' + this.minute : time;
@@ -212,8 +211,6 @@ export class TimePickerComponent implements OnInit {
     this.allowed = this.allowedTimes(this.config.rangeTime.start, this.config.rangeTime.end);
     this.clockMaker();
     this.modalAnimation();
-    this.displayPreference = PersianDigitPreference;
-    this.clockPreference = PersianClockPreference;
   }
 
   Close(e: any) {
@@ -229,38 +226,38 @@ export class TimePickerComponent implements OnInit {
   }
 
   public GetSeparator () {
-    if (this.displayPreference && this.displayPreference.separator) {
-      return this.displayPreference.separator;
+    if (this.preference && this.preference.separator) {
+      return this.preference.separator;
     }
     return ':';
   }
   public GetPeriod (period: 'AM' | 'PM') {
-    if (this.displayPreference && this.displayPreference.period) {
-      return this.displayPreference.period(period);
+    if (this.preference && this.preference.period) {
+      return this.preference.period(period);
     }
     return period;
   }
   public GetMinute () {
-    if (this.displayPreference && this.displayPreference.minute) {
-      return this.displayPreference.minute(this.minute);
+    if (this.preference && this.preference.minute) {
+      return this.preference.minute(this.minute);
     }
     return this.minute;
   }
   public GetHour () {
-    if (this.displayPreference && this.displayPreference.hour) {
-      return this.displayPreference.hour(this.hour);
+    if (this.preference && this.preference.hour) {
+      return this.preference.hour(this.hour);
     }
     return this.hour;
   }
   public GetClockTime(clock: IClockNumber) {
-    if ( ! this.clockPreference) {
+    if ( ! this.preference) {
       return clock.time;
     }
-    if ( this.clockType === 'hour' && this.clockPreference.hour) {
-      return this.clockPreference.hour(clock.time);
+    if ( this.clockType === 'hour' && this.preference.clockHour) {
+      return this.preference.clockHour(clock.time);
     }
-    if ( this.clockType === 'minute' && this.clockPreference.minute) {
-      return this.clockPreference.minute(clock.time);
+    if ( this.clockType === 'minute' && this.preference.clockMinute) {
+      return this.preference.clockMinute(clock.time);
     }
     return clock.time;
   }

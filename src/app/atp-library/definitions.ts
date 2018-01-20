@@ -38,11 +38,12 @@ export interface IDisplayPreference {
   minute?: Function;
   hour?: Function;
   separator?: string;
+  labels?: {
+    ok?: string;
+    cancel?: string;
+  };
   period?(period: 'AM' | 'PM');
+  clockMinute?(minute: any);
+  clockHour?(hour: any);
 }
 
-
-export interface IClockPreference {
-  minute?: Function;
-  hour?: Function;
-}
