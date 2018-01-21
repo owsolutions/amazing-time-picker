@@ -178,7 +178,11 @@ export class TimePickerComponent implements OnInit {
     if (this.preference && this.preference.minute) {
       return this.preference.minute(this.time.minute);
     }
-    return this.time.minute;
+    let min: string = this.time.minute.toString();
+    if (+min < 10) {
+      min = '0' + min;
+    }
+    return min;
   }
   public GetHour () {
     if (this.preference && this.preference.hour) {
