@@ -23,8 +23,8 @@ export class ExamplePersianComponent implements OnInit {
 
   @Component({
       selector: 'app-test',
-      templateUrl: './test.component.html',
-      styleUrls: ['./test.component.scss']
+      ${'templateUrl'}: './test.component.html',
+      ${'styleUrls'}: ['./test.component.scss']
   })
   export class TestComponent {
       public selectedTime: string;
