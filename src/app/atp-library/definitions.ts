@@ -24,3 +24,10 @@ export interface Pallete {
 export interface IDialogResult {
   afterClose(): Observable<string>;
 }
+
+
+export interface ITime {
+  minute: number;
+  hour: number;
+  ampm: 'AM' | 'PM';
+}

@@ -43,6 +43,6 @@ export class ExampleComponent {
   }
 
   onCustomEvent(response: string): void {
-    console.log(response);
+
   }
 }
