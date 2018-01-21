@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PersianDigitPreference } from '../../../atp-library/preferences';
+import { PersianPreference } from '../../../atp-library/preferences';
 import { AmazingTimePickerService } from '../../../atp-library/atp-time-picker.service';
 
 const encode = (x) => x.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
@@ -33,7 +33,7 @@ export class ExamplePersianComponent implements OnInit {
   ts = encode(`
   import { Component } from '@angular/core';
   import { AmazingTimePickerService } from 'amazing-time-picker';
-  import { PersianDigitPreference } from 'amazing-time-picker/preferences';
+  import { PersianPreference } from 'amazing-time-picker/preferences';
 
   @Component({
       selector: 'app-test',
@@ -50,7 +50,7 @@ export class ExamplePersianComponent implements OnInit {
            * you can explore built-in preferences or write for yourself
            */
           const amazingTimePicker = this.atp.open({
-            preference: PersianDigitPreference
+            preference: PersianPreference
           });
           amazingTimePicker.afterClose().subscribe(time => {
               this.selectedTime = time;
@@ -69,7 +69,7 @@ export class ExamplePersianComponent implements OnInit {
 
   public openPersian () {
     const amazingTimePicker = this.atp.open({
-      preference: PersianDigitPreference
+      preference: PersianPreference
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;

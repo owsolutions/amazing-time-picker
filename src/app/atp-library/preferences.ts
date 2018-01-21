@@ -7,7 +7,7 @@ const arabicNumbers = {
 /**
  * Formats the numbers display'n to user to arabic instead of latin numbers
  */
-export const PersianDigitPreference: IDisplayPreference = {
+export const PersianPreference: IDisplayPreference = {
   hour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
   minute: (x) => {
     let exp = (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join('');
@@ -23,5 +23,17 @@ export const PersianDigitPreference: IDisplayPreference = {
   labels: {
     ok: 'تایید',
     cancel: 'لغو'
+  }
+};
+
+export const ArabicPreference: IDisplayPreference = {
+  hour: PersianPreference.hour,
+  minute: PersianPreference.minute,
+  separator: ':',
+  period: (x) => x === 'AM' ? 'صباحا' : 'مساء',
+  clockHour: PersianPreference.clockHour,
+  labels: {
+    ok: 'حسنا',
+    cancel: 'إلغاء'
   }
 };
