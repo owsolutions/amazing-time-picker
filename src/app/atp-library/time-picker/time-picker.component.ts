@@ -176,15 +176,15 @@ export class TimePickerComponent implements OnInit {
   }
   public GetMinute () {
     if (this.preference && this.preference.minute) {
-      return this.preference.minute(this.minute);
+      return this.preference.minute(this.time.minute);
     }
-    return this.minute;
+    return this.time.minute;
   }
   public GetHour () {
     if (this.preference && this.preference.hour) {
-      return this.preference.hour(this.hour);
+      return this.preference.hour(this.time.hour);
     }
-    return this.hour;
+    return this.time.hour;
   }
   public GetClockTime(clock: IClockNumber) {
     if ( ! this.preference) {
