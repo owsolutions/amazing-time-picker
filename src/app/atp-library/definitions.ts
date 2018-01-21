@@ -33,8 +33,6 @@ export interface IClockNumber {
   type: String;
 }
 
-
-
 export interface IDisplayPreference {
   minute?: Function;
   hour?: Function;
@@ -46,5 +44,11 @@ export interface IDisplayPreference {
   period?(period: 'AM' | 'PM');
   clockMinute?(minute: any);
   clockHour?(hour: any);
+}
+
+export interface ITime {
+  minute: number;
+  hour: number;
+  ampm: 'AM' | 'PM';
 }
 
