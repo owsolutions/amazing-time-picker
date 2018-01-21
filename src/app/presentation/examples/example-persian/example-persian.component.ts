@@ -12,6 +12,20 @@ const encode = (x) => x.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
   styleUrls: ['./example-persian.component.scss']
 })
 export class ExamplePersianComponent implements OnInit {
+  interface = encode(`
+  export interface IDisplayPreference {
+    minute?: Function;
+    hour?: Function;
+    separator?: string;
+    labels?: {
+      ok?: string;
+      cancel?: string;
+    };
+    period?(period: 'AM' | 'PM');
+    clockMinute?(minute: any);
+    clockHour?(hour: any);
+  }
+  `);
   html = encode(`
    <button (click)="open()">Time</button>
    <input type="time" value="">

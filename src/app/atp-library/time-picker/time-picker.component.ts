@@ -203,4 +203,17 @@ export class TimePickerComponent implements OnInit {
     return clock.time;
   }
 
+  public GetLabel (key: string) {
+    const defaults = {
+      'ok': 'Ok',
+      'cancel': 'Cancel'
+    };
+    if (this.preference.labels && this.preference.labels.ok) {
+      defaults.ok = this.preference.labels.ok;
+    }
+    if (this.preference.labels && this.preference.labels.ok) {
+      defaults.cancel = this.preference.labels.cancel;
+    }
+    return defaults[key];
+  }
 }

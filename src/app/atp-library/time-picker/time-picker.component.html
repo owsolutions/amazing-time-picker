@@ -28,8 +28,8 @@
         </div>
     </div>
     <div class="time-picker-footer">
-        <button (click)="Close($event);">Cancel</button>
-        <button (click)="GetTime();Close($event);" class="atp-ref-dialog-close">OK</button>
+        <button (click)="Close($event);">{{GetLabel('cancel')}}</button>
+        <button (click)="GetTime();Close($event);" class="atp-ref-dialog-close">{{GetLabel('ok')}}</button>
     </div>
   </div>
 </div>

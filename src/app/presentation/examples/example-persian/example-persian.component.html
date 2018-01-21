@@ -2,6 +2,14 @@
 <p>You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component </p>
 <pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
 <p>Then add it inside your <code  class="pre-code S">test.component.ts</code> or any other component that you want to use timepicker inside of that.</p>
+
+<p>We do accept a parameter called preferrence, which can help you to modify the appreance of the dialog</p>
+Please take a review of the interface here:
+<pre>
+  <code [innerHTML]="interface"></code>
+</pre>
+
+This can be used to override the modal behavior. We have added a builtin display preference for Persian Language.
 <br>
 <div class="tab-wrapper" id="sec2">
   <div class="tab-header">
@@ -22,14 +30,13 @@
     </app-tab>
   </app-tabs>
   <div class="tab-content">
-      <div class="row">
-          <div class="col s12">
-              <button class="waves-effect waves-light btn "  (click)="openPersian()">Time</button>
-              <div class="input-field inline">
-              <input type="time" class="validate" [value]="selectedTime">
-              </div>
-          </div>
+    <div class="row">
+      <div class="col s12">
+        <button class="waves-effect waves-light btn "  (click)="openPersian()">Time</button>
+        <div class="input-field inline">
+        <input type="time" class="validate" [value]="selectedTime">
+        </div>
       </div>
+    </div>
   </div>
 </div>
-

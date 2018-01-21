@@ -19,5 +19,9 @@ export const PersianDigitPreference: IDisplayPreference = {
   separator: ':',
   period: (x) => x === 'AM' ? 'صبح' : 'عصر',
   clockHour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
-  clockMinute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join('')
+  clockMinute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
+  labels: {
+    ok: 'تایید',
+    cancel: 'لغو'
+  }
 };
