@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ArabicPreference } from '../../../atp-library/preferences';
 import { AmazingTimePickerService } from '../../../atp-library/atp-time-picker.service';
 
 const encode = (x) => x.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
@@ -37,7 +36,7 @@ export class ExampleArabicComponent implements OnInit {
            * you can explore built-in preferences or write for yourself
            */
           const amazingTimePicker = this.atp.open({
-            preference: ArabicPreference
+            locale: 'ar'
           });
           amazingTimePicker.afterClose().subscribe(time => {
               this.selectedTime = time;
