@@ -1,8 +1,7 @@
 import { IDisplayPreference } from './definitions';
 
-const arabic = new Intl.NumberFormat('fa-IR');
-const persian = new Intl.NumberFormat('ar-AE');
-
+const arabic = new Intl.NumberFormat('ar-AE');
+const persian = new Intl.NumberFormat('fa-IR');
 
 export const PersianPreference: IDisplayPreference = {
   hour: (x) => persian.format(x),
@@ -24,7 +23,6 @@ export const PersianPreference: IDisplayPreference = {
 };
 
 export const ArabicPreference: IDisplayPreference = {
-
   hour: (x) => persian.format(x),
   minute: (x) => {
     let exp = persian.format(x);
@@ -40,5 +38,16 @@ export const ArabicPreference: IDisplayPreference = {
   labels: {
     ok: 'حسنا',
     cancel: 'إلغاء'
+  }
+};
+
+export const Preference = (locale: string): IDisplayPreference => {
+  switch (locale) {
+    case 'fa':
+        return PersianPreference;
+    case 'ar':
+        return ArabicPreference;
+    default:
+      return null;
   }
 };

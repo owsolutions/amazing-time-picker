@@ -19,13 +19,15 @@ export class AtpDirective {
     const theme = ele.getAttribute('theme');
     const start = ele.getAttribute('start');
     const end = ele.getAttribute('end');
+    const locale = ele.getAttribute('locale') || 'en';
     let arrowStyle = ele.getAttribute('arrowStyle');
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
     const timePickerFunction = this.atp.open({
       time,
       theme,
       rangeTime: { start, end},
-      'arrowStyle': arrowStyle
+      'arrowStyle': arrowStyle,
+      locale
     });
     timePickerFunction.afterClose().subscribe(retTime => {
       ele.value = retTime;

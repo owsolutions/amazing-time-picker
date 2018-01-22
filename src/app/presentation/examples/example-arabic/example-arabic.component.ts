@@ -56,7 +56,7 @@ export class ExampleArabicComponent implements OnInit {
 
   public openArabic () {
     const amazingTimePicker = this.atp.open({
-      preference: ArabicPreference
+      locale: 'ar'
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;

@@ -28,7 +28,7 @@ export class TimePickerComponent implements OnInit {
   public appRef: any;
   public isPopup = true;
   public allowed: any;
-  private preference: IDisplayPreference;
+  public preference: IDisplayPreference;
 
 
   constructor(
@@ -144,10 +144,6 @@ export class TimePickerComponent implements OnInit {
     this.allowed = this.core.allowedTimes (this.config.rangeTime.start, this.config.rangeTime.end);
     this.clockMaker();
     this.modalAnimation();
-    console.log(this.config);
-    if (this.config.preference) {
-      this.preference = this.config.preference;
-    }
   }
 
   Close(e: any) {
@@ -208,10 +204,10 @@ export class TimePickerComponent implements OnInit {
       'ok': 'Ok',
       'cancel': 'Cancel'
     };
-    if (this.preference.labels && this.preference.labels.ok) {
+    if ((this.preference && this.preference.labels && this.preference.labels.ok)) {
       defaults.ok = this.preference.labels.ok;
     }
-    if (this.preference.labels && this.preference.labels.ok) {
+    if ((this.preference && this.preference.labels && this.preference.labels.cancel)) {
       defaults.cancel = this.preference.labels.cancel;
     }
     return defaults[key];

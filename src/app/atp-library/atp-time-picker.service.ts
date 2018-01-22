@@ -3,6 +3,7 @@ import { TimePickerComponent } from './time-picker/time-picker.component';
 import { TimePickerConfig, IDialogResult } from './definitions';
 import { Observable } from 'rxjs/Rx';
 import { Subject } from 'rxjs/Subject';
+import { Preference } from './preferences';
 
 @Injectable()
 export class AmazingTimePickerService {
@@ -21,7 +22,7 @@ export class AmazingTimePickerService {
       theme: ['light', 'dark'].indexOf(config.theme) > 0 ? config.theme : 'light' || config.theme || 'light',
       rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {},
-      preference: config.preference || null
+      locale: config.locale || 'en',
     };
     config.rangeTime = {
       start: config.rangeTime.start || '0:0',
@@ -43,6 +44,7 @@ export class AmazingTimePickerService {
     tsc.instance.appRef = this.appRef;
     tsc.instance.timerElement = '';
     tsc.instance.config = config;
+    tsc.instance.preference = Preference(config.locale);
     tsc.instance.ParseStringToTime(config.time);
     return {
       afterClose: function () {

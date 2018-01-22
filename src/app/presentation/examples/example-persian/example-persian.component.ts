@@ -69,7 +69,7 @@ export class ExamplePersianComponent implements OnInit {
 
   public openPersian () {
     const amazingTimePicker = this.atp.open({
-      preference: PersianPreference
+      locale: 'fa'
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;

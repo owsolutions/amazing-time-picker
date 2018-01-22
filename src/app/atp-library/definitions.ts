@@ -9,7 +9,8 @@ export interface TimePickerConfig {
   theme?: 'dark' | 'light';
   rangeTime?: RangeTime;
   arrowStyle?: Pallete;
-  preference?: IDisplayPreference;
+  locale?: string;
+  // preference?: IDisplayPreference;
 }
 
 export interface RangeTime {

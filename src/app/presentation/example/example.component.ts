@@ -24,10 +24,6 @@ export class ExampleComponent {
     const amazingTimePicker = this.atp.open({
       time: this.selectedTimeDark,
       theme: 'dark',
-      rangeTime: {
-        start: '3:50',
-        end: '18:30'
-      },
       arrowStyle: {
         background: 'red',
         color: 'white'

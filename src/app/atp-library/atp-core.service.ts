@@ -82,7 +82,6 @@ export class AtpCoreService {
     };
   }
 
-
   /**
    * @experimental
    */
@@ -109,6 +108,4 @@ export class AtpCoreService {
     }
     return degrees;
   }
-
-
 }
