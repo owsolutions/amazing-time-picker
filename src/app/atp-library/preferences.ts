@@ -1,16 +1,13 @@
 import { IDisplayPreference } from './definitions';
 
-const arabicNumbers = {
-  '1': '۱', '2': '۲', '3': '۳', '4': '۴', '5': '۵', '6': '۶', '7': '۷', '8': '۸', '9': '۹', '0': '۰'
-};
+const arabic = new Intl.NumberFormat('fa-IR');
+const persian = new Intl.NumberFormat('ar-AE');
 
-/**
- * Formats the numbers display'n to user to arabic instead of latin numbers
- */
+
 export const PersianPreference: IDisplayPreference = {
-  hour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
+  hour: (x) => persian.format(x),
   minute: (x) => {
-    let exp = (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join('');
+    let exp = persian.format(x);
     if (exp.length === 1) {
       exp = '۰' + exp;
     }
@@ -18,8 +15,8 @@ export const PersianPreference: IDisplayPreference = {
   },
   separator: ':',
   period: (x) => x === 'AM' ? 'صبح' : 'عصر',
-  clockHour: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
-  clockMinute: (x) => (x + '').split('').map(m => arabicNumbers[m] ? arabicNumbers[m] : m).join(''),
+  clockHour: (x) => persian.format(x),
+  clockMinute: (x) => persian.format(x),
   labels: {
     ok: 'تایید',
     cancel: 'لغو'
@@ -27,11 +24,19 @@ export const PersianPreference: IDisplayPreference = {
 };
 
 export const ArabicPreference: IDisplayPreference = {
-  hour: PersianPreference.hour,
-  minute: PersianPreference.minute,
+
+  hour: (x) => persian.format(x),
+  minute: (x) => {
+    let exp = persian.format(x);
+    if (exp.length === 1) {
+      exp = '۰' + exp;
+    }
+    return exp;
+  },
   separator: ':',
   period: (x) => x === 'AM' ? 'صباحا' : 'مساء',
-  clockHour: PersianPreference.clockHour,
+  clockHour: (x) => persian.format(x),
+  clockMinute: (x) => persian.format(x),
   labels: {
     ok: 'حسنا',
     cancel: 'إلغاء'
