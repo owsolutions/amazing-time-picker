@@ -1,6 +1,6 @@
 {
   "name": "amazing-time-picker",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "license": "MIT",
   "repository": "https://github.com/owsolutions/amazing-time-picker.git",
   "scripts": {
@@ -12,7 +12,7 @@
     "lint": "ng lint",
     "ci": "npm run serve & npm run serve:beds:5 & npm run cypress:ci",
     "serve:beds:5": "PORT=12002 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng5-test-bed/dist",
-    "cypress:ci": "./node_modules/.bin/cypress run",
+    "cypress:ci": "./node_modules/.bin/cypress run ",
     "serve": "PORT=8080 ./node_modules/.bin/serve dist",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",

@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { IClockNumber, IDisplayPreference } from '../definitions';
 import { AtpCoreService } from '../atp-core.service';
 import { ITime } from '../definitions';
 
@@ -27,6 +28,8 @@ export class TimePickerComponent implements OnInit {
   public appRef: any;
   public isPopup = true;
   public allowed: any;
+  public preference: IDisplayPreference;
+
 
   constructor(
     private core: AtpCoreService
@@ -153,5 +156,60 @@ export class TimePickerComponent implements OnInit {
         }, 400);
       }
     }
+  }
+
+  public GetSeparator () {
+    if (this.preference && this.preference.separator) {
+      return this.preference.separator;
+    }
+    return ':';
+  }
+  public GetPeriod (period: 'AM' | 'PM') {
+    if (this.preference && this.preference.period) {
+      return this.preference.period(period);
+    }
+    return period;
+  }
+  public GetMinute () {
+    if (this.preference && this.preference.minute) {
+      return this.preference.minute(this.time.minute);
+    }
+    let min: string = this.time.minute.toString();
+    if (+min < 10) {
+      min = '0' + min;
+    }
+    return min;
+  }
+  public GetHour () {
+    if (this.preference && this.preference.hour) {
+      return this.preference.hour(this.time.hour);
+    }
+    return this.time.hour;
+  }
+  public GetClockTime(clock: IClockNumber) {
+    if ( ! this.preference) {
+      return clock.time;
+    }
+    if ( this.clockType === 'hour' && this.preference.clockHour) {
+      return this.preference.clockHour(clock.time);
+    }
+    if ( this.clockType === 'minute' && this.preference.clockMinute) {
+      return this.preference.clockMinute(clock.time);
+    }
+    return clock.time;
+  }
+
+  public GetLabel (key: string) {
+    const defaults = {
+      'ok': 'Ok',
+      'cancel': 'Cancel'
+    };
+    if ((this.preference && this.preference.labels && this.preference.labels.ok)) {
+      defaults.ok = this.preference.labels.ok;
+    }
+    if ((this.preference && this.preference.labels && this.preference.labels.cancel)) {
+      defaults.cancel = this.preference.labels.cancel;
+    }
+    return defaults[key];
   }
 }

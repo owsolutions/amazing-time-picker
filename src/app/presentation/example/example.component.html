@@ -1,5 +1,3 @@
-
-    
 <h2 class="pre-title">Using in component markup</h2>
 <p>After you have installed this module, you can use it within your html templates and give the directive to the any tag. When user closes the dialog, it's gonna update the input value and will listen to input click event to open the dialog.</p>
 <br>
@@ -40,77 +38,133 @@
           <div class="col s12">
                 Time:
                 <div class="input-field inline">
-                    <input type="time" atp-time-picker value="20:55" />
+                    <input type="time" atp-time-picker value="20:55"/>
                 </div>
           </div>
       </div>
   </div>
 </div>
 <br>
-    <h2 class="pre-title">Opening component programmatically</h2>
-    <p>You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component </p>
-    <pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
-    <p>Then add it inside your <code  class="pre-code S">test.component.ts</code> or any other component that you want to use timepicker inside of that.</p>
+<p>
+    When using in component markup we can set Timepicker configuration with using attributes.
+</p>
 <br>
-<div class="tab-wrapper" id="sec2">
-        <div class="tab-header">
-            <div class="row">
-                <div class="col s6 title">Programmatically</div>
-            </div>
+<div class="tab-wrapper" id="sec10">
+    <div class="tab-header">
+        <div class="row">
+            <div class="col s6 title">Directive with configuration</div>
         </div>
-        <app-tabs #tab1>
-            <app-tab tabTitle="test.component.html">
-    <pre style='color:#000000;'>
+    </div>
+    <app-tabs #tab1>
+        <app-tab tabTitle="test.component.html">
+            <pre style='color:#000000;'>
 
-    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#274796; '> (click)</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"open()"</span><span style='color:#a65700; '>></span>Time<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#a65700; '>></span>
-    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{sintax}}"</span><span style='color:#a65700; '>></span>
-   </pre>
-            </app-tab>
-            <app-tab tabTitle="test.component.ts">
-                <div>
-                        <pre style='color:#000000;'>
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> atp-time-picker </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"20:55"</span><span style='color:#274796; '> theme</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"dark"</span><span style='color:#274796; '> locale</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>'fa'</span><span style='color:#274796; '> </span><span style='color:#074726; '>start</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>'18:30'</span><span style='color:#274796; '> end</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"23:00"</span><span style='color:#274796; '> arrowStyle</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{'{'}}'background': 'red', 'color': 'white'{{'}'}}"</span><span style='color:#a65700; '>/></span>
+            </pre>
+        </app-tab>
+        <app-tab tabTitle="test.component.ts">
+            <div>
+            <pre style='color:#000000;'>
+                
     <span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> Component <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>@angular/core</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
-    <span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> AmazingTimePickerService <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>amazing-time-picker</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
-    
+
     @Component<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
         selector<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>app-test</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
-        templateUrl<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>./test.component.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
-        styleUrls<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>./test.component.scss</span><span style='color:#800000; '>'</span><span style='color:#808030; '>]</span>
+        templateUrl<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+        styleUrls<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.scss</span><span style='color:#800000; '>'</span><span style='color:#808030; '>]</span>
     <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span>
+
     <span style='color:#800000; font-weight:bold; '>export</span> <span style='color:#800000; font-weight:bold; '>class</span> TestComponent <span style='color:#800080; '>{{ '{' }}</span>
-        <span style='color:#800000; font-weight:bold; '>public</span> selectedTime<span style='color:#800080; '>:</span> string<span style='color:#800080; '>;</span>
-    
-        <span style='color:#797997; '>constructor</span><span style='color:#808030; '>(</span> <span style='color:#800000; font-weight:bold; '>private</span> atp<span style='color:#800080; '>:</span> AmazingTimePickerService <span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span> <span style='color:#800080; '>{{ '}' }}</span>
-    
-        open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span>
-            <span style='color:#800000; font-weight:bold; '>const</span> amazingTimePicker <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>atp<span style='color:#808030; '>.</span>open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-            amazingTimePicker<span style='color:#808030; '>.</span>afterClose<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>subscribe<span style='color:#808030; '>(</span>time <span style='color:#808030; '>=</span><span style='color:#808030; '>></span> <span style='color:#800080; '>{{ '{' }}</span>
-                <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>selectedTime <span style='color:#808030; '>=</span> time<span style='color:#800080; '>;</span>
-            <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-        <span style='color:#800080; '>{{ '}' }}</span>
+
     <span style='color:#800080; '>{{ '}' }}</span>
-                            </pre>
-                </div>
-            </app-tab>
-        </app-tabs>
-        <div class="tab-content">
-            <div class="row">
-                <div class="col s12">
-                    <button class="waves-effect waves-light btn test-open-dialog"  (click)="open()">Time</button>
-                    <div class="input-field inline">
-                    <input type="time" class="validate" [value]="selectedTime" class="atp-ref-dialog-result" id="atp-ref-dialog-result">
-                    </div>
+</pre>
+            </div>
+        </app-tab>
+    </app-tabs>
+    <div class="tab-content">
+        <div class="row">
+            <div class="col s12">
+                Time:
+                <div class="input-field inline">
+                    <input type="time" atp-time-picker value="20:55" theme="dark" locale='fa' start='18:30' end="23:00" arrowStyle="{'background': 'red', 'color': 'white'}"/>
                 </div>
             </div>
         </div>
-      </div>
+    </div>
+</div>
+
+<br>
+<h2 class="pre-title">Opening component programmatically</h2>
+<p>You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component </p>
+<pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
+<p>Then add it inside your <code  class="pre-code S">test.component.ts</code> or any other component that you want to use timepicker inside of that.</p>
+<br>
+<div class="tab-wrapper" id="sec2">
+    <div class="tab-header">
+        <div class="row">
+            <div class="col s6 title">Programmatically</div>
+        </div>
+    </div>
+    <app-tabs #tab1>
+        <app-tab tabTitle="test.component.html">
+<pre style='color:#000000;'>
+
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#274796; '> (click)</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"open()"</span><span style='color:#a65700; '>></span>Time<span style='color:#a65700; '>&lt;/</span><span style='color:#800000; font-weight:bold; '>button</span><span style='color:#a65700; '>></span>
+<span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{sintax}}"</span><span style='color:#a65700; '>></span>
+</pre>
+        </app-tab>
+        <app-tab tabTitle="test.component.ts">
+            <div>
+                    <pre style='color:#000000;'>
+<span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> Component <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>@angular/core</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
+<span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> AmazingTimePickerService <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>amazing-time-picker</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
+
+@Component<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
+    selector<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>app-test</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+    templateUrl<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>./test.component.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+    styleUrls<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>./test.component.scss</span><span style='color:#800000; '>'</span><span style='color:#808030; '>]</span>
+<span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span>
+<span style='color:#800000; font-weight:bold; '>export</span> <span style='color:#800000; font-weight:bold; '>class</span> TestComponent <span style='color:#800080; '>{{ '{' }}</span>
+    <span style='color:#800000; font-weight:bold; '>public</span> selectedTime<span style='color:#800080; '>:</span> string<span style='color:#800080; '>;</span>
+
+    <span style='color:#797997; '>constructor</span><span style='color:#808030; '>(</span> <span style='color:#800000; font-weight:bold; '>private</span> atp<span style='color:#800080; '>:</span> AmazingTimePickerService <span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span> <span style='color:#800080; '>{{ '}' }}</span>
+
+    open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span>
+        <span style='color:#800000; font-weight:bold; '>const</span> amazingTimePicker <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>atp<span style='color:#808030; '>.</span>open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        amazingTimePicker<span style='color:#808030; '>.</span>afterClose<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>subscribe<span style='color:#808030; '>(</span>time <span style='color:#808030; '>=</span><span style='color:#808030; '>></span> <span style='color:#800080; '>{{ '{' }}</span>
+            <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>selectedTime <span style='color:#808030; '>=</span> time<span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>{{ '}' }}</span>
+<span style='color:#800080; '>{{ '}' }}</span>
+                        </pre>
+            </div>
+        </app-tab>
+    </app-tabs>
+    <div class="tab-content">
+        <div class="row">
+            <div class="col s12">
+                <button class="waves-effect waves-light btn test-open-dialog"  (click)="open()">Time</button>
+                <div class="input-field inline">
+                <input type="time" class="validate" [value]="selectedTime" class="atp-ref-dialog-result" id="atp-ref-dialog-result">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  
       <br>
-      <h2 class="pre-title">Opening component programmatically with parameter</h2>
-      <p>You can also open a timepicker dialog programmatically with parameter to config Timepicker set time as default and change style and other things.</p>
+      <h2 class="pre-title">Opening component programmatically with custom configuration</h2>
+      <p>You can also open a timepicker dialog programmatically with parameter to config Timepicker such as set time as default and change style and other things.</p>
       <p>The config structure like below code:</p>
       <pre class="pre-code L"><code>{{ '{' }}
     time: '18:30',
-    theme: 'dark',
+    theme: 'dark',  <span style="color:#aaa">// Default: 'light'</span>
+    locale: 'fa',   <span style="color:#aaa">// Default: 'en'</span>
+    rangeTime: {{ '{' }}
+        start: '15:30',
+        end: '18:45'
+    {{ '}' }},
     arrowStyle: {{ '{' }}
         background: 'red',
         color: 'white'
@@ -176,6 +230,12 @@
                 </div>
             </div>
           </div>
-          <input type="time" atp-time-picker value="16:00" start="15:30" end="18:50">
+
+
+          
+        <app-example-persian></app-example-persian>
+        <app-example-arabic></app-example-arabic>
+
+          <!-- <input type="time" atp-time-picker value="16:00" start="15:30" end="18:50"> -->
           <!-- <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker>
           <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker> -->

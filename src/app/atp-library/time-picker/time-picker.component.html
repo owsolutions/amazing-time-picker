@@ -2,13 +2,16 @@
   <div id="time-picker" [ngClass]="{'active': activeModal, 'static': !isPopup}">
     <div class="time-picker-header">
       <div class="time-picker-selected-time">
-          <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" [ngClass]="{'selected' : clockType == 'hour'}">{{time.hour}}</div>
-          <span class="time-seprator">:</span>
-          <div class="time-picker-minute" (click)="clockType='minute';clockMaker()" [ngClass]="{'selected' : clockType == 'minute'}">{{time.minute}}</div>
+          <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" 
+            [ngClass]="{'selected' : clockType == 'hour'}">{{GetHour()}}</div>
+          <span class="time-seprator">{{GetSeparator()}}</span>
+          <div class="time-picker-minute" (click)="clockType='minute';clockMaker()" 
+            [ngClass]="{'selected' : clockType == 'minute'}">{{GetMinute()}}</div>
       </div>
       <div class="time-picker-selected-ampm">
-        <div class="time-picker-am" (click)="time.ampm = 'AM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'AM'}">AM</div>
-        <div class="time-picker-pm" (click)="time.ampm = 'PM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'PM'}">PM</div>
+        <div class="time-picker-am" (click)="time.ampm = 'AM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>
+        <div class="time-picker-pm" (click)="time.ampm = 'PM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'PM'}">{{GetPeriod('PM')}}</div>
+
       </div>
     </div>
     <div class="time-picker-content">
@@ -16,7 +19,7 @@
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
             [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : config.theme == 'light' ? '#000' : '#eee', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
-            {{clock.time}}
+            {{GetClockTime(clock)}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
           <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.arrowStyle.background}">
@@ -25,8 +28,8 @@
         </div>
     </div>
     <div class="time-picker-footer">
-        <button (click)="Close($event);">Cancel</button>
-        <button (click)="GetTime();Close($event);" class="atp-ref-dialog-close">OK</button>
+        <button (click)="Close($event);">{{GetLabel('cancel')}}</button>
+        <button (click)="GetTime();Close($event);" class="atp-ref-dialog-close">{{GetLabel('ok')}}</button>
     </div>
   </div>
 </div>
