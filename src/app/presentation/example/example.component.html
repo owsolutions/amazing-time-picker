@@ -38,15 +38,60 @@
           <div class="col s12">
                 Time:
                 <div class="input-field inline">
-                    <input type="time" atp-time-picker value="20:55" locale="fa"/>
+                    <input type="time" atp-time-picker value="20:55"/>
                 </div>
           </div>
       </div>
   </div>
 </div>
+<br>
+<p>
+    When using in component markup we can set Timepicker configuration with using attributes.
+</p>
+<br>
+<div class="tab-wrapper" id="sec10">
+    <div class="tab-header">
+        <div class="row">
+            <div class="col s6 title">Directive with configuration</div>
+        </div>
+    </div>
+    <app-tabs #tab1>
+        <app-tab tabTitle="test.component.html">
+            <pre style='color:#000000;'>
 
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> atp-time-picker </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"20:55"</span><span style='color:#274796; '> theme</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"dark"</span><span style='color:#274796; '> locale</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>'fa'</span><span style='color:#274796; '> </span><span style='color:#074726; '>start</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>'18:30'</span><span style='color:#274796; '> end</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"23:00"</span><span style='color:#274796; '> arrowStyle</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"{{'{'}}'background': 'red', 'color': 'white'{{'}'}}"</span><span style='color:#a65700; '>/></span>
+            </pre>
+        </app-tab>
+        <app-tab tabTitle="test.component.ts">
+            <div>
+            <pre style='color:#000000;'>
+                
+    <span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> Component <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>@angular/core</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
 
+    @Component<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
+        selector<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>app-test</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+        templateUrl<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+        styleUrls<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.scss</span><span style='color:#800000; '>'</span><span style='color:#808030; '>]</span>
+    <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span>
 
+    <span style='color:#800000; font-weight:bold; '>export</span> <span style='color:#800000; font-weight:bold; '>class</span> TestComponent <span style='color:#800080; '>{{ '{' }}</span>
+
+    <span style='color:#800080; '>{{ '}' }}</span>
+</pre>
+            </div>
+        </app-tab>
+    </app-tabs>
+    <div class="tab-content">
+        <div class="row">
+            <div class="col s12">
+                Time:
+                <div class="input-field inline">
+                    <input type="time" atp-time-picker value="20:55" theme="dark" locale='fa' start='18:30' end="23:00" arrowStyle="{'background': 'red', 'color': 'white'}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <br>
 <h2 class="pre-title">Opening component programmatically</h2>
@@ -107,31 +152,19 @@
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  <app-example-persian></app-example-persian>
-  <app-example-arabic></app-example-arabic>
-
   
       <br>
-      <h2 class="pre-title">Opening component programmatically with parameter</h2>
-      <p>You can also open a timepicker dialog programmatically with parameter to config Timepicker set time as default and change style and other things.</p>
+      <h2 class="pre-title">Opening component programmatically with custom configuration</h2>
+      <p>You can also open a timepicker dialog programmatically with parameter to config Timepicker such as set time as default and change style and other things.</p>
       <p>The config structure like below code:</p>
       <pre class="pre-code L"><code>{{ '{' }}
     time: '18:30',
-    theme: 'dark',
+    theme: 'dark',  <span style="color:#aaa">// Default: 'light'</span>
+    locale: 'fa',   <span style="color:#aaa">// Default: 'en'</span>
+    rangeTime: {{ '{' }}
+        start: '15:30',
+        end: '18:45'
+    {{ '}' }},
     arrowStyle: {{ '{' }}
         background: 'red',
         color: 'white'
@@ -197,6 +230,12 @@
                 </div>
             </div>
           </div>
+
+
+          
+        <app-example-persian></app-example-persian>
+        <app-example-arabic></app-example-arabic>
+
           <!-- <input type="time" atp-time-picker value="16:00" start="15:30" end="18:50"> -->
           <!-- <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker>
           <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker> -->

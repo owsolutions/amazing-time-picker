@@ -25,39 +25,8 @@ export class ExamplePersianComponent implements OnInit {
     clockHour?(hour: any);
   }
   `);
-  html = encode(`
-   <button (click)="open()">Time</button>
-   <input type="time" value="">
-  `);
-  ts = encode(`
-  import { Component } from '@angular/core';
-  import { AmazingTimePickerService } from 'amazing-time-picker';
-  import { PersianPreference } from 'amazing-time-picker/preferences';
-
-  @Component({
-      selector: 'app-test',
-      ${'templateUrl'}: './test.component.html',
-      ${'styleUrls'}: ['./test.component.scss']
-  })
-  export class TestComponent {
-      public selectedTime: string;
-      constructor( private atp: AmazingTimePickerService ) { }
-      open() {
-          /**
-           * ////////////////
-           * We add preference to the modal open config,
-           * you can explore built-in preferences or write for yourself
-           */
-          const amazingTimePicker = this.atp.open({
-            locale: 'fa'
-          });
-          amazingTimePicker.afterClose().subscribe(time => {
-              this.selectedTime = time;
-          });
-      }
-  }
-  `);
   public selectedTime: string;
+  public sintax = '{{selectedTime}}';
 
   constructor(
     private atp: AmazingTimePickerService,
