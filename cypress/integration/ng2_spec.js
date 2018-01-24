@@ -4,7 +4,7 @@ describe('Kitchen Sink', function () {
 
   it ('Project on Angular 2 must work proprely', function () {
     cy.visit('http://localhost:12000');
-    cy.title().should('include', 'Ng5TestBed')
+    cy.title().should('include', 'MyApp')
     cy.get('#test-bed-directive').click();
     for (const number of clockMaker('hour')) {
       cy.get('.time-picker-clock').click(number.top, number.left);
