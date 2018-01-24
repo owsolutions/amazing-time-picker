@@ -6,9 +6,6 @@ branches:
   only:
     - master
 
-before_script:
-  - npm install -g @angular/cli
-
 cache:
   yarn: true
   directories:
