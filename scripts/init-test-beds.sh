@@ -10,6 +10,11 @@ cd /tmp/;
 git clone https://github.com/owsolutions/amazing-time-picker-test-beds --depth=1
 cd amazing-time-picker-test-beds;
 
+cd /tmp/amazing-time-picker-test-beds/ng2-test-bed;
+npm install;
+npm install ${TRAVIS_BUILD_DIR}/npm_dist/dist.tgz;
+npm run build;
+
 cd /tmp/amazing-time-picker-test-beds/ng4-test-bed;
 npm install;
 npm install ${TRAVIS_BUILD_DIR}/npm_dist/dist.tgz;
