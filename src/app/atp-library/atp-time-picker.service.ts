@@ -23,6 +23,7 @@ export class AmazingTimePickerService {
       rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
+      preference: config.preference || null
     };
     config.rangeTime = {
       start: config.rangeTime.start || '0:0',
@@ -44,7 +45,11 @@ export class AmazingTimePickerService {
     tsc.instance.appRef = this.appRef;
     tsc.instance.timerElement = '';
     tsc.instance.config = config;
-    tsc.instance.preference = Preference(config.locale);
+    if (config.preference) {
+      tsc.instance.preference = config.preference;
+    } else {
+      tsc.instance.preference = Preference(config.locale);
+    }
     tsc.instance.ParseStringToTime(config.time);
     return {
       afterClose: function () {
