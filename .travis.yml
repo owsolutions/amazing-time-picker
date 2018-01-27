@@ -13,6 +13,7 @@ addons:
 script:
   - rm node_modules -rf
   - rm dist -rf
+  - npm install
   - npm run lint
   # Build the project itself
   - npm run build
