@@ -11,6 +11,7 @@ export interface TimePickerConfig {
   arrowStyle?: Pallete;
   locale?: string;
   preference?: IDisplayPreference;
+  changeToMinutes?: boolean;
 }
 
 export interface RangeTime {
