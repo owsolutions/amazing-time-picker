@@ -10,7 +10,7 @@ export interface TimePickerConfig {
   rangeTime?: RangeTime;
   arrowStyle?: Pallete;
   locale?: string;
-  // preference?: IDisplayPreference;
+  preference?: IDisplayPreference;
 }
 
 export interface RangeTime {
