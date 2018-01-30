@@ -75,14 +75,6 @@ export class TimePickerComponent implements OnInit {
     this.degree = degrees;
   }
 
-  setTime() {
-    this.isClicked = false;
-    if (this.config.changeToMinutes && this.clockType === 'hour') {
-      this.clockType = 'minute';
-      this.clockMaker();
-    }
-  }
-
   getDegree = (ele: any) => {
     const step = this.clockType === 'minute' ? 6 : 30;
     const parrentPos = ele.currentTarget.getBoundingClientRect();

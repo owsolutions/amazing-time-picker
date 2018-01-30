@@ -20,7 +20,6 @@ export class AtpDirective {
     const start = ele.getAttribute('start');
     const end = ele.getAttribute('end');
     const locale = ele.getAttribute('locale') || 'en';
-    const changeToMinutes = ele.getAttribute('changeToMinutes') === 'true';
     const preference = ele.getAttribute('preference') || null;
     let arrowStyle = ele.getAttribute('arrowStyle');
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
@@ -30,7 +29,6 @@ export class AtpDirective {
       rangeTime: { start, end},
       'arrowStyle': arrowStyle,
       locale,
-      changeToMinutes,
       preference
     });
     timePickerFunction.afterClose().subscribe(retTime => {

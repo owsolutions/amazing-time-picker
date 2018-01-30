@@ -23,7 +23,6 @@ export class AmazingTimePickerService {
       rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
-      changeToMinutes: config.changeToMinutes || false,
       preference: config.preference || null
     };
     config.rangeTime = {
