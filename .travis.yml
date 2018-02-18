@@ -6,18 +6,14 @@ branches:
   only:
     - master
 
-cache:
-  yarn: true
-  directories:
-    - $HOME/.yarn-cache
-    - node_modules
-
 dist: trusty
 addons:
   chrome: stable
 
 script:
-
+  - rm node_modules -rf
+  - rm dist -rf
+  - npm install
   - npm run lint
   # Build the project itself
   - npm run build
