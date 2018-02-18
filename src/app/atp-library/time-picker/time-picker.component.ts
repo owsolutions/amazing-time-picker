@@ -30,7 +30,7 @@ export class TimePickerComponent implements OnInit {
   public allowed: any;
   public preference: IDisplayPreference;
 
-  private animationTime: number = 0;
+  private animationTime = 0;
 
   constructor(
     private core: AtpCoreService
