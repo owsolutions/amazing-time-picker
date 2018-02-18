@@ -30,6 +30,7 @@ export class TimePickerComponent implements OnInit {
   public allowed: any;
   public preference: IDisplayPreference;
 
+  private animationTime: number = 0;
 
   constructor(
     private core: AtpCoreService
@@ -164,6 +165,82 @@ export class TimePickerComponent implements OnInit {
         }, 400);
       }
     }
+  }
+
+  getClockArrowStyle() {
+    return {
+      transform: 'rotate(' + this.degree + 'deg)',
+      '-webkit-transform': 'rotate(' + this.degree + 'deg)',
+      background: this.config.arrowStyle.background,
+      '-webkit-transition': 'transform ' + this.getAnimationTime(),
+      transition: 'transform ' + + this.getAnimationTime()
+    };
+  }
+
+  getAnimationTime() {
+    return this.animationTime + 's';
+  }
+
+  /**
+   * Event on clock mouse click down
+   * @param event - captured event
+   */
+  updateClockDown(event) {
+    this.isClicked = true;
+    this.animationTime = 0;
+    this.getDegree(event);
+  }
+
+  /**
+   * Event on clock mouse click up
+   */
+  updateClockUp() {
+    this.isClicked = false;
+
+    if (this.config.changeToMinutes && this.clockType === 'hour') {
+      this.clockType = 'minute';
+      if (this.config.animate) {
+        setTimeout( () => {
+          this.clockObject = this.core.ClockMaker(this.clockType);
+          this.animationTime = 0.4;
+          this.setNewRotation();
+          this.nowTime = this.time.minute;
+        }, 125);
+      } else {
+        this.clockMaker();
+      }
+    }
+  }
+
+
+  setNewRotation() {
+    const targetDegree = ((this.time.minute / 60) * 360) + 360;
+    const targetDegree2 = targetDegree * 2;
+
+    const diff1 = Math.abs(this.degree - targetDegree);
+    const diff2 = Math.abs(this.degree - targetDegree2);
+
+    if (diff1 < diff2) {
+      this.rotationClass(targetDegree);
+    } else {
+      this.rotationClass(targetDegree2);
+    }
+  }
+
+  clickHours() {
+    if (this.config.animate) {
+      this.animationTime = 0.4;
+    }
+    this.clockType = 'hour';
+    this.clockMaker();
+  }
+
+  clickMinutes() {
+    if (this.config.animate) {
+      this.animationTime = 0.4;
+    }
+    this.clockType = 'minute';
+    this.clockMaker();
   }
 
   public GetSeparator () {

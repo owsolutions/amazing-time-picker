@@ -24,6 +24,7 @@ export class AmazingTimePickerService {
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
       changeToMinutes: config.changeToMinutes || false,
+      animate: config.animate || false,
       preference: config.preference || null
     };
     config.rangeTime = {
