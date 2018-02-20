@@ -1,5 +1,5 @@
 import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AmazingTimePickerService } from './atp-time-picker.service';
 
 @Directive({
