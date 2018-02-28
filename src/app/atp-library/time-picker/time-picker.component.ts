@@ -159,11 +159,9 @@ export class TimePickerComponent implements OnInit {
      * We are not permitting user to select the minute.
      * but anyway, it will return the standard time, if provided the default time.
      */
-    if (this.config && this.config.hourOnly) {
-      console.log(this.config);
+    if (this.config && this.config.onlyHour) {
       return false;
     }
-    console.log('reached!');
     this.clockType = 'minute';
     this.clockMaker();
   }
