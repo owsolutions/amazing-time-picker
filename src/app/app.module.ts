@@ -10,6 +10,7 @@ import { ExampleComponent } from './presentation/example/example.component';
 import { ApiComponent } from './presentation/api/api.component';
 import { ExamplePersianComponent } from './presentation/examples/example-persian/example-persian.component';
 import { ExampleArabicComponent } from './presentation/examples/example-arabic/example-arabic.component';
+import { ExampleMaterialComponent } from './presentation/examples/example-material/example-material.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ExampleArabicComponent } from './presentation/examples/example-arabic/e
     ApiComponent,
     ExamplePersianComponent,
     ExampleArabicComponent,
+    ExampleMaterialComponent,
   ],
   imports: [
     BrowserModule,

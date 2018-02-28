@@ -84,6 +84,38 @@
         }
     }    
   }
+  &.material{
+    #time-picker{
+        background: #fff;
+        .time-picker-header{
+            border-bottom: 1px solid #e1e1e1;
+            .time-picker-selected-time{
+                color: #aaa;
+                div.selected{
+                    color: #000;
+                }
+            }
+            .time-picker-selected-ampm{
+                color: #aaa;
+                div.selected{
+                    color: #000;
+                }
+            }
+        }
+        .time-picker-clock{
+            background: #ededed;
+        }
+        .time-picker-footer{
+            border-top: 1px solid #e1e1e1;
+            button{
+                background: #f1f1f1;
+                &:hover{
+                    background: #ddd;
+                }
+            }
+        }
+    }    
+  }
   #time-picker{
       width: 325px;
       height: auto;
