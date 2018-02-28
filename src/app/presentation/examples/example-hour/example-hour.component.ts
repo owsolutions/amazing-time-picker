@@ -39,8 +39,7 @@ export class ExampleHourComponent implements OnInit {
   public openHour () {
     const amazingTimePicker = this.atp.open({
       time: '3:30',
-      onlyMinute: true,
-      onlyPM: true
+      onlyHour: true
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
