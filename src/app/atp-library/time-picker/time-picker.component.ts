@@ -150,13 +150,16 @@ export class TimePickerComponent implements OnInit {
 
   ngOnInit() {
     this.allowed = this.core.allowedTimes (this.config.rangeTime.start, this.config.rangeTime.end);
+    if (this.config && this.config.onlyMinute) {
+      this.clockType = 'minute';
+    }
+    if (this.config && this.config.onlyPM) {
+      this.time.ampm = 'PM';
+    }
     this.clockMaker();
     this.modalAnimation();
   }
 
-  public IsMinuteDisabled () {
-    return this.config.onlyHour;
-  }
   public MinuteClick () {
     /**
      * We are not permitting user to select the minute.
@@ -168,6 +171,35 @@ export class TimePickerComponent implements OnInit {
     this.clockType = 'minute';
     this.clockMaker();
   }
+
+  public HourClick () {
+    /**
+     * We are not permitting user to select the minute.
+     * but anyway, it will return the standard time, if provided the default time.
+     */
+    if (this.config && this.config.onlyMinute) {
+      return false;
+    }
+    this.clockType = 'hour';
+    this.clockMaker();
+  }
+
+  SetAM () {
+    if (this.config && this.config.onlyPM) {
+      return false;
+    }
+    this.time.ampm = 'AM';
+    this.checkBet();
+  }
+
+  SetPM () {
+    if (this.config && this.config.onlyAM) {
+      return false;
+    }
+    this.time.ampm = 'PM';
+    this.checkBet();
+  }
+
   Close(e: any) {
     if (e.target === e.currentTarget) {
       if (this.isPopup === true) {
