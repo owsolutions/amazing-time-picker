@@ -6,7 +6,7 @@
             [ngClass]="{'selected' : clockType == 'hour'}">{{GetHour()}}</div>
           <span class="time-seprator">{{GetSeparator()}}</span>
           <div class="time-picker-minute" (click)="MinuteClick();" 
-            [ngClass]="{'selected' : clockType == 'minute'}">{{GetMinute()}}</div>
+            [ngClass]="{'selected' : clockType == 'minute'}">{{IsMinuteDisabled()}} {{GetMinute()}}</div>
       </div>
       <div class="time-picker-selected-ampm">
         <div class="time-picker-am" (click)="time.ampm = 'AM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>

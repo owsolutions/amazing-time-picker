@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { IClockNumber, IDisplayPreference } from '../definitions';
+import { IClockNumber, IDisplayPreference, TimePickerConfig } from '../definitions';
 import { AtpCoreService } from '../atp-core.service';
 import { ITime } from '../definitions';
 
@@ -24,7 +24,7 @@ export class TimePickerComponent implements OnInit {
   };
   public nowTime: any = this.time.hour;
   public degree: any;
-  public config: any;
+  public config: TimePickerConfig;
   public appRef: any;
   public isPopup = true;
   public allowed: any;
@@ -154,6 +154,9 @@ export class TimePickerComponent implements OnInit {
     this.modalAnimation();
   }
 
+  public IsMinuteDisabled () {
+    return this.config.onlyHour;
+  }
   public MinuteClick () {
     /**
      * We are not permitting user to select the minute.
