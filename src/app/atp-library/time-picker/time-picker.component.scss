@@ -88,31 +88,38 @@
     #time-picker{
         background: #fff;
         .time-picker-header{
+            background-color: #00b686;
             border-bottom: 1px solid #e1e1e1;
             .time-picker-selected-time{
-                color: #aaa;
+                color: #75ccb9 ;
                 div.selected{
-                    color: #000;
+                    color: #dbffff;
                 }
             }
             .time-picker-selected-ampm{
-                color: #aaa;
+                color: #75ccb9 ;
                 div.selected{
-                    color: #000;
+                    color: #dbffff;
                 }
             }
         }
         .time-picker-clock{
-            background: #ededed;
+          background: #ededed;
+          button {
+            color: black;
+          }
         }
         .time-picker-footer{
-            border-top: 1px solid #e1e1e1;
-            button{
-                background: #f1f1f1;
-                &:hover{
-                    background: #ddd;
-                }
+          border-top: 1px solid #e1e1e1;
+          button{
+            font-weight: bold;
+            text-transform: uppercase;
+            background: transparent;
+            color: #75ccb9;
+            &:hover{
+              background: #ddd;
             }
+          }
         }
     }    
   }
