@@ -110,14 +110,20 @@
               div{
                   display: inline-block;
                   cursor: pointer;
+                &[disabled=true] {
+                    cursor: default;
+                }
               }
           }
           .time-picker-selected-ampm{
               font-size: 18px;
               div{
-                  display: inline-block;
-                  padding: 0 5px;
-                  cursor: pointer;
+                display: inline-block;
+                padding: 0 5px;
+                cursor: pointer;
+                &[disabled=true] {
+                    cursor: default;
+                }
               }
           }
       }
