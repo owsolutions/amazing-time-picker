@@ -1,10 +1,6 @@
 
 <br>
-<p>
-You can only restrict users to select the hour, and leave the minute abandoned.</p>
 
-<pre class="pre-code L"><code [innerHTML]="interface"></code></pre>
-<br>
 <div class="tab-wrapper" id="sec2">
   <div class="tab-header">
     <div class="row">
@@ -38,7 +34,7 @@ You can only restrict users to select the hour, and leave the minute abandoned.<
     
         open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span>
             <span style='color:#800000; font-weight:bold; '>const</span> amazingTimePicker <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>atp<span style='color:#808030; '>.</span>open<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
-                locale<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>fa</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+                onlyHour<span style='color:#800080; '>:</span> <span style='color:#800000; '></span><span style='color:#0000e6; '>true</span><span style='color:#800000; '></span><span style='color:#808030; '>,</span>
             <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
             amazingTimePicker<span style='color:#808030; '>.</span>afterClose<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>subscribe<span style='color:#808030; '>(</span>time <span style='color:#808030; '>=</span><span style='color:#808030; '>></span> <span style='color:#800080; '>{{ '{' }}</span>
                 <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>selectedTime <span style='color:#808030; '>=</span> time<span style='color:#800080; '>;</span>

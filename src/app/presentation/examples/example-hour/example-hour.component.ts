@@ -15,6 +15,7 @@ export class ExampleHourComponent implements OnInit {
   export interface IDisplayPreference {
     minute?: Function;
     hour?: Function;
+    onlyHour?: boolean;
     separator?: string;
     labels?: {
       ok?: string;
