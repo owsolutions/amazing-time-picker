@@ -35,9 +35,9 @@ export class ExampleHourComponent implements OnInit {
   ngOnInit() {
   }
 
-  public openPersian () {
+  public openHour () {
     const amazingTimePicker = this.atp.open({
-      locale: 'fa'
+      onlyHour: true,
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;

@@ -154,6 +154,19 @@ export class TimePickerComponent implements OnInit {
     this.modalAnimation();
   }
 
+  public MinuteClick () {
+    /**
+     * We are not permitting user to select the minute.
+     * but anyway, it will return the standard time, if provided the default time.
+     */
+    if (this.config && this.config.hourOnly) {
+      console.log(this.config);
+      return false;
+    }
+    console.log('reached!');
+    this.clockType = 'minute';
+    this.clockMaker();
+  }
   Close(e: any) {
     if (e.target === e.currentTarget) {
       if (this.isPopup === true) {
