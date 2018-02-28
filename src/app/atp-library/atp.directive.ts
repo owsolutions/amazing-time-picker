@@ -1,17 +1,27 @@
-import { Directive, ViewContainerRef, Output, EventEmitter, HostListener } from '@angular/core';
+import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AmazingTimePickerService } from './atp-time-picker.service';
 
 @Directive({
-  selector: 'input[atp-time-picker]'
+  selector: 'input[atp-time-picker]',
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: AtpDirective,
+    multi: true
+  }]
 })
-export class AtpDirective {
-
-  constructor(
-    public viewContainerRef: ViewContainerRef,
-    private atp: AmazingTimePickerService
-  ) {}
+export class AtpDirective implements ControlValueAccessor {
 
   @Output() myClick = new EventEmitter();
+
+  private elementRef: ElementRef;
+  private onChange = (x: any): void => {};
+  constructor(
+      public viewContainerRef: ViewContainerRef,
+      private atp: AmazingTimePickerService) {
+    this.elementRef = this.viewContainerRef.element;
+  }
+
   @HostListener('click', ['$event'])
   onClick(e) {
     const ele = this.viewContainerRef.element.nativeElement;
@@ -41,8 +51,22 @@ export class AtpDirective {
       onlyPM,
       preference
     });
+
     timePickerFunction.afterClose().subscribe(retTime => {
-      ele.value = retTime;
+      this.writeValue(retTime); // update the native element
+      this.onChange(retTime); // update the form value (if there's a form)
     });
   }
+
+  writeValue(value: any) {
+    if (this.elementRef) {
+      this.elementRef.nativeElement.value = value;
+    }
+  }
+
+  registerOnChange(fn: any) {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn) {  }
 }
