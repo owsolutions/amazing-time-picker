@@ -37,7 +37,7 @@ export class ExampleMaterialComponent implements OnInit {
 
   public openPersian () {
     const amazingTimePicker = this.atp.open({
-      theme: 'material'
+      theme: 'material-orange'
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
