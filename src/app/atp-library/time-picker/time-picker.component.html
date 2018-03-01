@@ -2,15 +2,15 @@
   <div id="time-picker" [ngClass]="{'active': activeModal, 'static': !isPopup}">
     <div class="time-picker-header">
       <div class="time-picker-selected-time">
-          <div class="time-picker-hour" (click)="clockType='hour';clockMaker()" 
+          <div class="time-picker-hour" (click)="HourClick()" [attr.disabled]="config.onlyMinute"
             [ngClass]="{'selected' : clockType == 'hour'}">{{GetHour()}}</div>
           <span class="time-seprator">{{GetSeparator()}}</span>
-          <div class="time-picker-minute" (click)="clockType='minute';clockMaker()" 
+          <div class="time-picker-minute" (click)="MinuteClick();" [attr.disabled]="config.onlyHour"
             [ngClass]="{'selected' : clockType == 'minute'}">{{GetMinute()}}</div>
       </div>
       <div class="time-picker-selected-ampm">
-        <div class="time-picker-am" (click)="time.ampm = 'AM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>
-        <div class="time-picker-pm" (click)="time.ampm = 'PM'; checkBet();" [ngClass]="{'selected' : time.ampm == 'PM'}">{{GetPeriod('PM')}}</div>
+        <div class="time-picker-am" (click)="SetAM();" [attr.disabled]="config.onlyPM" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>
+        <div class="time-picker-pm" (click)="SetPM();" [attr.disabled]="config.onlyAM" [ngClass]="{'selected' : time.ampm == 'PM'}">{{GetPeriod('PM')}}</div>
 
       </div>
     </div>

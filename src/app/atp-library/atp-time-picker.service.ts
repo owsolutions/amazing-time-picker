@@ -25,8 +25,12 @@ export class AmazingTimePickerService {
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
       changeToMinutes: config.changeToMinutes || false,
-      preference: config.preference || null
-    };
+      preference: config.preference || null,
+      onlyHour: config.onlyHour || false,
+      onlyMinute: config.onlyMinute || false,
+      onlyAM: config.onlyAM || false,
+      onlyPM: config.onlyPM || false,
+    } as TimePickerConfig;
     config.rangeTime = {
       start: config.rangeTime.start || '0:0',
       end: config.rangeTime.end || '24:0',

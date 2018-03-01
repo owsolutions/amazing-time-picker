@@ -12,6 +12,10 @@ export interface TimePickerConfig {
   locale?: string;
   preference?: IDisplayPreference;
   changeToMinutes?: boolean;
+  onlyHour?: boolean;
+  onlyMinute?: boolean;
+  onlyAM?: boolean;
+  onlyPM?: boolean;
 }
 
 export interface RangeTime {

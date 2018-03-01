@@ -94,6 +94,51 @@
 </div>
 
 <br>
+<div class="tab-wrapper" id="sec10">
+    <div class="tab-header">
+        <div class="row">
+            <div class="col s6 title">Restrict user to select hour and AM only with Directive</div>
+        </div>
+    </div>
+    <app-tabs #tab1>
+        <app-tab tabTitle="test.component.html">
+            <pre style='color:#000000;'>
+
+    <span style='color:#a65700; '>&lt;</span><span style='color:#800000; font-weight:bold; '>input</span><span style='color:#274796; '> </span><span style='color:#074726; '>type</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"time"</span><span style='color:#274796; '> atp-time-picker </span><span style='color:#074726; '>value</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"8:55"</span><span style='color:#274796; '> onlyHour</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>"true"</span><span style='color:#274796; '> onlyAM</span><span style='color:#808030; '>=</span><span style='color:#0000e6; '>'true'</span><span style='color:#274796; '> </span><span style='color:#a65700; '>/></span>
+            </pre>
+        </app-tab>
+        <app-tab tabTitle="test.component.ts">
+            <div>
+            <pre style='color:#000000;'>
+                
+    <span style='color:#800000; font-weight:bold; '>import</span> <span style='color:#800080; '>{{ '{' }}</span> Component <span style='color:#800080; '>{{ '}' }}</span> from <span style='color:#800000; '>'</span><span style='color:#0000e6; '>@angular/core</span><span style='color:#800000; '>'</span><span style='color:#800080; '>;</span>
+
+    @Component<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
+        selector<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>app-test</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+        templateUrl<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.html</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+        styleUrls<span style='color:#800080; '>:</span> <span style='color:#808030; '>[</span><span style='color:#800000; '>'</span><span style='color:#0000e6; '>./api.component.scss</span><span style='color:#800000; '>'</span><span style='color:#808030; '>]</span>
+    <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span>
+
+    <span style='color:#800000; font-weight:bold; '>export</span> <span style='color:#800000; font-weight:bold; '>class</span> TestComponent <span style='color:#800080; '>{{ '{' }}</span>
+
+    <span style='color:#800080; '>{{ '}' }}</span>
+</pre>
+            </div>
+        </app-tab>
+    </app-tabs>
+    <div class="tab-content">
+        <div class="row">
+            <div class="col s12">
+                Time:
+                <div class="input-field inline">
+                    <input type="time" atp-time-picker value="03:30" onlyHour="true" onlyAM="true"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
 <h2 class="pre-title">Opening component programmatically</h2>
 <p>You can also open a timepicker dialog programmatically. In order to open that, you need to import the service in your component </p>
 <pre class="pre-code L"><code>import {{ '{' }} AmazingTimePickerService {{ '}' }} from 'amazing-time-picker';</code></pre>
@@ -232,11 +277,8 @@
           </div>
 
 
-          
-        <app-example-persian></app-example-persian>
-        <app-example-arabic></app-example-arabic>
-        <app-example-material></app-example-material>
-
-          <!-- <input type="time" atp-time-picker value="16:00" start="15:30" end="18:50"> -->
-          <!-- <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker>
-          <atp-time-picker (timeSelected)="onCustomEvent($event)"></atp-time-picker> -->
+        
+<app-example-material></app-example-material>
+<app-example-persian></app-example-persian>
+<app-example-arabic></app-example-arabic>
+<app-example-hour></app-example-hour>
