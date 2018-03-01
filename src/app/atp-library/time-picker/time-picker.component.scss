@@ -113,59 +113,6 @@ $materialThemeColor: #fff, #fff, #fff, #fff, #fff;
         }
     }    
   }
-//   &.material{
-//     #time-picker{
-//         background: #fff;
-//         .time-picker-header{
-//             background-color: $materialGreenThemeBG;
-//             border-bottom: 1px solid #e1e1e1;
-//             .time-picker-selected-time{
-//                 color: rgba($materialGreenThemeColor, 0.3);
-//                 div.selected{
-//                     color: $materialGreenThemeColor;
-//                 }
-//             }
-//             .time-picker-selected-ampm{
-//                 color: rgba($materialGreenThemeColor, 0.3);
-//                 div.selected{
-//                     color: $materialGreenThemeColor;
-//                 }
-//             }
-//         }
-//         .time-picker-clock{
-//             background: #ededed;
-//             > button{
-//                 color: #000;
-//                 &.active{
-//                     background: $materialGreenThemeBG;
-//                     color: $materialGreenThemeColor;
-//                 }
-//             }
-//             .time-picker-clock-origin {
-//                 background: $materialGreenThemeBG; 
-//             }
-//             .time-picker-clock-arrow {
-//                 background: $materialGreenThemeBG;
-//                 span {
-//                     background: $materialGreenThemeBG;
-//                 }
-//             }
-//         }
-//         .time-picker-footer{
-//           border-top: 1px solid #e1e1e1;
-//           button{
-//             font-weight: bold;
-//             text-transform: uppercase;
-//             background: transparent;
-//             color: $materialGreenThemeBG;
-//             &:hover{
-//               background: #ddd;
-//             }
-//           }
-//         }
-//     }    
-//   }
-
 @each $theme in $themeName {
     $i:index($themeName, $theme);
     &.material-#{$theme}{
@@ -175,13 +122,13 @@ $materialThemeColor: #fff, #fff, #fff, #fff, #fff;
               background-color: nth($materialThemeBG, $i);
               border-bottom: 1px solid #e1e1e1;
               .time-picker-selected-time{
-                  color: rgba(nth($materialThemeColor, $i), 0.3);
+                  color: rgba(nth($materialThemeColor, $i), 0.4);
                   div.selected{
                       color: nth($materialThemeColor, $i);
                   }
               }
               .time-picker-selected-ampm{
-                  color: rgba(nth($materialThemeColor, $i), 0.3);
+                  color: rgba(nth($materialThemeColor, $i), 0.4);
                   div.selected{
                       color: nth($materialThemeColor, $i);
                   }
