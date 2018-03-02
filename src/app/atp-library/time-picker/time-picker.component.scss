@@ -1,3 +1,14 @@
+// Color pallete
+$lightThemeBG: blue;
+$lightThemeColor: #fff;
+
+$darkThemeBG: #84cbc5;
+$darkThemeColor: #000;
+
+$themeName: 'green', 'blue', 'red', 'purple', 'orange';
+$materialThemeBG: #00897b, #3F51B5, #F44336, #9C27B0, #FF9800;
+$materialThemeColor: #fff, #fff, #fff, #fff, #fff;
+
 #time-picker-wrapper{
   position: fixed;
   top:0;
@@ -38,7 +49,9 @@
         }
         .time-picker-clock{
             background: #555555;
-
+            > button{
+                color: #fff;
+            }
         }
         .time-picker-footer{
             border-top: none;
@@ -72,6 +85,22 @@
         }
         .time-picker-clock{
             background: #ededed;
+            > button{
+                color: #000;
+                &.active{
+                    background: $lightThemeBG;
+                    color: $lightThemeColor;
+                }
+            }
+            .time-picker-clock-origin {
+                background: $lightThemeBG; 
+            }
+            .time-picker-clock-arrow {
+                background: $lightThemeBG;
+                span {
+                    background: $lightThemeBG;
+                }
+            }
         }
         .time-picker-footer{
             border-top: 1px solid #e1e1e1;
@@ -83,6 +112,61 @@
             }
         }
     }    
+  }
+@each $theme in $themeName {
+    $i:index($themeName, $theme);
+    &.material-#{$theme}{
+      #time-picker{
+          background: #fff;
+          .time-picker-header{
+              background-color: nth($materialThemeBG, $i);
+              border-bottom: 1px solid #e1e1e1;
+              .time-picker-selected-time{
+                  color: rgba(nth($materialThemeColor, $i), 0.4);
+                  div.selected{
+                      color: nth($materialThemeColor, $i);
+                  }
+              }
+              .time-picker-selected-ampm{
+                  color: rgba(nth($materialThemeColor, $i), 0.4);
+                  div.selected{
+                      color: nth($materialThemeColor, $i);
+                  }
+              }
+          }
+          .time-picker-clock{
+              background: #ededed;
+              > button{
+                  color: #000;
+                  &.active{
+                      background: nth($materialThemeBG, $i);
+                      color: nth($materialThemeColor, $i);
+                  }
+              }
+              .time-picker-clock-origin {
+                  background: nth($materialThemeBG, $i); 
+              }
+              .time-picker-clock-arrow {
+                  background: nth($materialThemeBG, $i);
+                  span {
+                      background: nth($materialThemeBG, $i);
+                  }
+              }
+          }
+          .time-picker-footer{
+            border-top: 1px solid #e1e1e1;
+            button{
+              font-weight: bold;
+              text-transform: uppercase;
+              background: transparent;
+              color: nth($materialThemeBG, $i);
+              &:hover{
+                background: #ddd;
+              }
+            }
+          }
+      }    
+    }
   }
   #time-picker{
       width: 325px;
@@ -142,7 +226,6 @@
               -webkit-user-select: none;         
               button{
                   border: none;
-                  background: transparent;
                   position: absolute;
                   width: 35px;
                   height: 35px;
@@ -153,13 +236,6 @@
                   padding: 0;
                   transition: all .2s;
                   z-index: 3;
-                  &:hover{
-                      background: rgb(250,250,250);
-                  }
-                  &.active{
-                      background: blue;
-                      color: #fff;
-                  }
               }
               .time-picker-clock-origin{
                   width: 6px;
@@ -174,7 +250,6 @@
               .time-picker-clock-arrow{
                   width: 2px;
                   height: 41%;
-                  background: blue;
                   position: absolute;
                   left: 0;
                   top: 22px;

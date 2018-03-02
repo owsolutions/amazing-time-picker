@@ -10,6 +10,7 @@ import { ExampleComponent } from './presentation/example/example.component';
 import { ApiComponent } from './presentation/api/api.component';
 import { ExamplePersianComponent } from './presentation/examples/example-persian/example-persian.component';
 import { ExampleArabicComponent } from './presentation/examples/example-arabic/example-arabic.component';
+import { ExampleMaterialComponent } from './presentation/examples/example-material/example-material.component';
 import { ExampleHourComponent } from './presentation/examples/example-hour/example-hour.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ExampleHourComponent } from './presentation/examples/example-hour/examp
     ExamplePersianComponent,
     ExampleHourComponent,
     ExampleArabicComponent,
+    ExampleMaterialComponent,
   ],
   imports: [
     BrowserModule,

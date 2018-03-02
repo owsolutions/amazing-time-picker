@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx';
  */
 export interface TimePickerConfig {
   time?: string;
-  theme?: 'dark' | 'light';
+  theme?: 'dark' | 'light' | 'material-red' | 'material-green' | 'material-blue' | 'material-purple' | 'material-orange';
   rangeTime?: RangeTime;
   arrowStyle?: Pallete;
   locale?: string;
