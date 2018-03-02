@@ -18,7 +18,7 @@
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked=true; getDegree($event);" (mouseup)="setTime()">
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
-            [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color : 'transparent', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
+            [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color :  'black', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
             {{GetClockTime(clock)}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
