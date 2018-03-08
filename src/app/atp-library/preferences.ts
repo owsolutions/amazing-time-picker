@@ -8,7 +8,7 @@ export const PersianPreference: IDisplayPreference = {
   minute: (x) => {
     let exp = persian.format(x);
     if (exp.length === 1) {
-      exp = '۰' + exp;
+      exp = persian.format(0) + exp;
     }
     return exp;
   },
@@ -27,7 +27,7 @@ export const ArabicPreference: IDisplayPreference = {
   minute: (x) => {
     let exp = arabic.format(x);
     if (exp.length === 1) {
-      exp = '۰' + exp;
+      exp = arabic.format(0) + exp;
     }
     return exp;
   },

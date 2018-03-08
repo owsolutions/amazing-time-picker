@@ -25,7 +25,7 @@ export class ExampleMaterialComponent implements OnInit {
     clockHour?(hour: any);
   }
   `);
-  public selectedTime: string;
+  public selectedTime = '18:30';
   public sintax = '{{selectedTime}}';
 
   constructor(
@@ -37,6 +37,7 @@ export class ExampleMaterialComponent implements OnInit {
 
   public openByTheme (theme: any) {
     const amazingTimePicker = this.atp.open({
+      time: this.selectedTime,
       theme
     });
     amazingTimePicker.afterClose().subscribe(time => {

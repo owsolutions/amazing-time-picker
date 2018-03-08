@@ -48,3 +48,13 @@
       margin: 0 5px;
   }
 }
+
+$themeName: 'green', 'blue', 'red', 'purple', 'orange';
+$materialThemeBG: #00897b, #3F51B5, #F44336, #9C27B0, #FF9800;
+@each $theme in $themeName {
+    $i:index($themeName, $theme);
+    .button-material-#{$theme}{
+        background-color: nth($materialThemeBG, $i);
+        padding: 18px;
+    }
+}

@@ -2,15 +2,15 @@
   <div id="time-picker" [ngClass]="{'active': activeModal, 'static': !isPopup}">
     <div class="time-picker-header">
       <div class="time-picker-selected-time">
-          <div class="time-picker-hour" (click)="HourClick()" [attr.disabled]="config.onlyMinute"
+          <div class="time-picker-hour" (click)="HourClick()" [attr.disabled]="(config.onlyMinute) ? 'disabled' : null"
             [ngClass]="{'selected' : clockType == 'hour'}">{{GetHour()}}</div>
           <span class="time-seprator">{{GetSeparator()}}</span>
-          <div class="time-picker-minute" (click)="MinuteClick();" [attr.disabled]="config.onlyHour"
+          <div class="time-picker-minute" (click)="MinuteClick();" [attr.disabled]="(config.onlyHour) ? 'disabled' : null"
             [ngClass]="{'selected' : clockType == 'minute'}">{{GetMinute()}}</div>
       </div>
       <div class="time-picker-selected-ampm">
-        <div class="time-picker-am" (click)="SetAM();" [attr.disabled]="config.onlyPM" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>
-        <div class="time-picker-pm" (click)="SetPM();" [attr.disabled]="config.onlyAM" [ngClass]="{'selected' : time.ampm == 'PM'}">{{GetPeriod('PM')}}</div>
+        <div class="time-picker-am" (click)="SetAM();" [attr.disabled]="(config.onlyPM) ? 'disabled' : null" [ngClass]="{'selected' : time.ampm == 'AM'}">{{GetPeriod('AM')}}</div>
+        <div class="time-picker-pm" (click)="SetPM();" [attr.disabled]="(config.onlyAM) ? 'disabled' : null" [ngClass]="{'selected' : time.ampm == 'PM'}">{{GetPeriod('PM')}}</div>
 
       </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked=true; getDegree($event);" (mouseup)="setTime()">
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
-            [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color :  'black', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
+            [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color :  '', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
             {{GetClockTime(clock)}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
