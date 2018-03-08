@@ -2,6 +2,13 @@
 <p>
   There is an special theme for material design green, which you can use by setting the theme to material.
 </p>
+<pre class="pre-code L"><code>There are few material colours available:
+  <strong>material-green</strong>
+  <strong>material-blue</strong>
+  <strong>material-red</strong>
+  <strong>material-orange</strong>
+  <strong>meterial-purple</strong>
+</code></pre>
 <div class="tab-wrapper" id="sec2">
   <div class="tab-header">
     <div class="row">
@@ -10,14 +17,6 @@
 
     
   </div>
-  <pre>
-    There are few material colours available:
-    <strong>material-green</strong>,
-    <strong>material-blue</strong>,
-    <strong>material-red</strong>,
-    <strong>material-orange</strong>,
-    <strong>meterial-purple</strong>,
-  </pre>
   <app-tabs>
     <app-tab tabTitle="test.component.html">
         <pre style='color:#000000;'>
@@ -43,7 +42,7 @@
     
         open<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{{ '{' }}</span>
             <span style='color:#800000; font-weight:bold; '>const</span> amazingTimePicker <span style='color:#808030; '>=</span> <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>atp<span style='color:#808030; '>.</span>open<span style='color:#808030; '>(</span><span style='color:#800080; '>{{ '{' }}</span>
-                theme<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>material</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
+                theme<span style='color:#800080; '>:</span> <span style='color:#800000; '>'</span><span style='color:#0000e6; '>material-blue</span><span style='color:#800000; '>'</span><span style='color:#808030; '>,</span>
             <span style='color:#800080; '>{{ '}' }}</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
             amazingTimePicker<span style='color:#808030; '>.</span>afterClose<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>.</span>subscribe<span style='color:#808030; '>(</span>time <span style='color:#808030; '>=</span><span style='color:#808030; '>></span> <span style='color:#800080; '>{{ '{' }}</span>
                 <span style='color:#800000; font-weight:bold; '>this</span><span style='color:#808030; '>.</span>selectedTime <span style='color:#808030; '>=</span> time<span style='color:#800080; '>;</span>
@@ -57,17 +56,12 @@
     <div class="row">
       <div class="col s12">
 
-        <button class="waves-effect waves-light btn "  (click)="openByTheme('material-green')">Open material green theme</button>
-        <br>
-        <button class="waves-effect waves-light btn "  (click)="openByTheme('material-blue')">Open material blue theme</button>
-        <br>
-        <button class="waves-effect waves-light btn "  (click)="openByTheme('material-red')">Open material red theme</button>
-        <br>
-        <button class="waves-effect waves-light btn "  (click)="openByTheme('material-orange')">Open material orange theme</button>
-        <br>
-        <button class="waves-effect waves-light btn "  (click)="openByTheme('material-purple')">Open material purple theme</button>
-        <br>
-
+        <button class="waves-effect waves-light btn button-material-green"  (click)="openByTheme('material-green')"></button>
+        <button class="waves-effect waves-light btn button-material-blue"  (click)="openByTheme('material-blue')"></button>
+        <button class="waves-effect waves-light btn button-material-red"  (click)="openByTheme('material-red')"></button>
+        <button class="waves-effect waves-light btn button-material-orange"  (click)="openByTheme('material-orange')"></button>
+        <button class="waves-effect waves-light btn button-material-purple"  (click)="openByTheme('material-purple')"></button>
+<br>
         <div class="input-field inline">
         <input type="time" class="validate" [value]="selectedTime">
         </div>
