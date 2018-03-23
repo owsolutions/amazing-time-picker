@@ -1,0 +1,60 @@
+
+#main-container{
+  font-size: 17px;
+  line-height: 30px;
+  pre{
+      line-height: 20px;
+      font-size: 12px !important;
+  }
+}
+.tab-wrapper{
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+  .row{
+      margin: 0;
+  }
+  .tab-header{
+      padding: 15px;
+      background: #EFEFEF;
+      .title{
+          font-size: 17px;
+      }
+  }
+  pre{
+      background: transparent;
+      border: 0;
+      margin: 0;
+  }
+  .tab-content{
+      padding: 15px;
+  }
+}
+
+.pre-title{
+  font-size: 1.5em;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+.pre-code{
+  &.L{
+      background: #eee;
+      padding: 15px;
+      display: block;
+  }
+  &.S{
+      background: #eee;
+      padding: 3px 5px;
+      display: inline-block;
+      margin: 0 5px;
+  }
+}
+
+$themeName: 'green', 'blue', 'red', 'purple', 'orange';
+$materialThemeBG: #00897b, #3F51B5, #F44336, #9C27B0, #FF9800;
+@each $theme in $themeName {
+    $i:index($themeName, $theme);
+    .button-material-#{$theme}{
+        background-color: nth($materialThemeBG, $i);
+        padding: 18px;
+    }
+}

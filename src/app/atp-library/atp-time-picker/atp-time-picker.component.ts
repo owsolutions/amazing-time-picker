@@ -12,19 +12,19 @@ import { Subject } from 'rxjs/Subject';
 
 export class AtpTimePickerComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
-  @Output()
-  timeSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() timeSelected: EventEmitter<string> = new EventEmitter<string>();
   public config: TimePickerConfig = {};
 
-
-  constructor( private resolver: ComponentFactoryResolver,
-               private appRef: ApplicationRef) {}
+  constructor(
+    private resolver: ComponentFactoryResolver,
+    private appRef: ApplicationRef,
+  ) {}
 
   ngOnInit() {
     let config = this.config;
     config = {
       time: config.time || '00:00',
-      theme: ['light', 'dark'].indexOf(config.theme) > 0 ? config.theme : 'light' || config.theme || 'light',
+      theme: ['light', 'dark', 'material'].indexOf(config.theme) > 0 ? config.theme : 'light' || config.theme || 'light',
       rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {}
     };
