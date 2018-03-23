@@ -169,6 +169,9 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyHour) {
       return false;
     }
+	if (this.config && this.config.animate) {
+      this.animationTime = 0.4;
+    }
     this.clockType = 'minute';
     this.clockMaker();
   }
@@ -180,6 +183,9 @@ export class TimePickerComponent implements OnInit {
      */
     if (this.config && this.config.onlyMinute) {
       return false;
+    }
+	if (this.config && this.config.animate) {
+      this.animationTime = 0.4;
     }
     this.clockType = 'hour';
     this.clockMaker();
@@ -271,22 +277,6 @@ export class TimePickerComponent implements OnInit {
     } else {
       this.rotationClass(targetDegree2);
     }
-  }
-
-  clickHours() {
-    if (this.config.animate) {
-      this.animationTime = 0.4;
-    }
-    this.clockType = 'hour';
-    this.clockMaker();
-  }
-
-  clickMinutes() {
-    if (this.config.animate) {
-      this.animationTime = 0.4;
-    }
-    this.clockType = 'minute';
-    this.clockMaker();
   }
 
   public GetSeparator () {
