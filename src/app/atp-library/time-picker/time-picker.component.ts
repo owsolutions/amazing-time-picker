@@ -179,7 +179,7 @@ export class TimePickerComponent implements OnInit {
   public HourClick () {
     /**
      * We are not permitting user to select the minute.
-     * but anyway, it will return the standard time, if provided the default time.
+     * but anyway, it will return the standard time, if provided the default time. 
      */
     if (this.config && this.config.onlyMinute) {
       return false;
