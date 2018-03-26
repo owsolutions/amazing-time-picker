@@ -169,7 +169,7 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyHour) {
       return false;
     }
-	if (this.config && this.config.animate) {
+    if (this.config && this.config.animate) {
       this.animationTime = 0.4;
     }
     this.clockType = 'minute';
@@ -184,7 +184,7 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyMinute) {
       return false;
     }
-	if (this.config && this.config.animate) {
+    if (this.config && this.config.animate) {
       this.animationTime = 0.4;
     }
     this.clockType = 'hour';
