@@ -76,9 +76,7 @@ export class TimePickerComponent implements OnInit {
   rotationClass = (degrees: any) => {
     this.degree = degrees;
   }
-
   
-
   setTime() {
     this.isClicked = false;
 
