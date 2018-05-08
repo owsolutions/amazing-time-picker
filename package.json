@@ -15,7 +15,7 @@
     "serve:beds:4": "PORT=12001 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng4-test-bed/dist",
     "serve:beds:5": "PORT=12002 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng5-test-bed/dist",
     "cypress:ci": "./node_modules/.bin/cypress run ",
-    "serve": "PORT=8080 ./node_modules/.bin/serve dist/amazing-time-picker",
+    "serve": "PORT=8080 ./node_modules/.bin/serve dist/demo",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",
     "hmr": "ng serve --hmr -e=hmr --port=8080",
