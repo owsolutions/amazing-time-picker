@@ -1,8 +1,8 @@
 import { Injectable, ViewContainerRef, Injector, ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef } from '@angular/core';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { TimePickerConfig, IDialogResult } from './definitions';
-import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Preference } from './preferences';
 
 @Injectable()
