@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build:github": "ng build -e=prod -prod --base-href=/amazing-time-picker --deploy-url=/amazing-time-picker/ --progress false",
-    "build": "ng build -e=prod -prod  --progress false",
+    "build": "ng build amazing-time-picker --prod --progress false",
     "test": "ng test",
     "lint": "ng lint",
     "ci": "npm run serve & npm run serve:beds:5 & npm run serve:beds:4 & npm run serve:beds:2 & npm run cypress:ci",
@@ -15,14 +15,13 @@
     "serve:beds:4": "PORT=12001 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng4-test-bed/dist",
     "serve:beds:5": "PORT=12002 ./node_modules/.bin/serve /tmp/amazing-time-picker-test-beds/ng5-test-bed/dist",
     "cypress:ci": "./node_modules/.bin/cypress run ",
-    "serve": "PORT=8080 ./node_modules/.bin/serve dist",
+    "serve": "PORT=8080 ./node_modules/.bin/serve dist/amazing-time-picker",
     "e2e": "ng e2e",
     "cypress": "./node_modules/.bin/cypress open",
     "hmr": "ng serve --hmr -e=hmr --port=8080",
-    "packagr": "ng-packagr -p ng-package.json",
-    "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
+    "gh-pages": "ng build demo && git push origin :gh-pages && git subtree push --prefix dist/demo origin gh-pages",
     "build:npm": "npm run publisher",
-    "publisher": "rm npm_dist -Rf && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz"
+    "publisher": "ng build amazing-time-picker --prod && npm publish dist/amazing-time-picker"
   },
   "private": false,
   "dependencies": {
