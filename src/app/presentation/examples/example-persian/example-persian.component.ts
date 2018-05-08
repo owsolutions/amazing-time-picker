@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AmazingTimePickerService } from '../../../atp-library/atp-time-picker.service';
+import { AmazingTimePickerService } from 'amazing-time-picker';
 
 const encode = (x) => x.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
   return '&#' + i.charCodeAt(0) + ';';
