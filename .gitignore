@@ -42,3 +42,4 @@ yarn-error.log
 .DS_Store
 Thumbs.db
 cypress/screenshots
+dist
