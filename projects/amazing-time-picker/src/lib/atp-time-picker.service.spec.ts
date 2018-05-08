@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { AtpTimePickerService } from './atp-time-picker.service';
+import { AmazingTimePickerService } from './atp-time-picker.service';
 
 describe('AtpTimePickerService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AtpTimePickerService]
+      providers: [AmazingTimePickerService]
     });
   });
 
-  it('should be created', inject([AtpTimePickerService], (service: AtpTimePickerService) => {
+  it('should be created', inject([AmazingTimePickerService], (service: AmazingTimePickerService) => {
     expect(service).toBeTruthy();
   }));
 });
