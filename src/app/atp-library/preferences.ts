@@ -55,7 +55,7 @@ export const ChinesePreference: IDisplayPreference = {
   clockHour: (x) => x,
   clockMinute: (x) => x,
   labels: {
-    ok: '好',
+    ok: '确定',
     cancel: '取消'
   }
 };
@@ -66,7 +66,7 @@ export const Preference = (locale: string): IDisplayPreference => {
         return PersianPreference;
     case 'ar':
         return ArabicPreference;
-    case 'ch':
+    case 'zh':
         return ChinesePreference;
     default:
       return null;
