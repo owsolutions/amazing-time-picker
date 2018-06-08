@@ -99,9 +99,7 @@ export class AtpCoreService {
 
     let degrees = Math.round(radians * 180 / Math.PI);
     const degMod = degrees % step;
-    if (degMod === 0) {
-      return;
-    } else if (degMod >= step / 2) {
+    if (degMod >= step / 2) {
       degrees = degrees + (step - degMod);
     } else if (degMod < step / 2) {
       degrees = degrees - degMod;

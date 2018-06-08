@@ -6,11 +6,11 @@ const encode = (x) => x.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
 });
 
 @Component({
-  selector: 'app-example-persian',
-  templateUrl: './example-persian.component.html',
-  styleUrls: ['./example-persian.component.scss']
+  selector: 'app-example-hour',
+  templateUrl: './example-hour.component.html',
+  styleUrls: ['./example-hour.component.scss']
 })
-export class ExamplePersianComponent implements OnInit {
+export class ExampleHourComponent implements OnInit {
   interface = encode(`
   export interface IDisplayPreference {
     minute?: Function;
@@ -36,9 +36,10 @@ export class ExamplePersianComponent implements OnInit {
   ngOnInit() {
   }
 
-  public openPersian () {
+  public openHour () {
     const amazingTimePicker = this.atp.open({
-      locale: 'fa'
+      time: '3:30',
+      onlyHour: true
     });
     amazingTimePicker.afterClose().subscribe(time => {
       this.selectedTime = time;
