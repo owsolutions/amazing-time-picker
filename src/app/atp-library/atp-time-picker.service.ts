@@ -25,7 +25,7 @@ export class AmazingTimePickerService {
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
       changeToMinutes: config.changeToMinutes,
-      animation: (config.animation == null || config.animation === true) ? true : false,
+      animation: (config.animation == null || config.animation === 'fade') ? 'fade' : (config.animation === 'rotate') ? 'rotate' : false,
       preference: config.preference || null,
       onlyHour: config.onlyHour,
       onlyMinute: config.onlyMinute,

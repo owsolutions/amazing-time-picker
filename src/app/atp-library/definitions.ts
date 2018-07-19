@@ -12,7 +12,7 @@ export interface TimePickerConfig {
   locale?: string;
   preference?: IDisplayPreference;
   changeToMinutes?: boolean;
-  animation?: boolean;
+  animation?: 'fade' | 'rotate' | false;
   onlyHour?: boolean;
   onlyMinute?: boolean;
   onlyAM?: boolean;

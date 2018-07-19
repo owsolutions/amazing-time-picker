@@ -31,7 +31,7 @@ export class AtpDirective implements ControlValueAccessor {
     const end = ele.getAttribute('end');
     const locale = ele.getAttribute('locale') || 'en';
     const changeToMinutes = ele.getAttribute('changeToMinutes') === 'true';
-    const animation = ele.getAttribute('animation') === 'true' || ele.getAttribute('animation') === null;
+    const animation = ele.getAttribute('animation');
     const preference = ele.getAttribute('preference') || null;
     const onlyHour = ele.getAttribute('onlyHour') === 'true';
     const onlyMinute = ele.getAttribute('onlyMinute') === 'true';

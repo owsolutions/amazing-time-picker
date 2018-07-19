@@ -25,6 +25,7 @@ export class ExampleComponent {
       time: this.selectedTimeDark,
       theme: 'dark',
       changeToMinutes: true,
+      animation: 'rotate',
       arrowStyle: {
         background: 'red',
         color: 'white'
