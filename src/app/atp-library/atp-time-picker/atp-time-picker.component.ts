@@ -2,7 +2,7 @@ import { Component, ViewChild, ViewContainerRef, Output, ComponentFactoryResolve
 } from '@angular/core';
 import { TimePickerComponent } from '../time-picker/time-picker.component';
 import { TimePickerConfig } from '../definitions';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'atp-time-picker',

@@ -2,7 +2,7 @@ import { Injectable, ViewContainerRef, Injector, ApplicationRef, ComponentFactor
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { TimePickerConfig, IDialogResult } from './definitions';
 import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { Preference } from './preferences';
 
 @Injectable()
