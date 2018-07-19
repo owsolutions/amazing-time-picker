@@ -188,10 +188,8 @@ export class TimePickerComponent implements OnInit {
     this.ChangeAnimational('hour');
   }
 
-  ChangeAnimational(type: any) {
-    /* tslint:disable */
-    if (this.clockType != type) {
-      console.log(typeof this.config.animation, this.config.animation);
+  ChangeAnimational(type: 'minute' | 'hour') {
+    if (this.clockType !== type) {
       if (this.config.animation === 'fade') {
         this.changeToMin = true;
         setTimeout(() => {
@@ -199,7 +197,7 @@ export class TimePickerComponent implements OnInit {
           this.clockType = type;
           this.clockMaker();
         }, 200);
-      } else if(this.config.animation === 'rotate') {
+      } else if (this.config.animation === 'rotate') {
         this.animationTime = 0.4;
         this.clockType = type;
         this.clockMaker();
