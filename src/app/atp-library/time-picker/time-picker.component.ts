@@ -29,6 +29,7 @@ export class TimePickerComponent implements OnInit {
   public isPopup = true;
   public allowed: any;
   public preference: IDisplayPreference;
+  public changeToMin: boolean;
 
 
   constructor(
@@ -78,8 +79,7 @@ export class TimePickerComponent implements OnInit {
   setTime() {
     this.isClicked = false;
     if (this.config.changeToMinutes && this.clockType === 'hour') {
-      this.clockType = 'minute';
-      this.clockMaker();
+      this.ChangeAnimational('minute');
     }
   }
 
@@ -168,8 +168,7 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyHour) {
       return false;
     }
-    this.clockType = 'minute';
-    this.clockMaker();
+    this.ChangeAnimational('minute');
   }
 
   public HourClick () {
@@ -180,8 +179,18 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyMinute) {
       return false;
     }
-    this.clockType = 'hour';
-    this.clockMaker();
+    this.ChangeAnimational('hour');
+  }
+
+  ChangeAnimational(type: any) {
+    if (this.clockType != type) {
+      this.changeToMin = true;
+      setTimeout(() => {
+        this.changeToMin = false;
+        this.clockType = type;
+        this.clockMaker();
+      }, 200);
+    }
   }
 
   SetAM () {

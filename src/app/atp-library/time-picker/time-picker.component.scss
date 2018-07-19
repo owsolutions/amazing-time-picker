@@ -223,7 +223,13 @@ $materialThemeColor: #fff, #fff, #fff, #fff, #fff;
               user-select: none;
               -moz-user-select: none;
               -ms-user-select: none;
-              -webkit-user-select: none;         
+              -webkit-user-select: none;    
+              opacity: 1;
+              transform: scale(1);
+              -webkit-transition: opacity 0.3s, transform 0.3s;
+              -moz-transition: opacity 0.3s, transform 0.3s;
+              -o-transition: opacity 0.3s, transform 0.3s;
+              transition: opacity 0.3s, transform 0.3s;
               button{
                   border: none;
                   position: absolute;
@@ -265,6 +271,10 @@ $materialThemeColor: #fff, #fff, #fff, #fff, #fff;
                       top: 0;
                       right: -3px;
                   }
+              }
+              &.hide-time-picker-clock{
+                opacity: 0;
+                transform: scale(0.8);
               }
           }
       }

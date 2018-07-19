@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="time-picker-content">
-        <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked=true; getDegree($event);" (mouseup)="setTime()">
+        <div class="time-picker-clock" [ngClass]="{'hide-time-picker-clock': changeToMin}" (mousemove)="getDegree($event);" (mousedown)="isClicked=true; getDegree($event);" (mouseup)="setTime()">
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
             [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color :  '', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
