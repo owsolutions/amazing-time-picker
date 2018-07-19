@@ -31,12 +31,12 @@ export class AtpDirective implements ControlValueAccessor {
     const end = ele.getAttribute('end');
     const locale = ele.getAttribute('locale') || 'en';
     const changeToMinutes = ele.getAttribute('changeToMinutes') === 'true';
-    const animate = ele.getAttribute('animate') === 'true';
+    const animation = ele.getAttribute('animation');
     const preference = ele.getAttribute('preference') || null;
-    const onlyHour = ele.getAttribute('onlyHour') || false;
-    const onlyMinute = ele.getAttribute('onlyMinute') || false;
-    const onlyAM = ele.getAttribute('onlyAM') || false;
-    const onlyPM = ele.getAttribute('onlyPM') || false;
+    const onlyHour = ele.getAttribute('onlyHour') === 'true';
+    const onlyMinute = ele.getAttribute('onlyMinute') === 'true';
+    const onlyAM = ele.getAttribute('onlyAM') === 'true';
+    const onlyPM = ele.getAttribute('onlyPM') === 'true';
     let arrowStyle = ele.getAttribute('arrowStyle');
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
     const timePickerFunction = this.atp.open({
@@ -46,7 +46,7 @@ export class AtpDirective implements ControlValueAccessor {
       'arrowStyle': arrowStyle,
       locale,
       changeToMinutes,
-      animate,
+      animation,
       onlyHour,
       onlyMinute,
       onlyAM,

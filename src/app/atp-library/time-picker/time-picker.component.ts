@@ -29,6 +29,7 @@ export class TimePickerComponent implements OnInit {
   public isPopup = true;
   public allowed: any;
   public preference: IDisplayPreference;
+  public changeToMin: boolean;
 
   private animationTime = 0;
 
@@ -78,9 +79,8 @@ export class TimePickerComponent implements OnInit {
 
   setTime() {
     this.isClicked = false;
-    if (this.config.changeToMinutes && this.clockType === 'hour') {
-      this.clockType = 'minute';
-      this.clockMaker();
+    if (this.config.changeToMinutes && !this.config.onlyHour && this.clockType === 'hour') {
+      this.ChangeAnimational('minute');
     }
   }
 
@@ -154,8 +154,12 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyMinute) {
       this.clockType = 'minute';
     }
-    if (this.config && this.config.onlyPM) {
-      this.time.ampm = 'PM';
+    if (this.config) {
+      if (this.config.onlyPM) {
+        this.time.ampm = 'PM';
+      } else if (this.config.onlyAM) {
+        this.time.ampm = 'AM';
+      }
     }
     this.clockMaker();
     this.modalAnimation();
@@ -169,26 +173,39 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyHour) {
       return false;
     }
-    if (this.config && this.config.animate) {
-      this.animationTime = 0.4;
-    }
-    this.clockType = 'minute';
-    this.clockMaker();
+
+    this.ChangeAnimational('minute');
   }
 
   public HourClick () {
     /**
      * We are not permitting user to select the minute.
-     * but anyway, it will return the standard time, if provided the default time. 
+     * but anyway, it will return the standard time, if provided the default time.
      */
     if (this.config && this.config.onlyMinute) {
       return false;
     }
-    if (this.config && this.config.animate) {
-      this.animationTime = 0.4;
+    this.ChangeAnimational('hour');
+  }
+
+  ChangeAnimational(type: 'minute' | 'hour') {
+    if (this.clockType !== type) {
+      if (this.config.animation === 'fade') {
+        this.changeToMin = true;
+        setTimeout(() => {
+          this.changeToMin = false;
+          this.clockType = type;
+          this.clockMaker();
+        }, 200);
+      } else if (this.config.animation === 'rotate') {
+        this.animationTime = 0.4;
+        this.clockType = type;
+        this.clockMaker();
+      } else {
+        this.clockType = type;
+        this.clockMaker();
+      }
     }
-    this.clockType = 'hour';
-    this.clockMaker();
   }
 
   SetAM () {
@@ -220,13 +237,23 @@ export class TimePickerComponent implements OnInit {
   }
 
   getClockArrowStyle() {
-    return {
-      transform: 'rotate(' + this.degree + 'deg)',
-      '-webkit-transform': 'rotate(' + this.degree + 'deg)',
-      background: this.config.arrowStyle.background,
-      '-webkit-transition': 'transform ' + this.getAnimationTime(),
-      transition: 'transform ' + + this.getAnimationTime()
-    };
+    let arrowStyle = {};
+    if (this.config.animation === 'rotate') {
+        arrowStyle = {
+          transform: 'rotate(' + this.degree + 'deg)',
+          '-webkit-transform': 'rotate(' + this.degree + 'deg)',
+          background: this.config.arrowStyle.background,
+          '-webkit-transition': 'transform ' + this.getAnimationTime(),
+          transition: 'transform ' + + this.getAnimationTime()
+        };
+    }else {
+      arrowStyle = {
+        transform: 'rotate(' + this.degree + 'deg)',
+        '-webkit-transform': 'rotate(' + this.degree + 'deg)',
+        background: this.config.arrowStyle.background,
+      };
+    }
+    return arrowStyle;
   }
 
   getAnimationTime() {
@@ -241,27 +268,6 @@ export class TimePickerComponent implements OnInit {
     this.isClicked = true;
     this.animationTime = 0;
     this.getDegree(event);
-  }
-
-  /**
-   * Event on clock mouse click up
-   */
-  updateClockUp() {
-    this.isClicked = false;
-
-    if (this.config.changeToMinutes && this.clockType === 'hour') {
-      this.clockType = 'minute';
-      if (this.config.animate) {
-        setTimeout( () => {
-          this.clockObject = this.core.ClockMaker(this.clockType);
-          this.animationTime = 0.4;
-          this.setNewRotation();
-          this.nowTime = this.time.minute;
-        }, 125);
-      } else {
-        this.clockMaker();
-      }
-    }
   }
 
 

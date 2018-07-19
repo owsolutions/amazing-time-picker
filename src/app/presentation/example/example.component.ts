@@ -24,6 +24,8 @@ export class ExampleComponent {
     const amazingTimePicker = this.atp.open({
       time: this.selectedTimeDark,
       theme: 'dark',
+      changeToMinutes: true,
+      animation: 'rotate',
       arrowStyle: {
         background: 'red',
         color: 'white'
