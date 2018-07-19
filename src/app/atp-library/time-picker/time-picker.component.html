@@ -15,14 +15,14 @@
       </div>
     </div>
     <div class="time-picker-content">
-        <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="isClicked=true; getDegree($event);" (mouseup)="setTime()">
+        <div class="time-picker-clock" (mousemove)="getDegree($event);" (mousedown)="updateClockDown($event)" (mouseup)="updateClockUp();">
           <button *ngFor="let clock of clockObject" [ngClass]="{'active' : nowTime == clock.time}" 
             [id]="'timepicker-item-id-' + clock.time" 
             [ngStyle]="{top: clock.top,left: clock.left, color: nowTime == clock.time ? config.arrowStyle.color :  '', background: nowTime == clock.time ? config.arrowStyle.background : 'transparent'}">
             {{GetClockTime(clock)}}
           </button>
           <div class="time-picker-clock-origin" [ngStyle]="{ background: config.arrowStyle.background}"></div>
-          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="{transform: 'rotate(' + this.degree + 'deg)','-webkit-transform': 'rotate(' + this.degree + 'deg)', background: config.arrowStyle.background}">
+          <div id="tpc-arrow" class="time-picker-clock-arrow" [ngStyle]="getClockArrowStyle()">
             <span [ngStyle]="{ background: config.arrowStyle.background }"></span>
           </div>
         </div>
