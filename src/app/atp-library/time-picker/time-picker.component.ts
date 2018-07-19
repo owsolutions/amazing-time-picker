@@ -153,8 +153,12 @@ export class TimePickerComponent implements OnInit {
     if (this.config && this.config.onlyMinute) {
       this.clockType = 'minute';
     }
-    if (this.config && this.config.onlyPM) {
-      this.time.ampm = 'PM';
+    if (this.config) {
+      if (this.config.onlyPM) {
+        this.time.ampm = 'PM';
+      } else if (this.config.onlyAM) {
+        this.time.ampm = 'AM';
+      }
     }
     this.clockMaker();
     this.modalAnimation();
@@ -186,7 +190,6 @@ export class TimePickerComponent implements OnInit {
     /* tslint:disable */
     if (this.clockType != type) {
       if (this.config.animation) {
-        console.log(1);
         this.changeToMin = true;
         setTimeout(() => {
           this.changeToMin = false;
@@ -194,7 +197,6 @@ export class TimePickerComponent implements OnInit {
           this.clockMaker();
         }, 200);
       } else {
-        console.log(2);
         this.clockType = type;
         this.clockMaker();
       }
