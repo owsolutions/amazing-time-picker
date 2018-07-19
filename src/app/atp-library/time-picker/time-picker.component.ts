@@ -78,7 +78,7 @@ export class TimePickerComponent implements OnInit {
 
   setTime() {
     this.isClicked = false;
-    if (this.config.changeToMinutes && this.clockType === 'hour') {
+    if (this.config.changeToMinutes && !this.config.onlyHour && this.clockType === 'hour') {
       this.ChangeAnimational('minute');
     }
   }
@@ -183,13 +183,21 @@ export class TimePickerComponent implements OnInit {
   }
 
   ChangeAnimational(type: any) {
+    /* tslint:disable */
     if (this.clockType != type) {
-      this.changeToMin = true;
-      setTimeout(() => {
-        this.changeToMin = false;
+      if (this.config.animation) {
+        console.log(1);
+        this.changeToMin = true;
+        setTimeout(() => {
+          this.changeToMin = false;
+          this.clockType = type;
+          this.clockMaker();
+        }, 200);
+      } else {
+        console.log(2);
         this.clockType = type;
         this.clockMaker();
-      }, 200);
+      }
     }
   }
 

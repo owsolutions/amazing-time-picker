@@ -24,12 +24,13 @@ export class AmazingTimePickerService {
       rangeTime: config.rangeTime || {start: '0:0', end: '24:0'},
       arrowStyle: config.arrowStyle || {},
       locale: config.locale || 'en',
-      changeToMinutes: config.changeToMinutes || false,
+      changeToMinutes: config.changeToMinutes,
+      animation: config.animation,
       preference: config.preference || null,
-      onlyHour: config.onlyHour || false,
-      onlyMinute: config.onlyMinute || false,
-      onlyAM: config.onlyAM || false,
-      onlyPM: config.onlyPM || false,
+      onlyHour: config.onlyHour,
+      onlyMinute: config.onlyMinute,
+      onlyAM: config.onlyAM,
+      onlyPM: config.onlyPM,
     } as TimePickerConfig;
     config.rangeTime = {
       start: config.rangeTime.start || '0:0',
