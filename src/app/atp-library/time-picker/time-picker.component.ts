@@ -3,6 +3,8 @@ import { IClockNumber, IDisplayPreference, TimePickerConfig } from '../definitio
 import { AtpCoreService } from '../atp-core.service';
 import { ITime } from '../definitions';
 
+const delayToShowMinutes = 200;
+
 @Component({
   selector: 'time-picker',
   templateUrl: './time-picker.component.html',
@@ -75,9 +77,15 @@ export class TimePickerComponent implements OnInit {
   rotationClass = (degrees: any) => {
     this.degree = degrees;
   }
-
+  
   setTime() {
     this.isClicked = false;
+
+    if (this.clockType === 'hour' && !this.config.onlyHour) {
+
+      setTimeout(() => this.MinuteClick(), delayToShowMinutes);
+    }
+
     if (this.config.changeToMinutes && this.clockType === 'hour') {
       this.clockType = 'minute';
       this.clockMaker();
