@@ -60,6 +60,11 @@ export class AtpDirective implements ControlValueAccessor {
     });
   }
 
+  @HostListener('input', ['$event'])
+  onInput(e: any) {
+    this.onChange(e.srcElement.value);
+  }
+
   writeValue(value: any) {
     if (this.elementRef) {
       this.elementRef.nativeElement.value = value;
