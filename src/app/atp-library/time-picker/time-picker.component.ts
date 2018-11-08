@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IClockNumber, IDisplayPreference, TimePickerConfig } from '../definitions';
 import { AtpCoreService } from '../atp-core.service';
 import { ITime } from '../definitions';
@@ -179,7 +179,7 @@ export class TimePickerComponent implements OnInit {
   public HourClick () {
     /**
      * We are not permitting user to select the minute.
-     * but anyway, it will return the standard time, if provided the default time. 
+     * but anyway, it will return the standard time, if provided the default time.
      */
     if (this.config && this.config.onlyMinute) {
       return false;
