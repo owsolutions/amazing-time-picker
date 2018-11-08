@@ -1,8 +1,11 @@
-import { Injectable, ViewContainerRef, Injector, ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef } from '@angular/core';
+import { Injectable, Injector, ApplicationRef, ComponentFactoryResolver, EmbeddedViewRef } from '@angular/core';
 import { TimePickerComponent } from './time-picker/time-picker.component';
 import { TimePickerConfig, IDialogResult } from './definitions';
-import { Observable } from 'rxjs/Rx';
-import { Subject } from 'rxjs/Subject';
+
+// We need to import like this, because of backward compatibility of angular
+/* tslint:disable */
+import { Subject } from 'rxjs';
+/* tslint:enable */
 import { Preference } from './preferences';
 
 @Injectable()
