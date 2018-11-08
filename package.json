@@ -1,6 +1,6 @@
 {
   "name": "amazing-time-picker",
-  "version": "0.0.99",
+  "version": "0.0.100",
   "license": "MIT",
   "repository": "https://github.com/owsolutions/amazing-time-picker.git",
   "scripts": {
@@ -39,7 +39,7 @@
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
     "node-sass": "^4.10.0",
-    "rxjs": "^6.2.2",
+    "rxjs": "^5.5.12",
     "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.14"
   },
