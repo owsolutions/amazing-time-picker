@@ -1,6 +1,6 @@
 {
   "name": "amazing-time-picker",
-  "version": "1.5.2",
+  "version": "0.0.99",
   "license": "MIT",
   "repository": "https://github.com/owsolutions/amazing-time-picker.git",
   "scripts": {
@@ -22,7 +22,8 @@
     "packagr": "ng-packagr -p ng-package.json",
     "gh-pages": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
     "build:npm": "npm run publisher",
-    "publisher": "rm npm_dist -Rf && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz"
+    "publisher": "rm npm_dist -Rf && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz",
+    "publisher:mac": "rm -rf npm_dist && npm run packagr && cd npm_dist && mv $(npm pack) dist.tgz"
   },
   "private": false,
   "dependencies": {
@@ -37,6 +38,7 @@
     "@angular/router": ">=2.4.5",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
+    "node-sass": "^4.10.0",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.14"
