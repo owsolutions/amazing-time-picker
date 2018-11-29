@@ -1,0 +1,37 @@
+:host.snack-ad {
+  overflow: hidden;
+  background-color: #323232;
+  padding: 10px 24px;
+  color: #fff;
+  opacity: 0.9;
+  min-width: 288px;
+  font-size: 1.1em;
+  max-width: 568px;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  z-index: 999;
+  
+  .snackbar-message {
+    overflow: hidden;
+    line-height: 1.2em;
+    min-height: 1.2em;
+    max-height: 2.4em;
+    flex: 1;
+  }
+  .snackbar-action {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 48px;
+    color: #bf3727;
+    
+    a {
+      text-decoration: none;
+      color: #bf3727;    
+    }
+  }
+}
