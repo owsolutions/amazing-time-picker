@@ -1,0 +1,22 @@
+:host.snack-ad {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: white;
+  min-width: 500px;
+  
+  bottom: 0;
+  font-size: 1.3em;
+  opacity: 0.9;
+  margin: 0;
+  padding: 10px 15px;
+  border: 1px solid #ee6e72;
+  border-radius: 6px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left: 0;
+  border-bottom: 0;
+  z-index:999;
+}
