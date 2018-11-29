@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { appRoutersGenerator } from './app.router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AmazingTimePickerModule } from './atp-library/atp-time-picker.module';
 import { AppComponent } from './app.component';
@@ -25,14 +26,15 @@ import { SnackAdComponent } from './snack-ad/snack-ad.component';
     ExampleHourComponent,
     ExampleArabicComponent,
     ExampleMaterialComponent,
-    SnackAdComponent,
+    SnackAdComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AmazingTimePickerModule,
-    appRoutersGenerator(),
+    appRoutersGenerator()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
