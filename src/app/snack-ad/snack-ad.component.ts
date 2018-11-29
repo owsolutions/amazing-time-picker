@@ -69,6 +69,12 @@ export class SnackAdComponent implements OnInit {
       <i class="icon-chat"></i>
       You can chat with us, click on the green box on the right side
       <i class="icon-angle-double-right"></i>`
+    },
+    {
+      duration: 5000,
+      content: `
+      <i class="icon-star"></i>
+      Star us on github, and get your free request from us <a href='https://github.com/owsolutions/amazing-time-picker'>Star now</a>`
     }
   ];
   public content: any = null;
