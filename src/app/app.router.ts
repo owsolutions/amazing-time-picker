@@ -4,16 +4,16 @@ import { ApiComponent } from './presentation/api/api.component';
 
 export const appRoutes: Routes = [
   {
-    path: 'Examples',
+    path: 'examples',
     component: ExampleComponent
   },
   {
-    path: 'API',
+    path: 'api',
     component: ApiComponent
   },
   {
     path: '',
-    redirectTo: '/Examples',
+    redirectTo: '/examples',
     pathMatch: 'full'
   }
 ];
