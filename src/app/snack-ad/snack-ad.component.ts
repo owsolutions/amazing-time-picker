@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import {
   state,
   style,
@@ -7,7 +7,6 @@ import {
   transition,
   trigger
 } from '@angular/animations';
-import { delay } from 'rxjs/operators';
 
 interface RenderState {
   duration: number;
@@ -37,6 +36,8 @@ interface RenderState {
   ]
 })
 export class SnackAdComponent implements OnInit {
+  private stateIndex = 0;
+
   states: RenderState[] = [
     {
       duration: 3500,
@@ -70,17 +71,14 @@ export class SnackAdComponent implements OnInit {
       <i class="icon-angle-double-right"></i>`
     }
   ];
-
+  public content: any = null;
   public visible = false;
   @HostBinding('class') public klass = 'snack-ad';
   constructor() {}
 
-  private content: any = null;
   ngOnInit() {
     this.viewSlide();
   }
-
-  private stateIndex = 0;
 
   private viewSlide() {
     if (this.stateIndex === this.states.length - 1) {
