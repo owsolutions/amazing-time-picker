@@ -143,6 +143,17 @@ export class TimePickerComponent implements OnInit {
     }
   }
 
+  /**
+   * Check if clock button time is not in allowed times and disabled
+   * @param t Button Time Value
+   */
+  checkDisabled(t) {
+    const m = (this.clockType === 'minute') ? t : this.time.minute;
+    const h = (this.clockType === 'hour') ? t : this.time.hour;
+    const nowTime = this.GetNowTime(h, this.time.ampm, m);
+    return (this.allowed.indexOf(nowTime) === -1) ? true : false;
+  }
+
   modalAnimation() {
     setTimeout(() => {
       this.activeModal = true;
