@@ -1,4 +1,4 @@
-import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef } from '@angular/core';
+import { Directive, ViewContainerRef, Output, EventEmitter, HostListener, ElementRef, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AmazingTimePickerService } from './atp-time-picker.service';
 
@@ -13,7 +13,7 @@ import { AmazingTimePickerService } from './atp-time-picker.service';
 export class AtpDirective implements ControlValueAccessor {
 
   @Output() myClick = new EventEmitter();
-
+  @Input() fastSelect: boolean;
   private elementRef: ElementRef;
   private onChange = (x: any): void => {};
   constructor(
@@ -38,6 +38,7 @@ export class AtpDirective implements ControlValueAccessor {
     const onlyAM = ele.getAttribute('onlyAM') === 'true';
     const onlyPM = ele.getAttribute('onlyPM') === 'true';
     let arrowStyle = ele.getAttribute('arrowStyle');
+    let fastSelect = this.fastSelect == undefined ? false : this.fastSelect;
     arrowStyle = (arrowStyle) ? JSON.parse(arrowStyle.replace(new RegExp('\'', 'g'), '"')) : '';
     const timePickerFunction = this.atp.open({
       time,
@@ -51,7 +52,8 @@ export class AtpDirective implements ControlValueAccessor {
       onlyMinute,
       onlyAM,
       onlyPM,
-      preference
+      preference,
+      fastSelect
     });
 
     timePickerFunction.afterClose().subscribe(retTime => {

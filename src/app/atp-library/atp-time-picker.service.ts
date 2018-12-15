@@ -34,6 +34,7 @@ export class AmazingTimePickerService {
       onlyMinute: config.onlyMinute,
       onlyAM: config.onlyAM,
       onlyPM: config.onlyPM,
+      fastSelect: config.fastSelect
     } as TimePickerConfig;
     config.rangeTime = {
       start: config.rangeTime.start || '0:0',

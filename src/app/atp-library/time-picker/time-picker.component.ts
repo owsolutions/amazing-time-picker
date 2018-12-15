@@ -246,7 +246,15 @@ export class TimePickerComponent implements OnInit {
       }
     }
   }
-
+  Close_fastSelect() {
+      if (this.isPopup === true) {
+        this.activeModal = false;
+        setTimeout(() => {
+          this.appRef.detachView(this._ref.hostView);
+          this._ref.destroy();
+        }, 400);
+      }
+  }
   getClockArrowStyle() {
     let arrowStyle = {};
     if (this.config.animation === 'rotate') {
@@ -279,6 +287,15 @@ export class TimePickerComponent implements OnInit {
     this.isClicked = true;
     this.animationTime = 0;
     this.getDegree(event);
+    if (this.config && this.config.fastSelect) {
+      if (this.clockType === 'hour') {
+        this.MinuteClick();
+      }
+      else if (this.clockType === 'minute') {
+        this.GetTime();
+        this.Close_fastSelect();
+      }
+    }
   }
 
 
