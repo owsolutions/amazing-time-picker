@@ -54,6 +54,7 @@ export interface IDisplayPreference {
   labels?: {
     ok?: string;
     cancel?: string;
+    title?: string;
   };
   period?(period: 'AM' | 'PM');
   clockMinute?(minute: any);
