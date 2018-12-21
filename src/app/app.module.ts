@@ -15,7 +15,7 @@ import { ExampleMaterialComponent } from './presentation/examples/example-materi
 import { ExampleHourComponent } from './presentation/examples/example-hour/example-hour.component';
 import { SnackAdComponent } from './snack-ad/snack-ad.component';
 import { FullLayoutComponent } from './presentation/full-layout/full-layout.component';
-import { LayoutBasicComponent } from './presentation/layout-basic/layout-basic.component';
+import { LayoutBasicComponent } from './presentation/basic-layout/basic-layout.component';
 
 @NgModule({
   declarations: [
