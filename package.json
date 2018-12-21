@@ -6,6 +6,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:pp": "ng serve --app 1 --port 4230",
+    "build:pixelplux": "ng build -e=prod -prod --app 1 --base-href=/docs/amazing-time-picker --deploy-url=/docs/amazing-time-picker/ --progress false",
     "build:github": "ng build -e=prod -prod --base-href=/amazing-time-picker --deploy-url=/amazing-time-picker/ --progress false",
     "build": "ng build -e=prod -prod  --progress false",
     "test": "ng test",
