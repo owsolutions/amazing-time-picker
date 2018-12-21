@@ -31,12 +31,14 @@
     },
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "dist/atp-docs",
       "assets": [
         "assets",
         "favicon.ico"
       ],
       "index": "index-pixelplux-docs.html",
+      "deployUrl": "%deployUrl%",
+      "baseHref": "%baseHref%",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
