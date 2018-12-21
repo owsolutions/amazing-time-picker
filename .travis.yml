@@ -21,9 +21,10 @@ script:
   - npm run lint
   # Build the project itself
   - npm run build
+  - npm run build:docs
   # Bundle for npm package
   - npm run build:npm
-  
+
   # Test within testbeds
   - sh scripts/init-test-beds.sh
   - npm run ci

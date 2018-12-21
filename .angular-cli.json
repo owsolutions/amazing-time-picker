@@ -28,6 +28,31 @@
         "hmr": "environments/environment.hmr.ts",
         "prod": "environments/environment.prod.ts"
       }
+    },
+    {
+      "root": "src",
+      "outDir": "docs",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index-docs.html",
+      "deployUrl": "%deployUrl%",
+      "baseHref": "%baseHref%",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [],
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "hmr": "environments/environment.hmr.ts",
+        "docs": "environments/environment.docs.ts"
+      }
     }
   ],
   "e2e": {

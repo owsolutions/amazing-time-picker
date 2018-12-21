@@ -14,6 +14,8 @@ import { ExampleArabicComponent } from './presentation/examples/example-arabic/e
 import { ExampleMaterialComponent } from './presentation/examples/example-material/example-material.component';
 import { ExampleHourComponent } from './presentation/examples/example-hour/example-hour.component';
 import { SnackAdComponent } from './snack-ad/snack-ad.component';
+import { FullLayoutComponent } from './presentation/full-layout/full-layout.component';
+import { LayoutBasicComponent } from './presentation/basic-layout/basic-layout.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { SnackAdComponent } from './snack-ad/snack-ad.component';
     ExampleHourComponent,
     ExampleArabicComponent,
     ExampleMaterialComponent,
-    SnackAdComponent
+    SnackAdComponent,
+    FullLayoutComponent,
+    LayoutBasicComponent
   ],
   imports: [
     BrowserModule,
