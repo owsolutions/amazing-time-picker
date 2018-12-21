@@ -43,13 +43,13 @@ export class SnackAdComponent implements OnInit {
       duration: 3500,
       content: `
       <i class="icon-amazon"></i>
-      <a href="https://web.pixelplux.com">Build microservice</a> from 40€ each service by us!`
+      <a href="https://pixelplux.com">Build microservice</a> from 40€ each service by us!`
     },
     {
       duration: 2500,
       content: `
       <i class="icon-clouds-flash-alt"></i>
-      Web design with cutting edge tech <a href="https://web.pixelplux.com">only from 350€!</a>`
+      Web design with cutting edge tech <a href="https://pixelplux.com">only from 350€!</a>`
     },
     {
       duration: 5000,

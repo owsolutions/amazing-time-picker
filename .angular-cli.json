@@ -31,12 +31,12 @@
     },
     {
       "root": "src",
-      "outDir": "pixelplux-atp-docs",
+      "outDir": "docs",
       "assets": [
         "assets",
         "favicon.ico"
       ],
-      "index": "index-pixelplux-docs.html",
+      "index": "index-docs.html",
       "deployUrl": "%deployUrl%",
       "baseHref": "%baseHref%",
       "main": "main.ts",
@@ -51,7 +51,7 @@
       "environments": {
         "dev": "environments/environment.ts",
         "hmr": "environments/environment.hmr.ts",
-        "pixelplux": "environments/environment.pixelplux.ts"
+        "docs": "environments/environment.docs.ts"
       }
     }
   ],
