@@ -31,7 +31,7 @@
     },
     {
       "root": "src",
-      "outDir": "dist/atp-docs",
+      "outDir": "pixelplux-atp-docs",
       "assets": [
         "assets",
         "favicon.ico"
@@ -45,9 +45,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "styles.scss"
-      ],
+      "styles": [],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
