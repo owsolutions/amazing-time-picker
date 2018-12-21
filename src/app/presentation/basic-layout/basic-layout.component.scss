@@ -19,3 +19,23 @@
       margin-top: 43px;
   }
 }
+
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+
+  .tab a {
+    cursor: pointer;
+    color: rgba(238,110,115,0.7);
+    display: block;
+    height: 100%;
+    padding: 7px 24px;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-transition: color .28s ease;
+    transition: color .28s ease;
+  }
+}
