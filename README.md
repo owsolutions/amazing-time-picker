@@ -7,6 +7,10 @@ After some delay we have now support for Angular 6+. Also you can install latest
 
 In case required ( which shouldn't! ), install version 1.6.* for Angular 2, 4, 5 but they won't recieve update.
 
+
+## Live demo
+https://pixelplux.com/docs/amazing-time-picker/
+
 ## Install
 You need to install this repository as dependency and import it to your `app.module.ts` in `imports` section.
 
@@ -82,4 +86,4 @@ Online demo
 
 ![Amazing Time Picker | TimePicker | Materialize time picker | AmazingTimepicker | ClockPicker](time-picker.jpg)
 
-https://owsolutions.github.io/amazing-time-picker/
+https://pixelplux.com/docs/amazing-time-picker/
