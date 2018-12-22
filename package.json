@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build:docs": "ng build -e=docs -prod --app 1 --progress false",
-    "build:github": "ng build -e=prod --app 2 -prod --base-href=/amazing-time-picker --deploy-url=/amazing-time-picker/ --progress false",
+    "build:github": "ng build -e=prod --app 2 -prod --base-href=/amazing-time-picker --deploy-url=/amazing-time-picker/ --progress false && cp dist/index-github.html dist/index.html",
     "build": "ng build -e=prod -prod  --progress false",
     "test": "ng test",
     "lint": "ng lint",
