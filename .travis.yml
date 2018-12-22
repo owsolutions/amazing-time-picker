@@ -29,6 +29,7 @@ script:
   - sh scripts/init-test-beds.sh
   - npm run ci
   - npm run build:github
+  - cp dist/index-github.html dist/index.html
 
 after_success:
   - bash ./deploy.sh
