@@ -1,0 +1,71 @@
+
+.example-btn {
+  border-radius: 5px;
+  padding: 5px 25px;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 5px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+
+  &:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+
+  &.blue {
+    background-color: #55acee;
+    box-shadow: 0px 5px 0px 0px #3c93d5;
+  }
+
+  &.blue:hover {
+    background-color: #6fc6ff;
+  }
+
+  &.green {
+    background-color: #2ecc71;
+    box-shadow: 0px 5px 0px 0px #15b358;
+  }
+
+  &.green:hover {
+    background-color: #48e68b;
+  }
+
+  &.red {
+    background-color: #e74c3c;
+    box-shadow: 0px 5px 0px 0px #ce3323;
+  }
+
+  &.red:hover {
+    background-color: #ff6656;
+  }
+
+  &.purple {
+    background-color: #9b59b6;
+    box-shadow: 0px 5px 0px 0px #82409d;
+  }
+
+  &.purple:hover {
+    background-color: #b573d0;
+  }
+
+  &.orange {
+    background-color: #e67e22;
+    box-shadow: 0px 5px 0px 0px #cd6509;
+  }
+
+  &.orange:hover {
+    background-color: #ff983c;
+  }
+
+  &.yellow {
+    background-color: #f1c40f;
+    box-shadow: 0px 5px 0px 0px #d8ab00;
+  }
+
+  &.yellow:hover {
+    background-color: #ffde29;
+  }
+}
