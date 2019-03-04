@@ -60,6 +60,25 @@ export const ChinesePreference: IDisplayPreference = {
   }
 };
 
+export const BrazilianPreference: IDisplayPreference = {
+  hour:  (x) => x,
+  minute: (x) => {
+    let exp = x;
+    if (exp.length === 1) {
+      exp = '۰' + exp;
+    }
+    return exp;
+  },
+  separator: ':',
+  period: (x) => x === 'AM' ? 'Manhã' : 'Tarde',
+  clockHour: (x) => x,
+  clockMinute: (x) => x,
+  labels: {
+    ok: 'Ok',
+    cancel: 'Cancelar'
+  }
+};
+
 export const Preference = (locale: string): IDisplayPreference => {
   switch (locale) {
     case 'fa':
@@ -68,6 +87,8 @@ export const Preference = (locale: string): IDisplayPreference => {
         return ArabicPreference;
     case 'zh':
         return ChinesePreference;
+    case 'br':
+      return BrazilianPreference;
     default:
       return null;
   }
