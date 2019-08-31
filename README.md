@@ -2,14 +2,22 @@
 
 A visual time picker for angular 2+ projects. You can use this timepicker with Angular 2, 4, 5, 6, 7 and Angular Material. **This project doesn't require angular material or any other dependencies**
 
+
+## Note: Please visit our booking service and give us some support!
+
+We want to announce that we are working on another project, which is called "React-booking". It will help 
+users to build booking applications more fun and easier.
+
+https://github.com/pixelplux/react-booking
+
 ## Angular 6, 7 support since version 1.8.0
 After some delay we have now support for Angular 6+. Also you can install latest version on Angular 2 project as well and it's fully backward compatible.
 
-In case required ( which shouldn't! ), install version 1.6.* for Angular 2, 4, 5 but they won't recieve update.
+In case required ( which shouldn't! ), install version 1.6.* for Angular 2, 4, 5 but they won't receive update.
 
 
 ## Live demo
-https://pixelplux.com/docs/amazing-time-picker/
+https://owsolutions.github.io/amazing-time-picker/
 
 ## Install
 You need to install this repository as dependency and import it to your `app.module.ts` in `imports` section.
@@ -86,4 +94,4 @@ Online demo
 
 ![Amazing Time Picker | TimePicker | Materialize time picker | AmazingTimepicker | ClockPicker](time-picker.jpg)
 
-https://pixelplux.com/docs/amazing-time-picker/
+https://owsolutions.github.io/amazing-time-picker/
