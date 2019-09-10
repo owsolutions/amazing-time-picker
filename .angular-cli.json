@@ -7,10 +7,7 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -18,9 +15,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "styles.scss"
-      ],
+      "styles": ["styles.scss"],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -32,13 +27,10 @@
     {
       "root": "src",
       "outDir": "docs",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index-docs.html",
-      "deployUrl": "%deployUrl%",
-      "baseHref": "%baseHref%",
+      "deployUrl": "/amazing-time-picker/",
+      "baseHref": "/amazing-time-picker/",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
@@ -57,10 +49,7 @@
     {
       "root": "src",
       "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
+      "assets": ["assets", "favicon.ico"],
       "index": "index-github.html",
       "main": "main.ts",
       "polyfills": "polyfills.ts",
@@ -68,9 +57,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [
-        "styles.scss"
-      ],
+      "styles": ["styles.scss"],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
       "environments": {
