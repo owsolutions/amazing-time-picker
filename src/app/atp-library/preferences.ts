@@ -2,6 +2,7 @@ import { IDisplayPreference } from './definitions';
 
 const arabic = new Intl.NumberFormat('ar-AE');
 const persian = new Intl.NumberFormat('fa-IR');
+const brazilian = new Intl.NumberFormat('pt-BR');
 
 export const PersianPreference: IDisplayPreference = {
   hour: (x) => persian.format(x),
@@ -65,7 +66,7 @@ export const BrazilianPreference: IDisplayPreference = {
   minute: (x) => {
     let exp = x;
     if (exp.length === 1) {
-      exp = '۰' + exp;
+      exp = brazilian.format(0) + exp;
     }
     return exp;
   },
