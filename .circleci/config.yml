@@ -31,16 +31,7 @@ jobs:
                 root: /home/circleci
                 paths: project
 
-    build_npm:
-        <<: *default
-        steps:
-            - attach_workspace:
-                at: /home/circleci
-            - run:
-                name: Make npm bundle
-                command: npm run build:npm
-
-    built_branch:
+    publish_npm:
         <<: *default
         steps:
             - attach_workspace:
@@ -48,13 +39,20 @@ jobs:
             - add_ssh_keys:
                 fingerprints:
                     - "70:a9:87:33:e4:bd:6f:01:a3:b0:05:1d:29:e4:25:85"
+            - run: mkdir ~/.ssh && ssh-keyscan "github.com"  >> ~/.ssh/known_hosts
             - run:
-                name: build npm branch (built)
+                name: Make npm bundle
+                command: npm run build:npm
+            - run:
+                name: Publish bundle
                 command: |
-                    env |sort
-                    mv project/npm_build /tmp
-                    rm -Rf project/*
-                    mv /tmp/npm_build project
+                    git config --global user.name "CircleCI Automation"
+                    git config --global user.email "yuri.reis@msn.com"
+                    mv $CIRCLE_WORKING_DIRECTORY/npm_dist /tmp
+                    git checkout -f built
+                    rm -Rf $CIRCLE_WORKING_DIRECTORY/*
+                    mv /tmp/npm_dist/* $CIRCLE_WORKING_DIRECTORY
+                    cd $CIRCLE_WORKING_DIRECTORY && git add -A && git commit --amend --no-edit && git push -f origin built
 
 workflows:
     version: 2
@@ -68,7 +66,7 @@ workflows:
             - build:
                 requires:
                     - checkout
-            - build_npm:
+            - publish_npm:
                 filters:
                     branches:
                         only: /(^master)/
