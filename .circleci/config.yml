@@ -47,11 +47,14 @@ jobs:
                 at: /home/circleci
             - add_ssh_keys:
                 fingerprints:
-                    - "f1:90:61:70:68:dd:e8:f5:7f:46:e7:83:1c:55:39:55"
+                    - "70:a9:87:33:e4:bd:6f:01:a3:b0:05:1d:29:e4:25:85"
             - run:
-                name: NPM global dependencies install
+                name: build npm branch (built)
                 command: |
-                    echo "[NPM global dependencies install]"
+                    env |sort
+                    mv project/npm_build /tmp
+                    rm -Rf project/*
+                    mv /tmp/npm_build project
 
 workflows:
     version: 2
