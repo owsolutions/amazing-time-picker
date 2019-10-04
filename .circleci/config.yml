@@ -1,0 +1,75 @@
+default: &default
+    working_directory: /home/circleci/project
+    docker:
+        - image: circleci/node:8-stretch-browsers-legacy
+
+version: 2
+jobs:
+    checkout:
+      <<: *default
+      steps:
+      - checkout
+      - persist_to_workspace:
+          root: /home/circleci
+          paths: project
+
+    build:
+        <<: *default
+        steps:
+            - attach_workspace:
+                at: /home/circleci
+            - restore_cache:
+                key: dependency-cache-{{ checksum "package-lock.json" }}
+            - run: npm i
+            - save_cache:
+                key: dependency-cache-{{ checksum "package-lock.json" }}
+                paths:
+                    - ./node_modules
+            - persist_to_workspace:
+                root: /home/circleci
+                paths: project
+    
+    build_npm:
+        <<: *default
+        steps:
+            - attach_workspace:
+                at: /home/circleci
+            - add_ssh_keys:
+                fingerprints:
+                    - "f1:90:61:70:68:dd:e8:f5:7f:46:e7:83:1c:55:39:55"
+            - run:
+                name: NPM global dependencies install
+                command: |
+                    echo "[NPM global dependencies install]"
+
+    built_branch:
+        <<: *default
+        steps:
+            - attach_workspace:
+                at: /home/circleci
+            - add_ssh_keys:
+                fingerprints:
+                    - "f1:90:61:70:68:dd:e8:f5:7f:46:e7:83:1c:55:39:55"
+            - run:
+                name: NPM global dependencies install
+                command: |
+                    echo "[NPM global dependencies install]"
+
+workflows:
+    version: 2
+
+    publish:
+        jobs:
+            - checkout:
+                filters:
+                    branches:
+                        only: /(^master)/
+            - build:
+                requires:
+                    - checkout
+            - build_npm:
+                filters:
+                    branches:
+                        only: /(^master)/
+                requires:
+                    - build
