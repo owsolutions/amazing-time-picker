@@ -5,6 +5,13 @@ We are inviting you for visiting our commerical projects: https://pixelplux.com
 
 # Amazing Time Picker (Clock) ![Build Status](https://travis-ci.org/owsolutions/amazing-time-picker.svg?branch=master) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+## Docs and tutorial
+
+You can read and learn amazing time picker and online demo here:
+
+https://pixelplux.com/product/amazing-time-picker
+
+
 A visual time picker for angular 2+ projects. You can use this timepicker with Angular 2, 4, 5, 6, 7 and Angular Material. **This project doesn't require angular material or any other dependencies**
 
 
