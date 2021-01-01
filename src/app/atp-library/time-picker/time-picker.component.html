@@ -1,6 +1,9 @@
 <div id="time-picker-wrapper" class="{{config.theme}}" [ngClass]="{'active': activeModal, 'static': !isPopup}" (click)="Close($event);">
   <div id="time-picker" [ngClass]="{'active': activeModal, 'static': !isPopup}">
     <div class="time-picker-header">
+      <div class="time-picker-title" *ngIf="getTitle()">
+        {{getTitle()}}
+      </div>
       <div class="time-picker-selected-time">
           <div class="time-picker-hour" (click)="HourClick()" [attr.disabled]="(config.onlyMinute) ? 'disabled' : null"
             [ngClass]="{'selected' : clockType == 'hour'}">{{GetHour()}}</div>
