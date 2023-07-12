@@ -4,8 +4,8 @@
 
 You can read and learn amazing time picker and online demo here:
 
-https://pixelplux.com/product/amazing-time-picker
-
+[https://owsolutions.github.io/amazing-time-picker
+](https://owsolutions.github.io/amazing-time-picker)
 
 A visual time picker for angular 2+ projects. You can use this timepicker with Angular 2, 4, 5, 6, 7 and Angular Material. **This project doesn't require angular material or any other dependencies**
 
@@ -16,7 +16,7 @@ In case required ( which shouldn't! ), install version 1.6.* for Angular 2, 4, 5
 
 
 ## Live demo
-https://pixelplux.com/product/amazing-time-picker
+[https://pixelplux.com/product/amazing-time-picker](https://owsolutions.github.io/amazing-time-picker)
 
 ## Install
 You need to install this repository as dependency and import it to your `app.module.ts` in `imports` section.
@@ -93,4 +93,5 @@ Online demo
 
 ![Amazing Time Picker | TimePicker | Materialize time picker | AmazingTimepicker | ClockPicker](time-picker.jpg)
 
-https://pixelplux.com/product/amazing-time-picker
+[https://owsolutions.github.io/amazing-time-picker
+](https://owsolutions.github.io/amazing-time-picker)
