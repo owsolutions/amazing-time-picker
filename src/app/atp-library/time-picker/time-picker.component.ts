@@ -350,4 +350,8 @@ export class TimePickerComponent implements OnInit {
     }
     return defaults[key];
   }
+
+  public getTitle(): string {
+    return this.preference.labels.title ? this.preference.labels.title : undefined;
+  }
 }
